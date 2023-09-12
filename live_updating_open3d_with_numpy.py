@@ -1,8 +1,13 @@
-import cv2
-import torch
-import time
-import numpy as np
 import open3d as o3d
+import numpy as np
+import cv2
+import time
+import torch
+
+
+# Initialize empty arrays
+all_points_3D = []
+all_colors = []
 
 
 # Q matrix - Camera parameters - Can also be found using stereoRectify
@@ -73,6 +78,11 @@ while cap.isOpened():
     output_points = points_3D[mask_map]
     output_colors = img[mask_map]
 
+    # Append the current frame's points and colors to the arrays
+    all_points_3D.append(output_points)
+    all_colors.append(output_colors)
+
+
     end = time.time()
     totalTime = end - start
 
@@ -92,46 +102,50 @@ while cap.isOpened():
     if cv2.waitKey(5) & 0xFF == 27:
         break
 
+# Combine all the collected point cloud data into single arrays
+combined_points_3D = np.vstack(all_points_3D)
+combined_colors = np.vstack(all_colors)
+
+# Save the combined point cloud data as NumPy arrays
+np.save("pointCloud3D.npy", combined_points_3D)
+np.save("pointCloudColors.npy", combined_colors)
 
 
-# --------------------- Create The Point Clouds ----------------------------------------
+# Specify the path to your PLY files
+ply_file_path1 = "pointCloudDeepLearning.ply"
+ply_file_path2 = "pointCloud.ply"
 
-#Function to create point cloud file
-def create_output(vertices, colors, filename):
-	colors = colors.reshape(-1,3)
-	vertices = np.hstack([vertices.reshape(-1,3),colors])
+# Load the PLY files into NumPy arrays
+point_cloud1 = o3d.io.read_point_cloud(ply_file_path1)
+point_cloud2 = o3d.io.read_point_cloud(ply_file_path2)
 
-	ply_header = '''ply
-		format ascii 1.0
-		element vertex %(vert_num)d
-		property float x
-		property float y
-		property float z
-		property uchar red
-		property uchar green
-		property uchar blue
-		end_header
-		'''
-	with open(filename, 'w') as f:
-		f.write(ply_header %dict(vert_num=len(vertices)))
-		np.savetxt(f,vertices,'%f %f %f %d %d %d')
- 
+# Convert Open3D PointCloud objects to NumPy arrays
+numpy_array1 = np.asarray(point_cloud1.points)
+numpy_array2 = np.asarray(point_cloud2.points)
 
-output_file = 'pointCloud.ply'
-#Generate point cloud 
-create_output(output_points, output_colors, output_file)
-
-cap.release()
-cv2.destroyAllWindows()
-
-# Specify the path to your .ply file
-ply_file_path = 'pointCloud.ply'
+# Create images using Open3D
+# (You can customize this part based on your specific visualization needs)
+visualizer = o3d.visualization.Visualizer()
+visualizer.create_window()
+visualizer.add_geometry(point_cloud1)
 
 
-print("Pointcloud File Saved")
+iteration = 500
 
-# Load the .ply file
-point_cloud = o3d.io.read_point_cloud(ply_file_path)
+for i in range(iteration):
+    visualizer.update_geometry(point_cloud1)
 
-# Create a visualization window
-o3d.visualization.draw_geometries([point_cloud])
+    visualizer.poll_events()
+    visualizer.update_renderer()
+
+
+visualizer.add_geometry(point_cloud2)
+iteration2 = 500
+
+for i in range(iteration2):
+    visualizer.update_geometry(point_cloud1)
+    visualizer.update_geometry(point_cloud2)
+    visualizer.poll_events()
+    visualizer.update_renderer()
+
+visualizer.destroy_window()  # Close the window when done
