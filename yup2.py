@@ -5,20 +5,25 @@ import time
 import numpy as np
 import torch
 def first():
+    visualizer = o3d.visualization.Visualizer()
+    visualizer.create_window()
+    
 
-    pointcloud = "pointCloudDeepLearning.ply"
+    pointcloud = "pointCloud.ply"
     point_cloud = o3d.io.read_point_cloud(pointcloud)
     # Create a Visualizer instance
-    visualizer = o3d.visualization.Visualizer()
+    
     # Add the point cloud to the visualizer
-    visualizer.create_window()
+    
     visualizer.add_geometry(point_cloud)
-    vertices = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
-    colors = np.array([[255, 0, 0], [0, 255, 0]])
-    ply_data = create_output(vertices, colors)
-    pointcloud2 = ply_data
-    point_cloud2 = o3d.io.read_point_cloud(pointcloud2)
-    visualizer.add_geometry(point_cloud2)
+#    vertices = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+#    colors = np.array([[255, 0, 0], [0, 255, 0]])
+#    ply_data = create_output(vertices, colors)
+#    pointcloud2 = ply_data
+#    point_cloud2 = o3d.io.read_point_cloud(pointcloud2)
+#    visualizer.add_geometry(point_cloud2)
+
+    time.sleep(20)
     return visualizer
 
 def initialize(visualizer):
@@ -154,7 +159,7 @@ def create_output(vertices, colors):
 
 def main():
     visualizer = first()
-    initialize(visualizer)
+    # initialize(visualizer)
 
 
 if __name__ == "__main__":

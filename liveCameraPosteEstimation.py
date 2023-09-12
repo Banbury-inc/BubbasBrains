@@ -14,8 +14,13 @@ import pytransform3d.rotations as pr
 import pytransform3d.camera as pc
 
 from cycler import cycle
-   
 
+"""
+This is a script that will start a camera and display not only the FPS but also the coordinates.
+
+The coordinates are determined using a machine learning model
+
+"""
 
 
 class CameraPoses():

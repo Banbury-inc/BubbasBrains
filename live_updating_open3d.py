@@ -7,7 +7,7 @@ import time
 script1_path = "video_to_pointcloud_no_output.py"
 script2_path = "visualize_ply_file_in_open3d.py"
 pointcloud = "pointCloudDeepLearning.ply"
-pointcloud2 = "sample.ply"
+pointcloud2 = "pointCloud.ply"
 
 
 
