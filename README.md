@@ -5,7 +5,7 @@
 
 ## Basic Architecture
 
-![alt text](assets/architecture.png)
+![alt text]([assets/architecture.png](https://github.com/Banbury-inc/BubbasBrains/blob/main/assets/Architecture.png)https://github.com/Banbury-inc/BubbasBrains/blob/main/assets/Architecture.png)
 
 
 
