@@ -15,13 +15,13 @@ import open3d.core as o3c
 import open3d.visualization.gui as gui
 import open3d.visualization.rendering as rendering
 
-from t_reconstruction_system.config import ConfigParser
+from config import ConfigParser
 
 import os, sys
 import numpy as np
 import threading
 import time
-from t_reconstruction_system.common import load_rgbd_file_names, save_poses, load_intrinsic, extract_trianglemesh, get_default_dataset, extract_rgbd_frames
+from common import load_rgbd_file_names, save_poses, load_intrinsic, extract_trianglemesh, get_default_dataset, extract_rgbd_frames
 
 
 def set_enabled(widget, enable):
