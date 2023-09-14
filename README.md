@@ -9,3 +9,13 @@
 
 
 
+## Hardware
+
+NVIDIA Orin NX Developer Kit
+SparkFun 9DoF IMU Breakout - ISM330DHCX
+ 
+## Software
+
+
+Ubuntu 20.04.6
+Python 3.8.10
