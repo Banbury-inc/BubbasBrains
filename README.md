@@ -22,6 +22,13 @@
 ![alt text](https://github.com/Banbury-inc/BubbasBrains/blob/main/assets/Architecture.png)
 
 
+## Pipeline
+
+1. Take video with NVIDIA Jetson
+2. Convert MOV file to JPEG file
+3. Use WebODM command line argument to convert JPEG files into a pointcloud file
+4. View the pointcloud file through custom web app
+
 
 ## Hardware
 
