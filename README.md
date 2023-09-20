@@ -16,6 +16,9 @@
 
 ## Basic Architecture
 
+* Object Detection - Yolov8
+* 3D Data Processing - Open3D
+
 ![alt text](https://github.com/Banbury-inc/BubbasBrains/blob/main/assets/Architecture.png)
 
 
