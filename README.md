@@ -29,5 +29,5 @@
 ## Software
 
 
-Ubuntu 20.04.6
-Python 3.8.10
+* Ubuntu 20.04.6
+* Python 3.8.10
