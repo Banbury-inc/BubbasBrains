@@ -22,8 +22,9 @@
 
 ## Hardware
 
-NVIDIA Orin NX Developer Kit
-SparkFun 9DoF IMU Breakout - ISM330DHCX
+1. NVIDIA Orin NX Developer Kit
+2. SparkFun 9DoF IMU Breakout - ISM330DHCX
+3. UC-261 5MP Arducam Camera
  
 ## Software
 
