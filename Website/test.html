@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Online Webcam</title>
+    <style>
+        body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.camera {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+video {
+    max-width: 100%;
+    border: 1px solid #ccc;
+}
+
+.images {
+    margin-top: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+.thumbnail {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.button-container button {
+    margin: 5px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="camera">
+        <video id="video" autoplay></video>
+        <button id="captureButton">Capture</button>
+    </div>
+    <div class="images">
+        <table>
+            <thead>
+                <tr>
+                    <th>Thumbnail</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="imageTable"></tbody>
+        </table>
+        <button id="downloadAllButton">Download All</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+<script>
+    const video = document.getElementById('video');
+const captureButton = document.getElementById('captureButton');
+const imageTable = document.getElementById('imageTable');
+const downloadAllButton = document.getElementById('downloadAllButton');
+
+let imageIndex = 0;
+
+// Initialize webcam
+navigator.mediaDevices
+    .getUserMedia({ video: true })
+    .then(function (stream) {
+        video.srcObject = stream;
+    })
+    .catch(function (error) {
+        console.error('Error accessing the webcam: ', error);
+    });
+
+// Capture an image
+captureButton.addEventListener('click', function () {
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    const thumbnail = document.createElement('img');
+    thumbnail.src = canvas.toDataURL('image/jpeg');
+    thumbnail.className = 'thumbnail';
+
+    const downloadButton = document.createElement('button');
+    downloadButton.innerText = 'Download';
+    downloadButton.addEventListener('click', function () {
+        downloadButton.href = thumbnail.src;
+        downloadButton.download = `image_${imageIndex}.jpeg`;
+    });
+
+    const row = imageTable.insertRow();
+    const thumbnailCell = row.insertCell(0);
+    const actionsCell = row.insertCell(1);
+
+    thumbnailCell.appendChild(thumbnail);
+    actionsCell.appendChild(downloadButton);
+
+    imageIndex++;
+});
+
+// Download all images
+downloadAllButton.addEventListener('click', function () {
+    const zip = new JSZip();
+
+    const thumbnailElements = document.querySelectorAll('.thumbnail');
+    thumbnailElements.forEach(function (thumbnail, index) {
+        const dataURL = thumbnail.src;
+        const fileName = `image_${index}.jpeg`;
+        zip.file(fileName, dataURL.split(',')[1], { base64: true });
+    });
+
+    zip.generateAsync({ type: 'blob' })
+        .then(function (blob) {
+            saveAs(blob, 'images.zip');
+        });
+});
+
+</script>
+</html>

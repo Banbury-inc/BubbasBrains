@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Control</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        #instructions {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        #controls {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="instructions">
+        Use "W" for Forward, "A" for Left, "S" for Backward, and "D" for Right.
+    </div>
+    <div id="controls">
+        Press a key to control the robot.
+    </div>
+
+    <script>
+        document.addEventListener("keydown", function(event) {
+            const key = event.key.toLowerCase();
+
+            switch (key) {
+                case "w":
+                    sendCommand("/forward");
+                    break;
+                case "a":
+                    sendCommand("/left");
+                    break;
+                case "s":
+                    sendCommand("/backward");
+                    break;
+                case "d":
+                    sendCommand("/right");
+                    break;
+                default:
+                    // Ignore other keys
+                    break;
+            }
+        });
+
+        function sendCommand(command) {
+            // Send an HTTP request to your Python API
+            fetch(command)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("controls").textContent = `Command sent: ${data}`;
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        }
+    </script>
+</body>
+</html>
