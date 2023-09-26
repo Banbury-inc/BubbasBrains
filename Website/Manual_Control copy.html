@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html  >
+
+<!-- Mirrored from mobirise.com/extensions/boldm5/technology-company/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Aug 2023 21:37:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/logo_no_background.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Banbury</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/parallax/jarallax.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/file_manager/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="stylesheet" href="assets/recaptcha.css">
+  <link rel="stylesheet" href="assets/sidebars/css/sidebars.css">
+  <link rel="stylesheet" href="assets/sidebars/js/sidebars.js">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Space+Grotesk:300,400,500,600,700&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Grotesk:300,400,500,600,700&amp;display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=DM+Sans:400,400i,500,500i,700,700i&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:400,400i,500,500i,700,700i&amp;display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  <link href="./Sidebars · Bootstrap v5.3_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+  <!-- Favicons -->
+<link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+<link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#712cf9">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACFuCan1pgwAlRMMo2X49FwpblFIe7al8&libraries=places"></script>
+<style>
+            /* Style for the modal container */
+            .modal {
+            display: none; /* Hide the modal by default */
+            position: fixed; /* Fixed position */
+            z-index: 1; /* Ensure it appears on top of other content */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.7); /* Black background with opacity */
+        }
+
+        /* Style for the modal content */
+        .modal-content {
+            background-color: #ffffff;
+            margin: 15% auto; /* 15% from the top and centered horizontally */
+            padding: 1px;
+            border: 1px solid #888;
+            width: 80%; /* 80% width */
+        }
+
+        /* Close button style */
+        .btn-close {
+            color: #acacac;
+            float: left;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px; /* Adjust the top distance as needed */
+            right: 10px; /* Adjust the right distance as needed */
+        }
+        
+        /* Close button hover effect */
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .video-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 640px;
+            height: 480px;
+            margin: 0 auto;
+        }
+    /* Set the size of the map container */
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+    #open3d {
+    background: #ffffff;
+    width: 100%;
+    height: 400px;
+}
+
+        /* Center the container vertically and horizontally */
+        .remotecontainer {
+            display: flex;
+            flex-direction: row;
+            justify-content: normal; /* Center vertically */
+            align-items: center; /* Center horizontally */
+            height: 10vh; /* Full viewport height */
+            margin: 5%; /* Add spacing between columns */
+        }
+
+        /* TV Remote Control Grid */
+        .remotecontrol-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            
+            grid-gap: 10px; /* Gap between buttons */
+        }
+
+        /* Style for buttons */
+        .remotebtn {
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+        /* Center the container vertically and horizontally */
+        .tvcontainer {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 50vh; /* Full viewport height */
+        }
+
+        /* Create a two-column layout */
+        .tvcolumn {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content vertically */
+            margin: 50%; /* Add spacing between columns */
+            width: 100%; /* Full width */    
+        }
+        /* Create a two-column layout */
+        .tvrow {
+            display: flex;
+            flex-direction: row;
+            align-items: center; /* Center content vertically */
+            margin: 30px; /* Add spacing between rows */
+            height: 100px;
+        }
+        /* TV Remote Control Grid */
+        .remotecontrol-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            grid-gap: 10px; /* Gap between buttons */
+        }
+
+        /* Style for buttons */
+        .remotebtn {
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+</style>
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu1 boldm5 cid-ttRnktJ11Q" once="menu" id="menu1-0">
+
+    
+
+    <nav class="navbar navbar-dropdown navbar-expand-lg">
+        <div class="menu_box container-fluid">
+            <div class="navbar-brand d-flex d-lg-none">
+                <span class="navbar-logo">
+                    <a href="https://mobirise.com/extensions/boldm5/index.html">
+                        <img src="assets/images/logo_no_background.png" alt="">
+                    </a>
+                </span>
+                
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-brand d-none d-lg-flex">
+                <span class="navbar-logo">
+                    <a href="https://mobirise.com/extensions/boldm5/index.html">
+                        <img src="assets/images/logo_no_background.png" alt="">
+                    </a>
+                </span>
+                    
+                </div>
+                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-primary display-4" href="index.html">Home</a></li>
+                    
+                    <li class="nav-item"><a class="nav-link link text-primary display-4" href=Athena.html>Athena</a></li>
+                    <li class="nav-item"><a class="nav-link link text-primary display-4" href="#features6-g">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link link text-primary display-4" href="#form1-d">Contacts</a></li></ul>
+                
+
+                <div class="mbr-section-btn-main" role="tablist">
+                    <a class="btn btn-secondary display-4" href="#">
+                        See Now
+                    </a>
+                </div>
+                <div class="offcanvas_box">
+                    <button class="btn_offcanvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                        <div class="offcanvas-header">
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            
+                            <p class="mbr-text mbr-fonts-style display-4">
+                            This has yet to be implemented
+                            </p>
+                            <div class="offcanvas_contact">
+                                <h3 class="mbr-section-subtitle mbr-fonts-style display-5">
+                                See more
+                                </h3>
+                                
+                            </div>
+                            
+                            <div class="mbr-section-btn">
+                                <a class="btn btn-secondary display-4" href="#">
+                                    See Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+<section>
+ <body>
+            <h1>Manual Control</h1>
+            <div class="container">
+                
+                <div class="container">
+                <!-- Video Stream Placeholder -->
+                        <div class="video-container">
+                            <img id="videoStream" src="http://127.0.0.1:5000/videostream" alt="Video Stream">
+                        </div>
+
+                        <!-- Button options -->
+                        <div class="button-options" id="videobutton">
+                            <button onclick="changeVideo('http://127.0.0.1:5000/videostream')">Normal</button>
+                            <button onclick="changeVideo('http://127.0.0.1:5000/od-videostream')">Object Detection</button>
+                            <button onclick="changeVideo('URL_FOR_DEPTH_PERCEPTION_STREAM')">Depth Perception</button>
+                        </div>
+                                            <!-- Webcam Capture Button -->
+                        <div class="button-options">
+                            <button id="captureButton">Capture</button>
+                        </div>
+                        
+                    
+                    </div>
+
+                    <!-- JavaScript for changing the video URL -->
+                    <script>
+                        function changeVideo() {
+                            document.getElementById("videoStream").src = "http://127.0.0.1:5000/od-videostream";
+                        }
+                    </script>
+            <div class="remotecontainer">
+                <div class="row">
+                        <div class="container">
+                        <!-- First Remote Container -->
+                            <h4>Camera</h4>
+                                <!-- TV Remote Control Grid -->
+                                <div class="remotecontrol-buttons">
+                                    <!-- Row 1 -->
+                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://127.0.0.1:5000/videostream')">Normal</button>
+                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://127.0.0.1:5000/videostream')">Object Detection</button>
+                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://127.0.0.1:5000/videostream')">Depth Perception</button>
+                                    <button id="btnDown1" class="remotebtn btn-secondary">Capture Image</button>
+                                    <button id="btnDown1" class="remotebtn btn-secondary">Capture Video</button>
+                                </div>
+                        </div>
+                </div>
+                    <div class="column">
+                        <div class="container">
+                        <!-- First Remote Container -->
+                            <h4>Movement</h4>
+                                <!-- TV Remote Control Grid -->
+                                <div class="remotecontrol-buttons">
+                                    <!-- Row 1 -->
+                                   <button id="btnUp1" class="remotebtn btn-secondary">Up/Left</button>
+                                   <input type="text" id="messageInput" placeholder="Enter a message">
+                                   <button id="sendButton">Send</button>
+                                    <button id="sendButton1" class="remotebtn btn-secondary"">Up</button>
+                                    <button id="btnDown1" class="remotebtn btn-secondary">Up/Right</button>
+                                    <button id="btnDown1" class="remotebtn btn-secondary">Left</button>
+                                    <button id="btnLeft1" class="remotebtn btn-secondary">Ok</button>
+                                    <button id="btnStop1" class="remotebtn btn-secondary">Right</button>
+                                    <button id="btnRight1" class="remotebtn btn-secondary">Down/Left</button>
+                                    <button id="btnDown1" class="remotebtn btn-secondary">Down</button>
+                                    <button id="btnDown1" class="remotebtn btn-secondary">Down/Right</button>
+                <script>
+        function setupSocketIO() {
+            const socket = io.connect("http://localhost:5000"); // Replace with your server URL
+
+            // Event handler for "connect" event
+            socket.on("connect", () => {
+                console.log("Connected to the server");
+            });
+
+            // Event handler for "response" event
+            socket.on("response", (data) => {
+                console.log("Received response from server:", data);
+            });
+
+            // Event handler for sending a message to the server
+            document.getElementById("sendButton").addEventListener("click", () => {
+                const message = document.getElementById("messageInput").value;
+                socket.emit("message", message);
+            });
+
+            // Function to disconnect the socket
+            function disconnectSocket() {
+                socket.disconnect();
+                console.log("Disconnected from the server");
+            }
+
+            // Return the disconnect function for external use
+            return disconnectSocket;
+        }
+
+        // Call the setup function
+        const disconnect = setupSocketIO();
+
+        // Example of how to disconnect the socket externally
+        setTimeout(() => {
+            disconnect();
+        }, 5000); // Disconnect after 5 seconds
+        </script>
+                        </div>
+                        </div>
+                    </div>
+
+                </div>
+                    
+            </div>
+            </div>
+        </div>
+ </body>        
+</section>
+
+
+
+<section data-bs-version="5.1" class="slider1 mbr-embla boldm5 cid-ttRnQfonqE" id="slider1-b">
+
+    
+
+    
+<section data-bs-version="5.1" class="footer1 boldm5 cid-ttRnqYa02i" once="footers" id="footer1-3">
+    
+
+    
+    
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-3 col-md-6 card">
+                <div class="logo-wrapper">
+                    <img src="assets/images/logo_no_background.png" alt="">
+                </div>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    Banbury
+                </p>
+                <p class="mbr-fonts-style copyright display-7">
+                    © COPYRIGHT 2030 Banbury Inc. - <br> ALL RIGHTS RESERVED
+                </p>
+            </div>
+            <div class="col-12 col-lg-3 col-md-6 card">
+                <h3 class="list-title mbr-fonts-style display-5">
+                    Contacts
+                </h3>
+                <ul class="list mbr-fonts-style display-7">
+                    <li class="item-wrap">9 Apple Ridge Rd</li>
+                    <li class="item-wrap">Freeport, ME 04032</li>
+                    <li class="item-wrap">+1 207 712 7052</li>
+                    <li class="item-wrap">mmills6060@gmail.com</li>
+                </ul>
+            </div>
+            <div class="col-12 col-lg-3 col-md-6 card">
+                <h3 class="list-title mbr-fonts-style display-5">
+                    Social
+                </h3>
+                <ul class="list mbr-fonts-style display-7">
+                    <li class="item-wrap">Linkedin</li>
+                    <li class="item-wrap">Github</li>
+                </ul>
+            </div>
+            <div class="col-12 col-lg-3 col-md-6 card">
+                <h3 class="mbr-desc mbr-fonts-style display-5">
+                    Learn about us
+                </h3>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    Click see more to learn more about what we do
+                </p>
+                <div class="mbr-section-btn">
+                    <a class="btn btn-secondary display-4" href="#">
+                        <span class="mobi-mbri mobi-mbri-play mbr-iconfont mbr-iconfont-btn"></span>
+                        See more
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+  <script src="assets/parallax/jarallax.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/embla/embla.min.js"></script>
+  <script src="assets/embla/script.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid.min.js"></script>
+  <script src="assets/user_management/user_management.js"></script>
+  <script src="assets/file_manager/js/file_manager.js"></script>
+  <script src="./Dashboard Template · Bootstrap v5.3_files/bootstrap.bundle.min.js.download" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <script src="./Dashboard Template · Bootstrap v5.3_files/chart.umd.min.js.download" integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG" crossorigin="anonymous"></script><script src="./Dashboard Template · Bootstrap v5.3_files/dashboard.js.download"></script>
+  <script>
+
+
+    // Fetch user information using user ID
+    async function fetchUserInfo() {
+      try {
+        const username = localStorage.getItem('username')
+        const password = localStorage.getItem('password')
+        const response = await fetch(`http://127.0.0.1:5000/authenticate?username=${username}&password=${password}`);
+        const userData = await response.json();
+
+         // Update the welcome title with user's first name and last name
+        const welcomeTitle = document.getElementById('welcome-title');
+        welcomeTitle.textContent = `Welcome, ${userData.first_name} ${userData.last_name}.`;
+
+
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+
+    // Fetch user information when the dashboard loads
+    fetchUserInfo();
+
+    let map;
+
+    async function initMap() {
+    const { Map } = await google.maps.importLibrary("maps");
+
+    map = new Map(document.getElementById("map"), {
+        center: { lat: 37.76771888127468, lng: -122.46885132286172 },
+        zoom: 19,
+        mapTypeId: "satellite",
+
+    });
+    map.setTilt(45);
+
+    }
+
+    initMap();
+
+    
+
+    $(document).ready(init);
+
+
+  </script>
+
+
+
+</body>
+
+<!-- Mirrored from mobirise.com/extensions/boldm5/technology-company/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Aug 2023 21:37:49 GMT -->
+</html>
