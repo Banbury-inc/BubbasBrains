@@ -251,7 +251,7 @@
                 <div class="container">
                 <!-- Video Stream Placeholder -->
                         <div class="video-container">
-                            <img id="videoStream" src="http://192.168.1.76:4000/videostream" alt="Video Stream">
+                            <img id="videoStream" src="http://192.168.1.51:4000/videostream" alt="Video Stream">
                         </div>
 
                         <!-- Button options -->
@@ -271,7 +271,7 @@
                     <!-- JavaScript for changing the video URL -->
                     <script>
                         function changeVideo() {
-                            document.getElementById("videoStream").src = "http://192.168.1.76:4000/videostream";
+                            document.getElementById("videoStream").src = "http://192.168.1.51:4000/videostream";
                         }
                     </script>
             <div class="remotecontainer">
@@ -282,7 +282,7 @@
                                 <!-- TV Remote Control Grid -->
                                 <div class="remotecontrol-buttons">
                                     <!-- Row 1 -->
-                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://192.168.1.76:4000/videostream')">Normal</button>
+                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://192.168.1.51:4000/videostream')">Normal</button>
                                     <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://127.0.0.1:5000/videostream')">Object Detection</button>
                                     <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://127.0.0.1:5000/videostream')">Depth Perception</button>
                                     <button id="btnDown1" class="remotebtn btn-secondary">Capture Image</button>
@@ -327,19 +327,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add event listeners to the buttons
     document.getElementById("btnUp").addEventListener("click", function () {
-        makeAPICall("http://192.168.1.76:4000/up");
+        makeAPICall("http://192.168.1.51:4000/up");
     });
 
     document.getElementById("btnDown").addEventListener("click", function () {
-        makeAPICall("http://192.168.1.76:4000/down");
+        makeAPICall("http://192.168.1.51:4000/down");
     });
 
     document.getElementById("btnLeft").addEventListener("click", function () {
-        makeAPICall("http://192.168.1.76:4000/left");
+        makeAPICall("http://192.168.1.51:4000/left");
     });
 
     document.getElementById("btnRight").addEventListener("click", function () {
-        makeAPICall("http://192.168.1.76:4000/right");
+        makeAPICall("http://192.168.1.51:4000/right");
     });
 });
 
