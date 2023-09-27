@@ -41,3 +41,7 @@
 
 * Ubuntu 20.04.6
 * Python 3.8.10
+
+## Run Server
+
+gunicorn -c gunicorn_config.py app:app

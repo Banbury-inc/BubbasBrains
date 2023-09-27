@@ -251,7 +251,7 @@
                 <div class="container">
                 <!-- Video Stream Placeholder -->
                         <div class="video-container">
-                            <img id="videoStream" src="http://127.0.0.1:5000/videostream" alt="Video Stream">
+                            <img id="videoStream" src="http://192.168.1.76:4000/videostream" alt="Video Stream">
                         </div>
 
                         <!-- Button options -->
@@ -271,7 +271,7 @@
                     <!-- JavaScript for changing the video URL -->
                     <script>
                         function changeVideo() {
-                            document.getElementById("videoStream").src = "http://127.0.0.1:5000/od-videostream";
+                            document.getElementById("videoStream").src = "http://192.168.1.76:4000/videostream";
                         }
                     </script>
             <div class="remotecontainer">
@@ -282,7 +282,7 @@
                                 <!-- TV Remote Control Grid -->
                                 <div class="remotecontrol-buttons">
                                     <!-- Row 1 -->
-                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://127.0.0.1:5000/videostream')">Normal</button>
+                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://192.168.1.76:4000/videostream')">Normal</button>
                                     <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://127.0.0.1:5000/videostream')">Object Detection</button>
                                     <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://127.0.0.1:5000/videostream')">Depth Perception</button>
                                     <button id="btnDown1" class="remotebtn btn-secondary">Capture Image</button>
@@ -297,55 +297,54 @@
                                 <!-- TV Remote Control Grid -->
                                 <div class="remotecontrol-buttons">
                                     <!-- Row 1 -->
-                                   <button id="btnUp1" class="remotebtn btn-secondary">Up/Left</button>
-                                   <input type="text" id="messageInput" placeholder="Enter a message">
-                                   <button id="sendButton">Send</button>
-                                    <button id="sendButton1" class="remotebtn btn-secondary"">Up</button>
-                                    <button id="btnDown1" class="remotebtn btn-secondary">Up/Right</button>
-                                    <button id="btnDown1" class="remotebtn btn-secondary">Left</button>
-                                    <button id="btnLeft1" class="remotebtn btn-secondary">Ok</button>
-                                    <button id="btnStop1" class="remotebtn btn-secondary">Right</button>
-                                    <button id="btnRight1" class="remotebtn btn-secondary">Down/Left</button>
-                                    <button id="btnDown1" class="remotebtn btn-secondary">Down</button>
-                                    <button id="btnDown1" class="remotebtn btn-secondary">Down/Right</button>
+                                   <button id="btnUpLeft" class="remotebtn btn-secondary">Up/Left</button>
+                                    <button id="btnUp" class="remotebtn btn-secondary"">Up</button>
+                                    <button id="btnUpRight" class="remotebtn btn-secondary">Up/Right</button>
+                                    <button id="btnLeft" class="remotebtn btn-secondary">Left</button>
+                                    <button id="btnOk" class="remotebtn btn-secondary">Ok</button>
+                                    <button id="btnRight" class="remotebtn btn-secondary">Right</button>
+                                    <button id="btnDownLeft" class="remotebtn btn-secondary">Down/Left</button>
+                                    <button id="btnDown" class="remotebtn btn-secondary">Down</button>
+                                    <button id="btnDownRight" class="remotebtn btn-secondary">Down/Right</button>
                 <script>
-        function setupSocketIO() {
-            const socket = io.connect("http://localhost:5000"); // Replace with your server URL
-
-            // Event handler for "connect" event
-            socket.on("connect", () => {
-                console.log("Connected to the server");
+document.addEventListener("DOMContentLoaded", function () {
+    // Function to make API calls
+    function makeAPICall(url) {
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log(data); // Log the response from the server
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
             });
+    }
 
-            // Event handler for "response" event
-            socket.on("response", (data) => {
-                console.log("Received response from server:", data);
-            });
+    // Add event listeners to the buttons
+    document.getElementById("btnUp").addEventListener("click", function () {
+        makeAPICall("http://192.168.1.76:4000/up");
+    });
 
-            // Event handler for sending a message to the server
-            document.getElementById("sendButton").addEventListener("click", () => {
-                const message = document.getElementById("messageInput").value;
-                socket.emit("message", message);
-            });
+    document.getElementById("btnDown").addEventListener("click", function () {
+        makeAPICall("http://192.168.1.76:4000/down");
+    });
 
-            // Function to disconnect the socket
-            function disconnectSocket() {
-                socket.disconnect();
-                console.log("Disconnected from the server");
-            }
+    document.getElementById("btnLeft").addEventListener("click", function () {
+        makeAPICall("http://192.168.1.76:4000/left");
+    });
 
-            // Return the disconnect function for external use
-            return disconnectSocket;
-        }
+    document.getElementById("btnRight").addEventListener("click", function () {
+        makeAPICall("http://192.168.1.76:4000/right");
+    });
+});
 
-        // Call the setup function
-        const disconnect = setupSocketIO();
+       </script>
 
-        // Example of how to disconnect the socket externally
-        setTimeout(() => {
-            disconnect();
-        }, 5000); // Disconnect after 5 seconds
-        </script>
                         </div>
                         </div>
                     </div>
