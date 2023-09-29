@@ -291,7 +291,14 @@
                         </div>
                 </div>
                     <div class="column">
-                        <div class="container">
+                        <div class="robot-control">
+                            <input type="range" id="speedSlider" min="0" max="100" value="50" step="10">
+                            <label for="speedSlider">Robot Speed</label>
+                            <br>
+                            <label for="speedText">Speed:</label>
+                            <input type="text" id="speedText" value="50" readonly>
+                        </div>
+                       <div class="container">
                         <!-- First Remote Container -->
                             <h4>Movement</h4>
                                 <!-- TV Remote Control Grid -->
@@ -307,13 +314,22 @@
                                     <button id="btnDown" class="remotebtn btn-secondary">Down</button>
                                     <button id="btnDownRight" class="remotebtn btn-secondary">Down/Right</button>
                 <script>
-                    window.onload = function() {
-  // Make an API call
-  fetch('http://192.168.1.76:4000/setupCOM')
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
+
+const slider = document.getElementById("speedSlider");
+const speedText = document.getElementById("speedText");
+
+function updateSpeedText() {
+  speedText.value = slider.value;
 }
+
+slider.addEventListener("input", function() {
+  updateSpeedText();
+  console.log("Speed set to: " + slider.value);
+});
+
+updateSpeedText();
+
+
 document.addEventListener("DOMContentLoaded", function () {
     // Function to make API calls
     function makeAPICall(url) {
@@ -332,8 +348,31 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
-    document.getElementById("btnUp").addEventListener("mousedown", function () {
-        makeAPICall("http://192.168.1.76:4000/up");
+  document.getElementById("btnUp").addEventListener("mousedown", function () {
+        const speed = slider.value;
+        if (speed >= 91) {
+            makeAPICall("http://192.168.1.76:4000/up10");
+        } else if (speed >= 90) {
+            makeAPICall("http://192.168.1.76:4000/up9");
+        } else if (speed >= 80) {
+            makeAPICall("http://192.168.1.76:4000/up8");
+        } else if (speed >= 70) {
+            makeAPICall("http://192.168.1.76:4000/up7");
+        } else if (speed >= 60) {
+            makeAPICall("http://192.168.1.76:4000/up6");
+        } else if (speed >= 50) {
+            makeAPICall("http://192.168.1.76:4000/up5");
+        } else if (speed >= 40) {
+            makeAPICall("http://192.168.1.76:4000/up4");
+        } else if (speed >= 30) {
+            makeAPICall("http://192.168.1.76:4000/up3");
+        } else if (speed >= 20) {
+            makeAPICall("http://192.168.1.76:4000/up2");
+        } else if (speed >= 10) {
+            makeAPICall("http://192.168.1.76:4000/up1");
+        } else {
+            makeAPICall("http://192.168.1.76:4000/stop");
+        }
     });
     document.getElementById("btnUp").addEventListener("mouseup", function () {
         makeAPICall("http://192.168.1.76:4000/stop");
@@ -347,7 +386,28 @@ document.addEventListener("DOMContentLoaded", function () {
  
 
     document.getElementById("btnDown").addEventListener("mousedown", function () {
-        makeAPICall("http://192.168.1.76:4000/down");
+        const speed = slider.value;
+        if (speed >= 90) {
+            makeAPICall("http://192.168.1.76:4000/down-fastest");
+        } else if (speed >= 80) {
+            makeAPICall("http://192.168.1.76:4000/down-faster");
+        } else if (speed >= 70) {
+            makeAPICall("http://192.168.1.76:4000/down-fast");
+        } else if (speed >= 60) {
+            makeAPICall("http://192.168.1.76:4000/down-medium-fast");
+        } else if (speed >= 50) {
+            makeAPICall("http://192.168.1.76:4000/down-medium");
+        } else if (speed >= 40) {
+            makeAPICall("http://192.168.1.76:4000/down-medium-slow");
+        } else if (speed >= 30) {
+            makeAPICall("http://192.168.1.76:4000/down-slow");
+        } else if (speed >= 20) {
+            makeAPICall("http://192.168.1.76:4000/down-slower");
+        } else if (speed >= 10) {
+            makeAPICall("http://192.168.1.76:4000/down-slowest");
+        } else {
+            makeAPICall("http://192.168.1.76:4000/stop");
+        }
     });
     document.getElementById("btnDown").addEventListener("mouseup", function () {
         makeAPICall("http://192.168.1.76:4000/stop");
@@ -360,7 +420,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
  
     document.getElementById("btnLeft").addEventListener("mousedown", function () {
-        makeAPICall("http://192.168.1.76:4000/left");
+        const speed = slider.value;
+        if (speed >= 90) {
+            makeAPICall("http://192.168.1.76:4000/left-fastest");
+        } else if (speed >= 80) {
+            makeAPICall("http://192.168.1.76:4000/left-faster");
+        } else if (speed >= 70) {
+            makeAPICall("http://192.168.1.76:4000/left-fast");
+        } else if (speed >= 60) {
+            makeAPICall("http://192.168.1.76:4000/left-medium-fast");
+        } else if (speed >= 50) {
+            makeAPICall("http://192.168.1.76:4000/left-medium");
+        } else if (speed >= 40) {
+            makeAPICall("http://192.168.1.76:4000/left-medium-slow");
+        } else if (speed >= 30) {
+            makeAPICall("http://192.168.1.76:4000/left-slow");
+        } else if (speed >= 20) {
+            makeAPICall("http://192.168.1.76:4000/left-slower");
+        } else if (speed >= 10) {
+            makeAPICall("http://192.168.1.76:4000/left-slowest");
+        } else {
+            makeAPICall("http://192.168.1.76:4000/stop");
+        }
     });
     document.getElementById("btnLeft").addEventListener("mouseup", function () {
         makeAPICall("http://192.168.1.76:4000/stop");
@@ -373,7 +454,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
  
     document.getElementById("btnRight").addEventListener("mousedown", function () {
-        makeAPICall("http://192.168.1.76:4000/right");
+        const speed = slider.value;
+        if (speed >= 90) {
+            makeAPICall("http://192.168.1.76:4000/right-fastest");
+        } else if (speed >= 80) {
+            makeAPICall("http://192.168.1.76:4000/right-faster");
+        } else if (speed >= 70) {
+            makeAPICall("http://192.168.1.76:4000/right-fast");
+        } else if (speed >= 60) {
+            makeAPICall("http://192.168.1.76:4000/right-medium-fast");
+        } else if (speed >= 50) {
+            makeAPICall("http://192.168.1.76:4000/right-medium");
+        } else if (speed >= 40) {
+            makeAPICall("http://192.168.1.76:4000/right-medium-slow");
+        } else if (speed >= 30) {
+            makeAPICall("http://192.168.1.76:4000/right-slow");
+        } else if (speed >= 20) {
+            makeAPICall("http://192.168.1.76:4000/right-slower");
+        } else if (speed >= 10) {
+            makeAPICall("http://192.168.1.76:4000/right-slowest");
+        } else {
+            makeAPICall("http://192.168.1.76:4000/stop");
+        }
     });
     document.getElementById("btnRight").addEventListener("mouseup", function () {
         makeAPICall("http://192.168.1.76:4000/stop");
@@ -384,47 +486,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("btnRight").addEventListener('click', (e) => {
             e.preventDefault();
     });
- 
 });
-        const forwardButton = document.getElementById('forwardButton');
-        let isButtonDown = false;
-
-        // Function to start moving the robot forward
-        function startMovingForward() {
-            // Add code here to send a command to the robot to move forward
-            makeAPICall("http://192.168.1.76:4000/up");
-            console.log('Moving Forward');
-        }
-
-        // Function to stop moving the robot forward
-        function stopMovingForward() {
-            // Add code here to send a command to stop the robot
-            makeAPICall("http://192.168.1.76:4000/stop");
-            console.log('Stopped Moving Forward');
-        }
-
-        document.getElementbyID("forwardButton").addEventListener('mousedown', () => {
-            isButtonDown = true;
-            startMovingForward();
-        });
-
-        // Listen for both 'mouseup' and 'mouseleave' events to stop when the button is released
-        forwardButton.addEventListener('mouseup', () => {
-            isButtonDown = false;
-            stopMovingForward();
-        });
-
-        forwardButton.addEventListener('mouseleave', () => {
-            if (isButtonDown) {
-                isButtonDown = false;
-                stopMovingForward();
-            }
-        });
-
-        // Prevent the default button behavior (form submission)
-        forwardButton.addEventListener('click', (e) => {
-            e.preventDefault();
-        });
        </script>
 
                         </div>
