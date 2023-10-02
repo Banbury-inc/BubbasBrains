@@ -59,6 +59,7 @@ def stop():
     print(f"Connected to {serial_port} at {baud_rate} baud")
     while True:
         user_input = "L200n"
+        user_input = "R200n"
         ser.write(user_input.encode('utf-8'))
 @app.route("/stop")
 def stop_response():
