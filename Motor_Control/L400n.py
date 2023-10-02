@@ -16,6 +16,11 @@ def L400n():
 
         def send_command(command):
             ser.write(command.encode('utf-8'))
+            time.sleep(5)
+
+            ser.close()
+            print("Serial port closed")
+
 
         while True:
             # Get user input
@@ -26,12 +31,6 @@ def L400n():
 
             # Send the user input as a command
             send_command(user_input)
-
-            time.sleep(5)
-
-            ser.close()
-            print("Serial port closed")
-
 
     except serial.SerialException as e:
         print(f"Error: {e}")
