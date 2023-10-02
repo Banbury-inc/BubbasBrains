@@ -28,7 +28,11 @@ def stop_response():
 
 
 def up():
+
+    print("Moving forward")
+
     serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+
     baud_rate = 9600  # Adjust this to match your device's baud rate
 
 
@@ -51,6 +55,7 @@ def up():
 
 
     print("Moving forward")
+
 @app.route("/up")
 def up_response():
     return Response(up(), mimetype='multipart/x-mixed-replace; boundary=frame')

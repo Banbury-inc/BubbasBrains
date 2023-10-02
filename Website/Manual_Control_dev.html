@@ -307,19 +307,10 @@
                                     <button id="btnDown" class="remotebtn btn-secondary">Down</button>
                                     <button id="btnDownRight" class="remotebtn btn-secondary">Down/Right</button>
                 <script>
-    document.getElementById("btnUp").addEventListener("mousedown", function () {
+    document.getElementById("btnUp").addEventListener("click", function () {
         makeAPICall("http://192.168.1.51:4001/up");
     });
-    document.getElementById("btnUp").addEventListener("mouseup", function () {
-        makeAPICall("http://192.168.1.76:4000/stop");
-    });
-//     document.getElementById("btnUp").addEventListener("mouseleave", function () {
-//        makeAPICall("http://192.168.1.76:4000/stop");
-//    });
-    document.getElementById("btnUp").addEventListener('click', (e) => {
-            e.preventDefault();
-    });
- 
+
 
     document.getElementById("btnDown").addEventListener("mousedown", function () {
         makeAPICall("http://192.168.1.76:4000/down");
