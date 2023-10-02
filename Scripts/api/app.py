@@ -20,7 +20,11 @@ lock = threading.Lock()
 camera_run = False
 
 def stop():
+
+    ser = None  # Initialize ser outside of the try block
+
     if ser is not None and ser.is_open:
+        
         ser.close()
         print("Serial port closed")
 
@@ -55,7 +59,11 @@ def stop_response():
 
 
 def up():
+
+    ser = None  # Initialize ser outside of the try block
+
     if ser is not None and ser.is_open:
+
         ser.close()
         print("Serial port closed")
 
