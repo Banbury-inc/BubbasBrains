@@ -15,11 +15,6 @@ try:
     print(f"Connected to {serial_port} at {baud_rate} baud")
 
     while True:
-        # Read data from the serial port (change the byte size as needed)
-        received_data = ser.read(1)  # Read one byte at a time
-        if received_data:
-            print(f"Received: {received_data.decode('utf-8')}")  # Assuming UTF-8 encoding
-
         # Get user input and send it to the serial port
         user_input = input("Enter data to send (or press Enter to quit): ")
         if user_input:
