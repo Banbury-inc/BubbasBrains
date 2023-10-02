@@ -15,15 +15,15 @@ def main():
 
     print(f"Connected to {serial_port} at {baud_rate} baud")
 
-    while True:
+    while count < 10000:
         user_input = "L400n"
     
 
         ser.write(user_input.encode('utf-8'))
 
-
-        print("Command sent to arduino")
-
+        count = count + 1
+        
+        print(count)
 
 
     print("Timer finished, closing port")
