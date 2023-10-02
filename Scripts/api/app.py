@@ -53,7 +53,6 @@ def up():
     print("Moving forward")
 @app.route("/up")
 def up_response():
-    serialInst1 = setup_COM()
     return Response(up(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def up1():
