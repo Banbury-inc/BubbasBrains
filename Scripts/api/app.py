@@ -72,8 +72,6 @@ def stop_response():
 
 def up():
 
-    print("Moving forward")
-
     serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
 
     baud_rate = 9600  # Adjust this to match your device's baud rate
@@ -86,16 +84,18 @@ def up():
 
     print(f"Connected to {serial_port} at {baud_rate} baud")
 
-    while True:
+    print("Moving forward")
+
+    while n < 5000:
         user_input = "L400n"
-        
 
         ser.write(user_input.encode('utf-8'))
 
-            
+        n = n + 1
+        
+        print(n) 
 
 
-    print("Moving forward")
 
 @app.route("/up")
 def up_response():
