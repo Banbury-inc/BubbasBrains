@@ -328,7 +328,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnUp = document.getElementById("btnUp");
     const btnDown = document.getElementById("btnDown");
 
-    btnUp.addEventListener("click", async function () {
+    btnUp.addEventListener("mousedown", async function () {
         try {
             const response = await makeAPICall("http://192.168.1.51:4001/up");
             console.log("API call to /up completed:", response);
