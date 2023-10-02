@@ -251,7 +251,7 @@
                 <div class="container">
                 <!-- Video Stream Placeholder -->
                         <div class="video-container">
-                            <img id="videoStream" src="http://192.168.1.76:4000/videostream" alt="Video Stream">
+                            <img id="videoStream" src="http://192.168.1.51:4001/videostream" alt="Video Stream">
                         </div>
 
                         <!-- Button options -->
@@ -271,7 +271,7 @@
                     <!-- JavaScript for changing the video URL -->
                     <script>
                         function changeVideo() {
-                            document.getElementById("videoStream").src = "http://192.168.1.76:4000/videostream";
+                            document.getElementById("videoStream").src = "http://192.168.1.51:4001/videostream";
                         }
                     </script>
             <div class="remotecontainer">
@@ -282,7 +282,7 @@
                                 <!-- TV Remote Control Grid -->
                                 <div class="remotecontrol-buttons">
                                     <!-- Row 1 -->
-                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://192.168.1.76:4000/videostream')">Normal</button>
+                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://192.168.1.51:4001/videostream')">Normal</button>
                                     <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://127.0.0.1:5000/videostream')">Object Detection</button>
                                     <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://127.0.0.1:5000/videostream')">Depth Perception</button>
                                     <button id="btnDown1" class="remotebtn btn-secondary">Capture Image</button>
@@ -309,7 +309,7 @@
                 <script>
                     window.onload = function() {
   // Make an API call
-  fetch('http://192.168.1.76:4000/setupCOM')
+  fetch('http://192.168.1.51:4001/setupCOM')
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error(error));
@@ -333,7 +333,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document.getElementById("btnUp").addEventListener("mousedown", function () {
-        makeAPICall("http://192.168.1.76:4000/up");
+        makeAPICall("http://192.168.1.51:4001/up");
     });
     document.getElementById("btnUp").addEventListener("mouseup", function () {
         makeAPICall("http://192.168.1.76:4000/stop");
@@ -350,7 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
         makeAPICall("http://192.168.1.76:4000/down");
     });
     document.getElementById("btnDown").addEventListener("mouseup", function () {
-        makeAPICall("http://192.168.1.76:4000/stop");
+        makeAPICall("http://192.168.1.76:4001/stop");
     });
 //     document.getElementById("btnDown").addEventListener("mouseleave", function () {
 //        makeAPICall("http://192.168.1.76:4000/stop");
@@ -360,10 +360,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
  
     document.getElementById("btnLeft").addEventListener("mousedown", function () {
-        makeAPICall("http://192.168.1.76:4000/left");
+        makeAPICall("http://192.168.1.76:4001/left");
     });
     document.getElementById("btnLeft").addEventListener("mouseup", function () {
-        makeAPICall("http://192.168.1.76:4000/stop");
+        makeAPICall("http://192.168.1.76:4001/stop");
     });
 //     document.getElementById("btnLeft").addEventListener("mouseleave", function () {
 //        makeAPICall("http://192.168.1.76:4000/stop");
@@ -373,10 +373,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
  
     document.getElementById("btnRight").addEventListener("mousedown", function () {
-        makeAPICall("http://192.168.1.76:4000/right");
+        makeAPICall("http://192.168.1.76:4001/right");
     });
     document.getElementById("btnRight").addEventListener("mouseup", function () {
-        makeAPICall("http://192.168.1.76:4000/stop");
+        makeAPICall("http://192.168.1.76:4001/stop");
     });
 //     document.getElementById("btnRight").addEventListener("mouseleave", function () {
 //        makeAPICall("http://192.168.1.76:4000/stop");
