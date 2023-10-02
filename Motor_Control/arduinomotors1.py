@@ -14,22 +14,16 @@ try:
 
     def send_command(command):
         ser.write(command.encode('utf-8'))
-        time.sleep(0.1)  # Adjust the delay as needed
 
     while True:
         # Get user input
-        user_input = input("Enter a command (L/R/W/V/P) or press Enter to quit: ")
+        user_input = input("Enter a command (L/R/W/V/P) or 'q' to quit: ")
 
-        if not user_input:
+        if user_input == 'q':
             break
 
         # Send the user input as a command
         send_command(user_input)
-
-        # Read and display data coming back from Arduino (if available)
-        response = ser.readline().decode('utf-8').strip()
-        if response:
-            print(f"Received: {response}")
 
 except serial.SerialException as e:
     print(f"Error: {e}")
