@@ -31,7 +31,9 @@ def close():
         print("Serial port closed")
             
 
-
+# Global variables to control motor state
+motor_running = False
+stop_thread = False  # Used to signal the thread to stop
 # Serial port configuration
 serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
 baud_rate = 9600  # Adjust this to match your device's baud rate
