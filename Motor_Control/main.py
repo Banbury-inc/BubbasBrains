@@ -15,7 +15,7 @@ def main():
 
     print(f"Connected to {serial_port} at {baud_rate} baud")
     count = 0
-    while count < 10000:
+    while count < 3000:
         user_input = "L400n"
     
 
