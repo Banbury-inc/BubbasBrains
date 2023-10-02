@@ -34,7 +34,7 @@ def close():
 
 
 @app.route("/close")
-def stop_response():
+def close_response():
     return Response(close(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
