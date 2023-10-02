@@ -59,35 +59,28 @@ def stop_response():
 
 
 def up():
-    ports = serial.tools.list_ports.comports()
-    serialInst1 = serial.Serial()
-
-    portList = []
-    packetB = ""
-
-    for onePort in ports:
-        portList.append(str(onePort))
-        print(str(onePort))
-
-    val = input("Select Port: ttyUBS")
-    portVal = "/dev/ttyUSB" + str(val)
-
-    serialInst1.baudrate = 9600
-    serialInst1.port = portVal  
-    serialInst1.open()
-    # end setup COM port to use
+    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+    baud_rate = 9600  # Adjust this to match your device's baud rate
 
 
- # Listen to COM port (data from arduino)
+    ser = None  # Initialize ser outside of the try block
 
-    while True:
-        if serialInst1.in_waiting:
-            packet = serialInst1.readline()
-            packetB = packet.decode('utf-8').rstrip('\n')
-            print(packetB)
 
-        val = input("L300n")
-        serialInst1.write(bytes(val, 'utf-8'))
+    ser = serial.Serial(serial_port, baud_rate)
+
+    print(f"Connected to {serial_port} at {baud_rate} baud")
+    count = 0
+    while count < 3000:
+        user_input = "L400n"
+        
+
+        ser.write(user_input.encode('utf-8'))
+
+        count = count + 1
+            
+        print(count)
+
+
     print("Moving forward")
 @app.route("/up")
 def up_response():
