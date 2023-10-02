@@ -10,6 +10,7 @@ def main():
         time.sleep(5)
         L400n.L400n()
 
+        time.sleep(5)
 
 if __name__ == "__main__":
     main()
