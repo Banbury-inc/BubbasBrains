@@ -28,8 +28,7 @@ def setup_COM():
         for onePort in ports:
             portList.append(str(onePort))
             print(str(onePort))
-        val = input("Select Port: ttyS")
-        portVal = "/dev/ttyS" + str(val)
+        portVal = "/dev/ttyUSB0"
         serialInst1.baudrate = 9600
         serialInst1.port = portVal  
         serialInst1.open()
