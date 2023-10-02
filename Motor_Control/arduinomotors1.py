@@ -18,7 +18,7 @@ try:
         # Get user input and send it to the serial port
         user_input = input("Enter data to send (or press Enter to quit): ")
         if user_input:
-            ser.write(user_input.encode('utf-8'))  # Encode the string as bytes
+            ser.write(bytes(user_input,'utf-8'))  # Encode the string as bytes
 
 except serial.SerialException as e:
     print(f"Error: {e}")
