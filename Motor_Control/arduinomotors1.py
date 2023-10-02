@@ -1,7 +1,5 @@
-# screen /dev/ttyUSB0 9600
-
-
 import serial
+import time
 
 # Define the serial port and baud rate
 serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
@@ -17,8 +15,22 @@ try:
     while True:
         # Get user input and send it to the serial port
         user_input = input("Enter data to send (or press Enter to quit): ")
-        if user_input:
-            ser.write(bytes(user_input,'utf-8'))  # Encode the string as bytes
+        if not user_input:
+            break
+
+        # Clear the input buffer
+        ser.flushInput()
+
+        # Send the command
+        ser.write(bytes(user_input, 'utf-8'))  # Encode the string as bytes
+
+        # Wait for a response (adjust the delay as needed)
+        time.sleep(1)
+
+        # Read and display data coming back from Arduino (if available)
+        if ser.in_waiting > 0:
+            received_data = ser.read(ser.in_waiting).decode('utf-8')
+            print(f"Received: {received_data}")
 
 except serial.SerialException as e:
     print(f"Error: {e}")
