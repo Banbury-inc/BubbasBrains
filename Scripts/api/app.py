@@ -19,6 +19,17 @@ lock = threading.Lock()
 # Initialize the camera_run flag
 camera_run = False
 
+def test():
+
+    while True:
+        print("I am never ending!")           
+
+
+
+@app.route("/close")
+def test_response():
+    return Response(test(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
 def close():
 
     serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port

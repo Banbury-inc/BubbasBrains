@@ -328,7 +328,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnUp = document.getElementById("btnUp");
     const btnDown = document.getElementById("btnDown");
 
-    btnUp.addEventListener("mousedown", async function () {
+    btnUp.addEventListener("click", async function () {
         try {
             const response = await makeAPICall("http://192.168.1.51:4001/up");
             console.log("API call to /up completed:", response);
@@ -337,17 +337,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    btnDown.addEventListener("mouseup", async function () {
-        try {
-            const closeResponse = await makeAPICall("http://192.168.1.51:4001/close");
-            console.log("API call to /close completed:", closeResponse);
-
-            const stopResponse = await makeAPICall("http://192.168.1.51:4001/stop");
-            console.log("API call to /stop completed:", stopResponse);
-        } catch (error) {
-            console.error("API calls failed:", error);
-        }
-    });
 
     document.getElementById("btnDown").addEventListener("mousedown", function () {
         makeAPICall("http://192.168.1.76:4000/down");
