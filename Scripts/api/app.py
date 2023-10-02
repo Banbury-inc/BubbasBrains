@@ -67,7 +67,7 @@ def stop_response():
 def up():
     
     count = 0
-    while count < 100:
+    while count < 1000:
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
         baud_rate = 9600  # Adjust this to match your device's baud rate
         ser = None  # Initialize ser outside of the try block
