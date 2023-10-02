@@ -84,6 +84,7 @@ def up():
         print("Timer finished, closing port")
         count = count + 1
     user_input = "L200n"
+    user_input = "R200n"
     ser.write(user_input.encode('utf-8'))
     ser.close()
     print("Serial port closed")
