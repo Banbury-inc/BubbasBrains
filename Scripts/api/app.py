@@ -20,7 +20,33 @@ lock = threading.Lock()
 camera_run = False
 
 def stop():
-   print("Stopped")
+    print("Moving forward")
+
+    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+
+    baud_rate = 9600  # Adjust this to match your device's baud rate
+
+
+    ser = None  # Initialize ser outside of the try block
+
+
+    ser = serial.Serial(serial_port, baud_rate)
+
+    print(f"Connected to {serial_port} at {baud_rate} baud")
+    count = 0
+    while count < 3000:
+        user_input = "L200n"
+        
+
+        ser.write(user_input.encode('utf-8'))
+
+        count = count + 1
+            
+        print(count)
+
+
+    print("Stopped")
+
 @app.route("/stop")
 def stop_response():
     return Response(stop(), mimetype='multipart/x-mixed-replace; boundary=frame')
