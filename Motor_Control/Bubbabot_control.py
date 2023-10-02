@@ -29,4 +29,4 @@ while True:
         print(packetB)
 
     val = input("data to send")
-    seriaInst1.write(bytes(val, 'utf-8'))
+    serialInst1.write(bytes(val, 'utf-8'))
