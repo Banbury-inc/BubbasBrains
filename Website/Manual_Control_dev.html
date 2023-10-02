@@ -307,10 +307,29 @@
                                     <button id="btnDown" class="remotebtn btn-secondary">Down</button>
                                     <button id="btnDownRight" class="remotebtn btn-secondary">Down/Right</button>
                 <script>
-    document.getElementById("btnUp").addEventListener("click", function () {
+    document.addEventListener("DOMContentLoaded", function () {
+        // Function to make API calls
+        function makeAPICall(url) {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log(data); // Log the response from the server
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+    }
+    document.getElementById("btnUp").addEventListener("mousedown", function () {
         makeAPICall("http://192.168.1.51:4001/up");
     });
-
+    document.getElementById("btnDown").addEventListener("mouseup", function () {
+        makeAPICall("http://192.168.1.76:4001/stop");
+    });
 
     document.getElementById("btnDown").addEventListener("mousedown", function () {
         makeAPICall("http://192.168.1.76:4000/down");
@@ -390,6 +409,8 @@
         forwardButton.addEventListener('click', (e) => {
             e.preventDefault();
         });
+
+});
        </script>
 
                         </div>

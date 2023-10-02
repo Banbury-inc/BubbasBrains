@@ -33,16 +33,13 @@ def stop():
     ser = serial.Serial(serial_port, baud_rate)
 
     print(f"Connected to {serial_port} at {baud_rate} baud")
-    count = 0
-    while count < 3000:
+    while True:
         user_input = "L200n"
         
 
         ser.write(user_input.encode('utf-8'))
 
-        count = count + 1
             
-        print(count)
 
 
     print("Stopped")
@@ -68,16 +65,13 @@ def up():
     ser = serial.Serial(serial_port, baud_rate)
 
     print(f"Connected to {serial_port} at {baud_rate} baud")
-    count = 0
-    while count < 3000:
+    while True:
         user_input = "L400n"
         
 
         ser.write(user_input.encode('utf-8'))
 
-        count = count + 1
             
-        print(count)
 
 
     print("Moving forward")
