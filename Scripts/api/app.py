@@ -26,7 +26,7 @@ def test():
 
 
 
-@app.route("/close")
+@app.route("/test")
 def test_response():
     return Response(test(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
