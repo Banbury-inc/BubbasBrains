@@ -20,7 +20,11 @@ lock = threading.Lock()
 camera_run = False
 
 def stop():
-    print("Moving forward")
+    if ser is not None and ser.is_open:
+        ser.close()
+        print("Serial port closed")
+
+    print("Stopping")
 
     serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
 
@@ -51,6 +55,9 @@ def stop_response():
 
 
 def up():
+    if ser is not None and ser.is_open:
+        ser.close()
+        print("Serial port closed")
 
     print("Moving forward")
 
@@ -65,6 +72,7 @@ def up():
     ser = serial.Serial(serial_port, baud_rate)
 
     print(f"Connected to {serial_port} at {baud_rate} baud")
+
     while True:
         user_input = "L400n"
         
