@@ -1,4 +1,4 @@
-from flask import Flask, Response, jsonify
+from flask import Flask, Response
 import cv2
 from waitress import serve
 import threading
@@ -19,34 +19,59 @@ lock = threading.Lock()
 # Initialize the camera_run flag
 camera_run = False
 
-app = Flask(__name__)
-
-# Dummy state variables for motor control
-motor_up = False
-motor_running = False
-
-@app.route('/up', methods=['GET'])
-def move_motor_up():
-    global motor_up, motor_running
-    motor_up = True
-    motor_running = True
-    return jsonify(message='Moving motor up')
-
-@app.route('/close', methods=['GET'])
 def close():
-    global motor_up, motor_running
-    motor_up = False
-    return jsonify(message='Closing motor')
 
-@app.route('/stop', methods=['GET'])
-def stop():
+    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+    baud_rate = 9600  # Adjust this to match your device's baud rate
+
+
+    ser = serial.Serial(serial_port, baud_rate)
+    if ser is not None and ser.is_open:
+        ser.close()
+        print("Serial port closed")
+            
+
+
+# Serial port configuration
+serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+baud_rate = 9600  # Adjust this to match your device's baud rate
+ser = serial.Serial(serial_port, baud_rate)
+print(f"Connected to {serial_port} at {baud_rate} baud")
+@app.route("/close")
+def close_response():
+    return Response(close(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+def move_motor_forward():
     global motor_running
+    motor_running = True
+    n = 0
+    while motor_running and n < 5000:
+        user_input = "L400n"
+        ser.write(user_input.encode('utf-8'))
+        n += 1
+        print(n)
     motor_running = False
-    return jsonify(message='Stopping motor')
 
-@app.route('/status', methods=['GET'])
-def status():
-    return jsonify(motor_up=motor_up, motor_running=motor_running)
+def stop_motor():
+    global stop_thread
+    stop_thread = True
+    print("Stopping")
+    user_input = "L200n"
+    ser.write(user_input.encode('utf-8'))
+    stop_thread = False
+
+@app.route("/up")
+def up_response():
+    global motor_running
+    if not motor_running:
+        threading.Thread(target=move_motor_forward).start()
+    return Response("Moving forward", mimetype='text/plain')
+
+@app.route("/stop")
+def stop_response():
+    stop_motor()
+    return Response("Motor stopped", mimetype='text/plain')
 
 def up1():
     print("Moving forward at speed 1")
