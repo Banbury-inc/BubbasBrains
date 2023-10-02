@@ -31,49 +31,44 @@ def close():
         print("Serial port closed")
             
 
-# Global variables to control motor state
-motor_running = False
-stop_thread = False  # Used to signal the thread to stop
-# Serial port configuration
-serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
-baud_rate = 9600  # Adjust this to match your device's baud rate
-ser = serial.Serial(serial_port, baud_rate)
-print(f"Connected to {serial_port} at {baud_rate} baud")
+
+
 @app.route("/close")
 def close_response():
     return Response(close(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
-def move_motor_forward():
-    global motor_running
-    motor_running = True
-    n = 0
-    while motor_running and n < 5000:
+def stop():
+
+    print("Stopping")
+    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+    baud_rate = 9600  # Adjust this to match your device's baud rate
+    ser = None  # Initialize ser outside of the try block
+    ser = serial.Serial(serial_port, baud_rate)
+    print(f"Connected to {serial_port} at {baud_rate} baud")
+    while True:
+        user_input = "L200n"
+        ser.write(user_input.encode('utf-8'))
+@app.route("/stop")
+def stop_response():
+    return Response(stop(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+def up():
+    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+    baud_rate = 9600  # Adjust this to match your device's baud rate
+    ser = None  # Initialize ser outside of the try block
+    ser = serial.Serial(serial_port, baud_rate)
+    print(f"Connected to {serial_port} at {baud_rate} baud")
+    print("Moving forward")
+    while True:
         user_input = "L400n"
         ser.write(user_input.encode('utf-8'))
-        n += 1
-        print(n)
-    motor_running = False
 
-def stop_motor():
-    global stop_thread
-    stop_thread = True
-    print("Stopping")
-    user_input = "L200n"
-    ser.write(user_input.encode('utf-8'))
-    stop_thread = False
+
 
 @app.route("/up")
 def up_response():
-    global motor_running
-    if not motor_running:
-        threading.Thread(target=move_motor_forward).start()
-    return Response("Moving forward", mimetype='text/plain')
-
-@app.route("/stop")
-def stop_response():
-    stop_motor()
-    return Response("Motor stopped", mimetype='text/plain')
+    return Response(up(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def up1():
     print("Moving forward at speed 1")
