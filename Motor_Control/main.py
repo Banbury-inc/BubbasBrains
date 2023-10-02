@@ -22,9 +22,12 @@ def main():
     ser.write(user_input.encode('utf-8'))
 
 
-    time.sleep(5)
+    print("Command sent to arduino")
+
+    time.sleep(15)
 
 
+    print("Timer finished, closing port")
     ser.close()
 
 
