@@ -19,14 +19,26 @@ lock = threading.Lock()
 # Initialize the camera_run flag
 camera_run = False
 
-def stop():
+def close():
 
-    ser = None  # Initialize ser outside of the try block
+    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+    baud_rate = 9600  # Adjust this to match your device's baud rate
 
+
+    ser = serial.Serial(serial_port, baud_rate)
     if ser is not None and ser.is_open:
-        
         ser.close()
         print("Serial port closed")
+            
+
+
+
+@app.route("/close")
+def stop_response():
+    return Response(close(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+def stop():
 
     print("Stopping")
 
@@ -59,13 +71,6 @@ def stop_response():
 
 
 def up():
-
-    ser = None  # Initialize ser outside of the try block
-
-    if ser is not None and ser.is_open:
-
-        ser.close()
-        print("Serial port closed")
 
     print("Moving forward")
 

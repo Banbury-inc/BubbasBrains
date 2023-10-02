@@ -328,6 +328,8 @@
         makeAPICall("http://192.168.1.51:4001/up");
     });
     document.getElementById("btnDown").addEventListener("mouseup", function () {
+
+        makeAPICall("http://192.168.1.76:4001/close");
         makeAPICall("http://192.168.1.76:4001/stop");
     });
 
