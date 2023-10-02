@@ -85,7 +85,7 @@ def up():
     print(f"Connected to {serial_port} at {baud_rate} baud")
 
     print("Moving forward")
-
+    n = 0 
     while n < 5000:
         user_input = "L400n"
 
