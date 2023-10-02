@@ -77,9 +77,9 @@ def up():
         while secondcount < 500:
             user_input = "L400n"
             ser.write(user_input.encode('utf-8'))
+            user_input = "R400n"
+            ser.write(user_input.encode('utf-8'))
             secondcount = secondcount + 1
-            print(secondcount)
-            print(count)
         print("Timer finished, closing port")
         count = count + 1
     user_input = "L200n"
