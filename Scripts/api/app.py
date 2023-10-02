@@ -233,7 +233,7 @@ def left():
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
         while secondcount < 500:
-            user_input = "L100n"
+            user_input = "L1n"
             ser.write(user_input.encode('utf-8'))
             user_input = "R400n"
             ser.write(user_input.encode('utf-8'))
@@ -324,7 +324,7 @@ def right():
         while secondcount < 500:
             user_input = "L400n"
             ser.write(user_input.encode('utf-8'))
-            user_input = "R100n"
+            user_input = "R1n"
             ser.write(user_input.encode('utf-8'))
             secondcount = secondcount + 1
         print("Timer finished, closing port")
