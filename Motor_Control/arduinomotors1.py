@@ -12,25 +12,24 @@ try:
     ser = serial.Serial(serial_port, baud_rate)
     print(f"Connected to {serial_port} at {baud_rate} baud")
 
+    def send_command(command):
+        ser.write(command.encode('utf-8'))
+        time.sleep(0.1)  # Adjust the delay as needed
+
     while True:
-        # Get user input and send it to the serial port
-        user_input = input("Enter data to send (or press Enter to quit): ")
+        # Get user input
+        user_input = input("Enter a command (L/R/W/V/P) or press Enter to quit: ")
+
         if not user_input:
             break
 
-        # Clear the input buffer
-        ser.flushInput()
-
-        # Send the command
-        ser.write(bytes(user_input, 'utf-8'))  # Encode the string as bytes
-
-        # Wait for a response (adjust the delay as needed)
-        time.sleep(1)
+        # Send the user input as a command
+        send_command(user_input)
 
         # Read and display data coming back from Arduino (if available)
-        if ser.in_waiting > 0:
-            received_data = ser.read(ser.in_waiting).decode('utf-8')
-            print(f"Received: {received_data}")
+        response = ser.readline().decode('utf-8').strip()
+        if response:
+            print(f"Received: {response}")
 
 except serial.SerialException as e:
     print(f"Error: {e}")
