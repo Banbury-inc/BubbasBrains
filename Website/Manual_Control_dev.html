@@ -307,44 +307,47 @@
                                     <button id="btnDown" class="remotebtn btn-secondary">Down</button>
                                     <button id="btnDownRight" class="remotebtn btn-secondary">Down/Right</button>
                 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Function to make API calls
-        function makeAPICall(url) {
-    return fetch(url)
-        .then(response => {
+document.addEventListener("DOMContentLoaded", function () {
+    // Function to make an API call
+    async function makeAPICall(url) {
+        try {
+            const response = await fetch(url);
+
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error(`API call to ${url} failed with status ${response.status}`);
             }
-            return response.text();
-        })
-        .catch(error => {
+
+            const data = await response.text();
+            return data;
+        } catch (error) {
             console.error('Error:', error);
-        });
-}
+            throw error; // Re-throw the error to propagate it
+        }
+    }
 
-document.getElementById("btnUp").addEventListener("mousedown", function () {
-    makeAPICall("http://192.168.1.51:4001/up")
-        .then(() => {
-            console.log("API call to /up completed.");
-        })
-        .catch(error => {
+    const btnUp = document.getElementById("btnUp");
+    const btnDown = document.getElementById("btnDown");
+
+    btnUp.addEventListener("mousedown", async function () {
+        try {
+            const response = await makeAPICall("http://192.168.1.51:4001/up");
+            console.log("API call to /up completed:", response);
+        } catch (error) {
             console.error("API call to /up failed:", error);
-        });
-});
+        }
+    });
 
-document.getElementById("btnDown").addEventListener("mouseup", function () {
-    makeAPICall("http://192.168.1.51:4001/close")
-        .then(() => {
-            console.log("API call to /close completed.");
-            return makeAPICall("http://192.168.1.51:4001/stop");
-        })
-        .then(() => {
-            console.log("API call to /stop completed.");
-        })
-        .catch(error => {
+    btnDown.addEventListener("mouseup", async function () {
+        try {
+            const closeResponse = await makeAPICall("http://192.168.1.51:4001/close");
+            console.log("API call to /close completed:", closeResponse);
+
+            const stopResponse = await makeAPICall("http://192.168.1.51:4001/stop");
+            console.log("API call to /stop completed:", stopResponse);
+        } catch (error) {
             console.error("API calls failed:", error);
-        });
-});
+        }
+    });
 
     document.getElementById("btnDown").addEventListener("mousedown", function () {
         makeAPICall("http://192.168.1.76:4000/down");

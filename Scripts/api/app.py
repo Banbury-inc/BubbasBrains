@@ -1,4 +1,4 @@
-from flask import Flask, Response
+from flask import Flask, Response, jsonify
 import cv2
 from waitress import serve
 import threading
@@ -19,87 +19,34 @@ lock = threading.Lock()
 # Initialize the camera_run flag
 camera_run = False
 
+app = Flask(__name__)
+
+# Dummy state variables for motor control
+motor_up = False
+motor_running = False
+
+@app.route('/up', methods=['GET'])
+def move_motor_up():
+    global motor_up, motor_running
+    motor_up = True
+    motor_running = True
+    return jsonify(message='Moving motor up')
+
+@app.route('/close', methods=['GET'])
 def close():
+    global motor_up, motor_running
+    motor_up = False
+    return jsonify(message='Closing motor')
 
-    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
-    baud_rate = 9600  # Adjust this to match your device's baud rate
-
-
-    ser = serial.Serial(serial_port, baud_rate)
-    if ser is not None and ser.is_open:
-        ser.close()
-        print("Serial port closed")
-            
-
-
-
-@app.route("/close")
-def close_response():
-    return Response(close(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-
+@app.route('/stop', methods=['GET'])
 def stop():
+    global motor_running
+    motor_running = False
+    return jsonify(message='Stopping motor')
 
-    print("Stopping")
-
-    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
-
-    baud_rate = 9600  # Adjust this to match your device's baud rate
-
-
-    ser = None  # Initialize ser outside of the try block
-
-
-    ser = serial.Serial(serial_port, baud_rate)
-
-    print(f"Connected to {serial_port} at {baud_rate} baud")
-    while True:
-        user_input = "L200n"
-        
-
-        ser.write(user_input.encode('utf-8'))
-
-            
-
-
-    print("Stopped")
-
-@app.route("/stop")
-def stop_response():
-    return Response(stop(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-
-
-def up():
-
-    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
-
-    baud_rate = 9600  # Adjust this to match your device's baud rate
-
-
-    ser = None  # Initialize ser outside of the try block
-
-
-    ser = serial.Serial(serial_port, baud_rate)
-
-    print(f"Connected to {serial_port} at {baud_rate} baud")
-
-    print("Moving forward")
-    n = 0 
-    while n < 5000:
-        user_input = "L400n"
-
-        ser.write(user_input.encode('utf-8'))
-
-        n = n + 1
-        
-        print(n) 
-
-
-
-@app.route("/up")
-def up_response():
-    return Response(up(), mimetype='multipart/x-mixed-replace; boundary=frame')
+@app.route('/status', methods=['GET'])
+def status():
+    return jsonify(motor_up=motor_up, motor_running=motor_running)
 
 def up1():
     print("Moving forward at speed 1")
