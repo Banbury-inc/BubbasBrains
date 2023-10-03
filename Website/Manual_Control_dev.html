@@ -336,6 +336,19 @@ async function makeApiCallBasedOnCounter() {
             // Call the /down API
             const response = await makeAPICall("http://192.168.1.51:4001/up2");
             console.log("API call to /down completed:", response);
+        } else if (counter === 3) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/up3");
+            console.log("API call to /down completed:", response);
+         } else if (counter === 4) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/up4");
+            console.log("API call to /down completed:", response);
+         } else if (counter === 5) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/up5");
+            console.log("API call to /down completed:", response);
+ 
         } else {
             // Handle counter == 0 case if needed
         }

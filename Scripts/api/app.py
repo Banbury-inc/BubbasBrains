@@ -146,18 +146,63 @@ def up2_response():
 
 def up3():
     print("Moving forward at speed 3")
+    secondcount = 0 
+    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+    baud_rate = 9600  # Adjust this to match your device's baud rate
+    ser = None  # Initialize ser outside of the try block
+    ser = serial.Serial(serial_port, baud_rate)
+ 
+    while secondcount < 100:
+        user_input = "L350n"
+        ser.write(user_input.encode('utf-8'))
+        user_input = "R350n"
+        ser.write(user_input.encode('utf-8'))
+        secondcount = secondcount + 1
+    print("Timer finished, closing port")
+
+
 @app.route("/up3")
 def up3_response():
     return Response(up3(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def up4():
     print("Moving forward at speed 4")
+    secondcount = 0 
+    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+    baud_rate = 9600  # Adjust this to match your device's baud rate
+    ser = None  # Initialize ser outside of the try block
+    ser = serial.Serial(serial_port, baud_rate)
+ 
+    while secondcount < 100:
+        user_input = "L400n"
+        ser.write(user_input.encode('utf-8'))
+        user_input = "R400n"
+        ser.write(user_input.encode('utf-8'))
+        secondcount = secondcount + 1
+    print("Timer finished, closing port")
+
+
 @app.route("/up4")
 def up4_response():
     return Response(up4(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def up5():
     print("Moving forward at speed 5")
+    secondcount = 0 
+    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+    baud_rate = 9600  # Adjust this to match your device's baud rate
+    ser = None  # Initialize ser outside of the try block
+    ser = serial.Serial(serial_port, baud_rate)
+ 
+    while secondcount < 100:
+        user_input = "L300n"
+        ser.write(user_input.encode('utf-8'))
+        user_input = "R300n"
+        ser.write(user_input.encode('utf-8'))
+        secondcount = secondcount + 1
+    print("Timer finished, closing port")
+
+
 @app.route("/up5")
 def up5_response():
     return Response(up5(), mimetype='multipart/x-mixed-replace; boundary=frame')
