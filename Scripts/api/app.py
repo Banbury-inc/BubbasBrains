@@ -125,19 +125,14 @@ def up1_response():
     return Response(up1(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def up2():
-    print("Moving forward at speed 2")
-    count = 0
-    while count < 1:
-        secondcount = 0 
-        while secondcount < 100:
-            user_input = "L300n"
-            ser.write(user_input.encode('utf-8'))
-            user_input = "R300n"
-            ser.write(user_input.encode('utf-8'))
-            secondcount = secondcount + 1
-        print("Timer finished, closing port")
-        count = count + 1
-    print("Serial port closed")
+    secondcount = 0 
+    while secondcount < 100:
+        user_input = "L300n"
+        ser.write(user_input.encode('utf-8'))
+        user_input = "R300n"
+        ser.write(user_input.encode('utf-8'))
+        secondcount = secondcount + 1
+    print("Timer finished, closing port")
 
 
 @app.route("/up2")
