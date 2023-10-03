@@ -108,7 +108,7 @@ def up1():
         ser = serial.Serial(serial_port, baud_rate)
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
-        while secondcount < 1:
+        while secondcount < 50:
             user_input = "L250n"
             ser.write(user_input.encode('utf-8'))
             user_input = "R250n"
@@ -133,7 +133,7 @@ def up2():
         ser = serial.Serial(serial_port, baud_rate)
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
-        while secondcount < 1:
+        while secondcount < 50:
             user_input = "L300n"
             ser.write(user_input.encode('utf-8'))
             user_input = "R300n"
