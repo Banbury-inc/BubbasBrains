@@ -124,10 +124,14 @@ def up1():
 def up1_response():
     return Response(up1(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-def up2(ser):
+def up2():
     print("Moving forward at speed 2")
     count = 0
     while count < 1:
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
         while secondcount < 100:
             user_input = "L300n"
@@ -141,8 +145,8 @@ def up2(ser):
 
 
 @app.route("/up2")
-def up2_response(ser):
-    return Response(up2(ser), mimetype='multipart/x-mixed-replace; boundary=frame')
+def up2_response():
+    return Response(up2(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def up3():
     print("Moving forward at speed 3")
