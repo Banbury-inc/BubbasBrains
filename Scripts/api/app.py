@@ -51,7 +51,6 @@ def close_response():
 
 def stop():
 
-
     count = 0
     while count < 1:
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
@@ -68,11 +67,6 @@ def stop():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
-    user_input = "L200n"
-    ser.write(user_input.encode('utf-8'))
-    user_input = "R200n"
-    ser.write(user_input.encode('utf-8'))
-    ser.close()
     print("Serial port closed")
 
 
