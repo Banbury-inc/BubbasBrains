@@ -254,18 +254,7 @@
                             <img id="videoStream" src="http://192.168.1.51:4001/videostream" alt="Video Stream">
                         </div>
 
-                        <!-- Button options -->
-                        <div class="button-options" id="videobutton">
-                            <button onclick="changeVideo('http://127.0.0.1:5000/videostream')">Normal</button>
-                            <button onclick="changeVideo('http://127.0.0.1:5000/od-videostream')">Object Detection</button>
-                            <button onclick="changeVideo('URL_FOR_DEPTH_PERCEPTION_STREAM')">Depth Perception</button>
-                        </div>
-                                            <!-- Webcam Capture Button -->
-                        <div class="button-options">
-                            <button id="captureButton">Capture</button>
-                        </div>
-                        
-                    
+                       
                     </div>
 
                     <!-- JavaScript for changing the video URL -->
@@ -355,6 +344,15 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("API call to /up failed:", error);
         }
     });
+    btnDown.addEventListener("mousedown", async function () {
+        try {
+            const response = await makeAPICall("http://192.168.1.51:4001/down");
+            console.log("API call to /up completed:", response);
+        } catch (error) {
+            console.error("API call to /up failed:", error);
+        }
+    });
+
 
 
     document.getElementById("btnDown").addEventListener("mousedown", function () {
