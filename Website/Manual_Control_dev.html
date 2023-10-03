@@ -87,9 +87,7 @@
         .video-container {
             border: 1px solid #ccc;
             padding: 10px;
-            width: 640px;
-            height: 480px;
-            margin: 0 auto;
+            margin: 1 auto;
         }
     /* Set the size of the map container */
     #map {
@@ -318,14 +316,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnDown = document.getElementById("btnDown");
     const btnLeft = document.getElementById("btnLeft");
     const btnRight = document.getElementById("btnRight");
+    let mouseDown = false; // Track if the mouse button is down
+
     btnUp.addEventListener("mousedown", async function () {
-        try {
-            const response = await makeAPICall("http://192.168.1.51:4001/up");
-            console.log("API call to /up completed:", response);
-        } catch (error) {
-            console.error("API call to /up failed:", error);
+        mouseDown = true;
+        while (mouseDown) {
+            try {
+                const response = await makeAPICall("http://192.168.1.51:4001/up");
+                console.log("API call to /up completed:", response);
+            } catch (error) {
+                console.error("API call to /up failed:", error);
+            }
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Delay between API calls for one second
         }
     });
+
+// Listen for mouseup event to stop API calls
+btnUp.addEventListener("mouseup", function () {
+    mouseDown = false;
+});
 
     btnLeft.addEventListener("mousedown", async function () {
         try {
