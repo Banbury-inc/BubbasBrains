@@ -319,39 +319,14 @@ document.addEventListener("DOMContentLoaded", function () {
     let mouseDown = false; // Track if the mouse button is down
 let apiCallPending = false; // Track if an API call is pending
 
-btnUp.addEventListener("mousedown", async function () {
-    mouseDown = true;
-    while (mouseDown) {
-        if (!apiCallPending) {
-            apiCallPending = true; // Set flag to indicate that an API call is pending
-            try {
-                const response = await makeAPICall("http://192.168.1.51:4001/up");
-                console.log("API call to /up completed:", response);
-            } catch (error) {
-                console.error("API call to /up failed:", error);
-            }
-            apiCallPending = false; // Reset the flag
-        }
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Delay between API calls for one second
-    }
-});
-
-btnUp.addEventListener("mouseup", async function () {
-    mouseDown = false; // Mouse button released, stop continuous calls
-
-    if (apiCallPending) {
-        // If an API call is pending, cancel it and start the other API call immediately
-        apiCallPending = false; // Reset the flag
-    } else {
-        // If no API call is pending, start the other API call
+btnUp.addEventListener("click", async function () {
         try {
-            const response = await makeAPICall("http://192.168.1.51:4001/stop");
-            console.log("API call to /other completed:", response);
+            const response = await makeAPICall("http://192.168.1.51:4001/up");
+            console.log("API call to /up completed:", response);
         } catch (error) {
-            console.error("API call to /other failed:", error);
+            console.error("API call to /up failed:", error);
         }
-    }
-});
+    });
 
 
 

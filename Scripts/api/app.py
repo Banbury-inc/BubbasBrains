@@ -50,6 +50,7 @@ def close_response():
 
 
 def stop():
+
     count = 0
     while count < 1:
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
@@ -66,7 +67,6 @@ def stop():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
-    ser.close()
     print("Serial port closed")
 
 
@@ -92,7 +92,6 @@ def up():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
-    ser.close()
     print("Serial port closed")
 
 @app.route("/up")
