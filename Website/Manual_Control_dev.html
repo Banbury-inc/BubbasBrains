@@ -324,11 +324,15 @@ let counter = 0;
 // Function to make API call based on the counter value
 async function makeApiCallBasedOnCounter() {
     try {
-        if (counter = 1) {
+        if (counter === 0) {
             // Call the /up API
-            const response = await makeAPICall("http://192.168.1.51:4001/up1");
+            const response = await makeAPICall("http://192.168.1.51:4001/stop");
             console.log("API call to /up completed:", response);
-        } else if (counter = 2) {
+        } else if (counter === 1) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/up1");
+            console.log("API call to /down completed:", response);
+        } else if (counter === 2) {
             // Call the /down API
             const response = await makeAPICall("http://192.168.1.51:4001/up2");
             console.log("API call to /down completed:", response);
@@ -355,6 +359,14 @@ btnDown.addEventListener("click", function () {
     // Make the API call based on the updated counter
     makeApiCallBasedOnCounter();
 });
+// Add event listener for the "Down" button
+btnStop.addEventListener("click", function () {
+    // Decrement the counter
+    counter = 0;
+    // Make the API call based on the updated counter
+    makeApiCallBasedOnCounter();
+});
+
 
 
 
@@ -383,14 +395,7 @@ btnDown.addEventListener("click", function () {
             console.error("API call to /up failed:", error);
         }
     });
-    btnStop.addEventListener("click", async function () {
-        try {
-            const response = await makeAPICall("http://192.168.1.51:4001/stop");
-            console.log("API call to /up completed:", response);
-        } catch (error) {
-            console.error("API call to /stop failed:", error);
-        }
-    });
+
 
 
 
