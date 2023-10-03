@@ -141,8 +141,8 @@ def up2(ser):
 
 
 @app.route("/up2")
-def up2_response():
-    return Response(up2(), mimetype='multipart/x-mixed-replace; boundary=frame')
+def up2_response(ser):
+    return Response(up2(ser), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def up3():
     print("Moving forward at speed 3")
