@@ -125,6 +125,7 @@ def up1_response():
     return Response(up1(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def up2():
+    print("Moving forward at speed 2")
     secondcount = 0 
     serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
     baud_rate = 9600  # Adjust this to match your device's baud rate
@@ -187,22 +188,7 @@ def up4_response():
     return Response(up4(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def up5():
-    print("Moving forward at speed 5")
-    secondcount = 0 
-    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
-    baud_rate = 9600  # Adjust this to match your device's baud rate
-    ser = None  # Initialize ser outside of the try block
-    ser = serial.Serial(serial_port, baud_rate)
- 
-    while secondcount < 100:
-        user_input = "L300n"
-        ser.write(user_input.encode('utf-8'))
-        user_input = "R300n"
-        ser.write(user_input.encode('utf-8'))
-        secondcount = secondcount + 1
-    print("Timer finished, closing port")
-
-
+    pass
 @app.route("/up5")
 def up5_response():
     return Response(up5(), mimetype='multipart/x-mixed-replace; boundary=frame')
