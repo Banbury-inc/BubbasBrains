@@ -51,6 +51,7 @@ def close_response():
 
 def stop():
 
+
     count = 0
     while count < 1:
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
@@ -67,10 +68,15 @@ def stop():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
+    user_input = "L200n"
+    ser.write(user_input.encode('utf-8'))
+    user_input = "R200n"
+    ser.write(user_input.encode('utf-8'))
+    ser.close()
     print("Serial port closed")
 
 
-@app.route("/stop")
+app.route("/stop")
 def stop_response():
     return Response(stop(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
@@ -169,19 +175,15 @@ def down():
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
         while secondcount < 100:
-            user_input = "L200n"
+            user_input = "L1n"
             ser.write(user_input.encode('utf-8'))
-            user_input = "R200n"
+            user_input = "R1n"
             ser.write(user_input.encode('utf-8'))
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
-    user_input = "L200n"
-    ser.write(user_input.encode('utf-8'))
-    user_input = "R200n"
-    ser.write(user_input.encode('utf-8'))
-    ser.close()
     print("Serial port closed")
+
 
 @app.route("/down")
 def down_response():
@@ -250,6 +252,7 @@ def down10_response():
 
 
 def left():
+    
     count = 0
     while count < 1:
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
@@ -258,7 +261,7 @@ def left():
         ser = serial.Serial(serial_port, baud_rate)
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
-        while secondcount < 500:
+        while secondcount < 100:
             user_input = "L1n"
             ser.write(user_input.encode('utf-8'))
             user_input = "R400n"
@@ -266,12 +269,9 @@ def left():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
-    user_input = "L200n"
-    ser.write(user_input.encode('utf-8'))
-    user_input = "R200n"
-    ser.write(user_input.encode('utf-8'))
-    ser.close()
     print("Serial port closed")
+
+
 
 @app.route("/left")
 def left_response():
@@ -347,7 +347,7 @@ def right():
         ser = serial.Serial(serial_port, baud_rate)
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
-        while secondcount < 500:
+        while secondcount < 100:
             user_input = "L400n"
             ser.write(user_input.encode('utf-8'))
             user_input = "R1n"
@@ -355,12 +355,8 @@ def right():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
-    user_input = "L200n"
-    ser.write(user_input.encode('utf-8'))
-    user_input = "R200n"
-    ser.write(user_input.encode('utf-8'))
-    ser.close()
     print("Serial port closed")
+
 
 @app.route("/right")
 def right_response():

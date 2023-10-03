@@ -288,7 +288,7 @@
                                     <button id="btnUp" class="remotebtn btn-secondary"">Up</button>
                                     <button id="btnUpRight" class="remotebtn btn-secondary">Up/Right</button>
                                     <button id="btnLeft" class="remotebtn btn-secondary">Left</button>
-                                    <button id="btnOk" class="remotebtn btn-secondary">Ok</button>
+                                    <button id="btnStop" class="remotebtn btn-secondary">Stop</button>
                                     <button id="btnRight" class="remotebtn btn-secondary">Right</button>
                                     <button id="btnDownLeft" class="remotebtn btn-secondary">Down/Left</button>
                                     <button id="btnDown" class="remotebtn btn-secondary">Down</button>
@@ -316,6 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnDown = document.getElementById("btnDown");
     const btnLeft = document.getElementById("btnLeft");
     const btnRight = document.getElementById("btnRight");
+    const btnStop = document.getElementById("btnStop");
 
 btnUp.addEventListener("click", async function () {
         try {
@@ -328,7 +329,7 @@ btnUp.addEventListener("click", async function () {
 
 
 
-    btnLeft.addEventListener("mousedown", async function () {
+    btnLeft.addEventListener("click", async function () {
         try {
             const response = await makeAPICall("http://192.168.1.51:4001/left");
             console.log("API call to /up completed:", response);
@@ -337,7 +338,7 @@ btnUp.addEventListener("click", async function () {
         }
     });
 
-    btnRight.addEventListener("mousedown", async function () {
+    btnRight.addEventListener("click", async function () {
         try {
             const response = await makeAPICall("http://192.168.1.51:4001/right");
             console.log("API call to /up completed:", response);
@@ -345,7 +346,7 @@ btnUp.addEventListener("click", async function () {
             console.error("API call to /up failed:", error);
         }
     });
-    btnDown.addEventListener("mousedown", async function () {
+    btnDown.addEventListener("click", async function () {
         try {
             const response = await makeAPICall("http://192.168.1.51:4001/down");
             console.log("API call to /up completed:", response);
@@ -353,6 +354,15 @@ btnUp.addEventListener("click", async function () {
             console.error("API call to /up failed:", error);
         }
     });
+    btnStop.addEventListener("click", async function () {
+        try {
+            const response = await makeAPICall("http://192.168.1.51:4001/stop");
+            console.log("API call to /up completed:", response);
+        } catch (error) {
+            console.error("API call to /up failed:", error);
+        }
+    });
+
 
 
 
