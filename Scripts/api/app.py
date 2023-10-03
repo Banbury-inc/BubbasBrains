@@ -169,9 +169,9 @@ def down():
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
         while secondcount < 500:
-            user_input = "L1n"
+            user_input = "L200n"
             ser.write(user_input.encode('utf-8'))
-            user_input = "R1n"
+            user_input = "R200n"
             ser.write(user_input.encode('utf-8'))
             secondcount = secondcount + 1
         print("Timer finished, closing port")
