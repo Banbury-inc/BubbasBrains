@@ -70,7 +70,7 @@ def stop():
     print("Serial port closed")
 
 
-app.route("/stop")
+@app.route("/stop")
 def stop_response():
     return Response(stop(), mimetype='multipart/x-mixed-replace; boundary=frame')
 

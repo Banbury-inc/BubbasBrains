@@ -359,7 +359,7 @@ btnUp.addEventListener("click", async function () {
             const response = await makeAPICall("http://192.168.1.51:4001/stop");
             console.log("API call to /up completed:", response);
         } catch (error) {
-            console.error("API call to /up failed:", error);
+            console.error("API call to /stop failed:", error);
         }
     });
 
