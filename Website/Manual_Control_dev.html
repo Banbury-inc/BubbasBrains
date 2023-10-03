@@ -318,14 +318,43 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnRight = document.getElementById("btnRight");
     const btnStop = document.getElementById("btnStop");
 
-btnUp.addEventListener("click", async function () {
-        try {
-            const response = await makeAPICall("http://192.168.1.51:4001/up");
+// Initialize the counter
+let counter = 0;
+
+// Function to make API call based on the counter value
+async function makeApiCallBasedOnCounter() {
+    try {
+        if (counter = 1) {
+            // Call the /up API
+            const response = await makeAPICall("http://192.168.1.51:4001/up1");
             console.log("API call to /up completed:", response);
-        } catch (error) {
-            console.error("API call to /up failed:", error);
+        } else if (counter = 2) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/up2");
+            console.log("API call to /down completed:", response);
+        } else {
+            // Handle counter == 0 case if needed
         }
-    });
+    } catch (error) {
+        console.error("API call failed:", error);
+    }
+}
+
+// Add event listener for the "Up" button
+btnUp.addEventListener("click", function () {
+    // Increment the counter
+    counter++;
+    // Make the API call based on the updated counter
+    makeApiCallBasedOnCounter();
+});
+
+// Add event listener for the "Down" button
+btnDown.addEventListener("click", function () {
+    // Decrement the counter
+    counter--;
+    // Make the API call based on the updated counter
+    makeApiCallBasedOnCounter();
+});
 
 
 
