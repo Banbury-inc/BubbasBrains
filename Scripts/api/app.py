@@ -50,17 +50,26 @@ def close_response():
 
 
 def stop():
+    count = 0
+    while count < 1:
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L200n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R200n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    ser.close()
+    print("Serial port closed")
 
-    print("Stopping")
-    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
-    baud_rate = 9600  # Adjust this to match your device's baud rate
-    ser = None  # Initialize ser outside of the try block
-    ser = serial.Serial(serial_port, baud_rate)
-    print(f"Connected to {serial_port} at {baud_rate} baud")
-    while True:
-        user_input = "L200n"
-        user_input = "R200n"
-        ser.write(user_input.encode('utf-8'))
+
 @app.route("/stop")
 def stop_response():
     return Response(stop(), mimetype='multipart/x-mixed-replace; boundary=frame')
@@ -75,7 +84,7 @@ def up():
         ser = serial.Serial(serial_port, baud_rate)
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
-        while secondcount < 100:
+        while True:
             user_input = "L400n"
             ser.write(user_input.encode('utf-8'))
             user_input = "R400n"
@@ -83,10 +92,6 @@ def up():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
-    user_input = "L200n"
-    ser.write(user_input.encode('utf-8'))
-    user_input = "R200n"
-    ser.write(user_input.encode('utf-8'))
     ser.close()
     print("Serial port closed")
 

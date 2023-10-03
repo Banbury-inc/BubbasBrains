@@ -317,24 +317,43 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnLeft = document.getElementById("btnLeft");
     const btnRight = document.getElementById("btnRight");
     let mouseDown = false; // Track if the mouse button is down
+let apiCallPending = false; // Track if an API call is pending
 
-    btnUp.addEventListener("mousedown", async function () {
-        mouseDown = true;
-        while (mouseDown) {
+btnUp.addEventListener("mousedown", async function () {
+    mouseDown = true;
+    while (mouseDown) {
+        if (!apiCallPending) {
+            apiCallPending = true; // Set flag to indicate that an API call is pending
             try {
                 const response = await makeAPICall("http://192.168.1.51:4001/up");
                 console.log("API call to /up completed:", response);
             } catch (error) {
                 console.error("API call to /up failed:", error);
             }
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Delay between API calls for one second
+            apiCallPending = false; // Reset the flag
         }
-    });
-
-// Listen for mouseup event to stop API calls
-btnUp.addEventListener("mouseup", function () {
-    mouseDown = false;
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Delay between API calls for one second
+    }
 });
+
+btnUp.addEventListener("mouseup", async function () {
+    mouseDown = false; // Mouse button released, stop continuous calls
+
+    if (apiCallPending) {
+        // If an API call is pending, cancel it and start the other API call immediately
+        apiCallPending = false; // Reset the flag
+    } else {
+        // If no API call is pending, start the other API call
+        try {
+            const response = await makeAPICall("http://192.168.1.51:4001/stop");
+            console.log("API call to /other completed:", response);
+        } catch (error) {
+            console.error("API call to /other failed:", error);
+        }
+    }
+});
+
+
 
     btnLeft.addEventListener("mousedown", async function () {
         try {
