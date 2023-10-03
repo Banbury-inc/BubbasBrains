@@ -127,6 +127,11 @@ def up1_response():
 def up2():
     secondcount = 0 
     while secondcount < 100:
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        
         user_input = "L300n"
         ser.write(user_input.encode('utf-8'))
         user_input = "R300n"
