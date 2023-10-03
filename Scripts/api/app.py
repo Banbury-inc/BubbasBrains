@@ -50,7 +50,7 @@ def close_response():
 
 
 def stop():
-
+    print("Stopping to a speed of 0")
     count = 0
     while count < 1:
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
@@ -198,6 +198,7 @@ def up10_response():
 
 
 def down():
+    print("Moving backward at speed 1")
     count = 0
     while count < 1:
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port

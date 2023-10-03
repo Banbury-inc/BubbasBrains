@@ -387,15 +387,6 @@ btnStop.addEventListener("click", function () {
             console.error("API call to /up failed:", error);
         }
     });
-    btnDown.addEventListener("click", async function () {
-        try {
-            const response = await makeAPICall("http://192.168.1.51:4001/down");
-            console.log("API call to /up completed:", response);
-        } catch (error) {
-            console.error("API call to /up failed:", error);
-        }
-    });
-
 
 
 
