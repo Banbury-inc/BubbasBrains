@@ -364,7 +364,6 @@ def forward0_left0():
         global ser
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
         baud_rate = 9600  # Adjust this to match your device's baud rate
-        ser = None  # Initialize ser outside of the try block
         ser = serial.Serial(serial_port, baud_rate)
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
@@ -496,7 +495,6 @@ def backward1_left0():
         global ser
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
         baud_rate = 9600  # Adjust this to match your device's baud rate
-        ser = None  # Initialize ser outside of the try block
         ser = serial.Serial(serial_port, baud_rate)
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
@@ -628,7 +626,6 @@ def backward2_left0():
         global ser
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
         baud_rate = 9600  # Adjust this to match your device's baud rate
-        ser = None  # Initialize ser outside of the try block
         ser = serial.Serial(serial_port, baud_rate)
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
