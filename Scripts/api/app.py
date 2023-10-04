@@ -102,6 +102,7 @@ def forward2_left0():
         global ser
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
         baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None
         ser = serial.Serial(serial_port, baud_rate)
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
@@ -113,6 +114,7 @@ def forward2_left0():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
+    ser.close()
     print("Serial port closed")
 
 
@@ -232,6 +234,7 @@ def forward1_left0():
         global ser
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
         baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None
         ser = serial.Serial(serial_port, baud_rate)
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
@@ -243,6 +246,7 @@ def forward1_left0():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
+    ser.close()
     print("Serial port closed")
 
 
@@ -362,6 +366,7 @@ def forward0_left0():
         global ser
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
         baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None
         ser = serial.Serial(serial_port, baud_rate)
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
@@ -373,8 +378,12 @@ def forward0_left0():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
+    ser.close()
     print("Serial port closed")
 
+        
+        
+        
 
 @app.route("/forward0_left0")
 def forward0_left0_response():
@@ -493,6 +502,7 @@ def backward1_left0():
         global ser
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
         baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None
         ser = serial.Serial(serial_port, baud_rate)
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
@@ -504,6 +514,7 @@ def backward1_left0():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
+    ser.close()
     print("Serial port closed")
 
 
@@ -530,6 +541,7 @@ def backward1_right1():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
+    ser.close()
     print("Serial port closed")
 
 
@@ -624,6 +636,7 @@ def backward2_left0():
         global ser
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
         baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None
         ser = serial.Serial(serial_port, baud_rate)
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
@@ -635,6 +648,7 @@ def backward2_left0():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
+    ser.close()
     print("Serial port closed")
 
 
