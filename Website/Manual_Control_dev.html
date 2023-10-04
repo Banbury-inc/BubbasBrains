@@ -85,10 +85,16 @@
             cursor: pointer;
         }
         .video-container {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 1 auto;
-        }
+        border: 1px solid #ccc;
+        padding: 10px;
+        width: 50%; /* Full width */
+        display: flex;
+        flex-direction: row;
+        height: 40%; /* Full height */
+        align-items: center; /* Center horizontally */
+        margin: 0 auto; /* Center horizontally */
+        justify-content: normal; /* Center vertically */
+       }
     /* Set the size of the map container */
     #map {
         height: 400px;
@@ -106,9 +112,30 @@
             flex-direction: row;
             justify-content: normal; /* Center vertically */
             align-items: center; /* Center horizontally */
-            height: 10vh; /* Full viewport height */
+            height: 10%; /* Full viewport height */
+            margin: 1%; /* Add spacing between columns */
+        }
+        /* Center the container vertically and horizontally */
+        .controlcontainer {
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            justify-content: normal; /* Center vertically */
+            align-items: center; /* Center horizontally */
             margin: 5%; /* Add spacing between columns */
         }
+        /* Center the container vertically and horizontally */
+        .movementcontainer {
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            justify-content: normal; /* Center vertically */
+            align-items: center; /* Center horizontally */
+            padding: 20px 15px;
+            margin: 5%; /* Add spacing between columns */
+        }
+
+
 
         /* TV Remote Control Grid */
         .remotecontrol-buttons {
@@ -128,7 +155,7 @@
             display: flex;
             justify-content: center; /* Center horizontally */
             align-items: center; /* Center vertically */
-            height: 50vh; /* Full viewport height */
+            height: 20%; /* Full viewport height */
         }
 
         /* Create a two-column layout */
@@ -145,7 +172,7 @@
             flex-direction: row;
             align-items: center; /* Center content vertically */
             margin: 30px; /* Add spacing between rows */
-            height: 100px;
+            height: 50px;
         }
         /* TV Remote Control Grid */
         .remotecontrol-buttons {
@@ -196,7 +223,6 @@
                 </div>
                 <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-primary display-4" href="index.html">Home</a></li>
                     
-                    <li class="nav-item"><a class="nav-link link text-primary display-4" href=Athena.html>Athena</a></li>
                     <li class="nav-item"><a class="nav-link link text-primary display-4" href="#features6-g">About Us</a></li>
                     <li class="nav-item"><a class="nav-link link text-primary display-4" href="#form1-d">Contacts</a></li></ul>
                 
@@ -243,17 +269,16 @@
 </section>
 <section>
  <body>
-            <h1>Manual Control</h1>
-            <div class="container">
                 
-                <div class="container">
+            <h1>Manual Control</h1>
+                <div class="videocontainer">
+
+                        <div class="row">
                 <!-- Video Stream Placeholder -->
                         <div class="video-container">
                             <img id="videoStream" src="http://192.168.1.51:4001/videostream" alt="Video Stream">
                         </div>
-
-                       
-                    </div>
+                        </div>
 
                     <!-- JavaScript for changing the video URL -->
                     <script>
@@ -261,7 +286,12 @@
                             document.getElementById("videoStream").src = "http://192.168.1.51:4001/videostream";
                         }
                     </script>
+
+        
+        <div class="controlcontainer">
             <div class="remotecontainer">
+
+
                 <div class="row">
                         <div class="container">
                         <!-- First Remote Container -->
@@ -277,11 +307,35 @@
                                 </div>
                         </div>
                 </div>
-                    <div class="column">
                         <div class="container">
+                        <h4>Wheel Speed</h4>
+                        <div class="row">
+                            <div class="col">
+                            <label for="frontleft-wheel-speed">Front Left Wheel Speed:</label>
+                            <input type="text" id="frontleft-wheel-speed" name="frontleft-wheel-speed" readonly>
+                            </div>
+                            <div class="col">
+                            <label for="frontright-wheel-speed">Front Right Wheel Speed:</label>
+                            <input type="text" id="frontright-wheel-speed" name="frontright-wheel-speed" readonly>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                            <label for="backleft-wheel-speed">Back Left Wheel Speed:</label>
+                            <input type="text" id="backleft-wheel-speed" name="backleft-wheel-speed" readonly>
+                            </div>
+                            <div class="col">
+                            <label for="backright-wheel-speed">Back Right Wheel Speed:</label>
+                            <input type="text" id="backright-wheel-speed" name="backright-wheel-speed" readonly>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="container">
+
                         <!-- First Remote Container -->
                             <h4>Movement</h4>
-                                <!-- TV Remote Control Grid -->
+
+                        <div class="column">
                                 <div class="remotecontrol-buttons">
                                     <!-- Row 1 -->
                                    <button id="btnUpLeft" class="remotebtn btn-secondary">Up/Left</button>
@@ -318,9 +372,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnRight = document.getElementById("btnRight");
     const btnStop = document.getElementById("btnStop");
 
-// Initialize the counter
-let forwardbackward = 0;
-let leftright = 0;
+    // Get the input elements
+    const frontLeftWheelSpeedInput = document.getElementById("frontleft-wheel-speed");
+    const frontRightWheelSpeedInput = document.getElementById("frontright-wheel-speed");
+    const backLeftWheelSpeedInput = document.getElementById("backleft-wheel-speed");
+    const backRightWheelSpeedInput = document.getElementById("backright-wheel-speed");
+
+    frontLeftWheelSpeedVariable = 200
+    frontRightWheelSpeedVariable = 200
+    backLeftWheelSpeedVariable = 200
+    backRightWheelSpeedVariable = 200
+    // Set the values of the input elements
+    frontLeftWheelSpeedInput.value = frontLeftWheelSpeedVariable;
+    frontRightWheelSpeedInput.value = frontRightWheelSpeedVariable;
+    backLeftWheelSpeedInput.value = backLeftWheelSpeedVariable;
+    backRightWheelSpeedInput.value = backRightWheelSpeedVariable;
+
+
+
+    // Initialize the counter
+    let forwardbackward = 0;
+    let leftright = 0;
 // Function to make API call based on the counter value
 async function makeApiCallBasedOnCounter() {
     try {
@@ -437,6 +509,8 @@ async function makeApiCallBasedOnCounter() {
 btnUp.addEventListener("click", function () {
     // Increment the counter
     forwardbackward++;
+    // Add 100 to front left wheel speed
+
     // Make the API call based on the updated counter
     makeApiCallBasedOnCounter();
 });
@@ -577,15 +651,12 @@ btnRight.addEventListener("click", function () {
 });
        </script>
 
+                                </div>
                         </div>
                         </div>
-                    </div>
-
                 </div>
-                    
+                </div>
             </div>
-            </div>
-        </div>
  </body>        
 </section>
 
