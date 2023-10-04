@@ -2,7 +2,7 @@ from flask import Flask, Response
 import cv2
 from waitress import serve
 import threading
-from ultralytics import YOLO
+#from ultralytics import YOLO
 import serial.tools.list_ports
 #import drivers
 import time
@@ -1023,7 +1023,7 @@ def generate_frames_with_object_detection():
                 # Read a frame from the video
                 success, frame = cap.read()
 
-                model = YOLO('yolov8n.pt')  # load an official detection model
+                model = ('yolov8n.pt')  # load an official detection model
                 if success:
                     with lock:
                         # Run YOLOv8 inference on the frame
