@@ -320,29 +320,109 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Initialize the counter
 let forwardbackward = 0;
-
+let leftright = 0;
 // Function to make API call based on the counter value
 async function makeApiCallBasedOnCounter() {
     try {
-        if (forwardbackward === 0) {
+        if (forwardbackward === 2 && leftright === -2) {
             // Call the /up API
-            const response = await makeAPICall("http://192.168.1.51:4001/stop");
+            const response = await makeAPICall("http://192.168.1.51:4001/forward2_left2");
             console.log("API call to /up completed:", response);
-        } else if (forwardbackward === 1) {
+        } else if (forwardbackward === 2 && leftright === -1) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.51:4001/up1");
+            const response = await makeAPICall("http://192.168.1.51:4001/forward2_left1");
             console.log("API call to /down completed:", response);
-        } else if (forwardbackward === 2) {
+        } else if (forwardbackward === 2 && leftright === 0) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.51:4001/up2");
+            const response = await makeAPICall("http://192.168.1.51:4001/forward2_left0");
             console.log("API call to /down completed:", response);
-        } else if (forwardbackward === -1) {
+        } else if (forwardbackward === 2 && leftright === 1) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.51:4001/down1");
+            const response = await makeAPICall("http://192.168.1.51:4001/forward2_right1");
             console.log("API call to /down completed:", response);
-         } else if (forwardbackward === -2) {
+         } else if (forwardbackward === 2 && leftright === 2) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.51:4001/down2");
+            const response = await makeAPICall("http://192.168.1.51:4001/forward2_right2");
+            console.log("API call to /down completed:", response);
+         } else if (forwardbackward === 1 && leftright === -2) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/forward1_left2");
+            console.log("API call to /down completed:", response);
+          } else if (forwardbackward === 1 && leftright === -1) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/forward1_left1");
+            console.log("API call to /down completed:", response);
+          } else if (forwardbackward === 1 && leftright === 0) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/forward1_left0");
+            console.log("API call to /down completed:", response);
+          } else if (forwardbackward === 1 && leftright === 1) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/forward1_right1");
+            console.log("API call to /down completed:", response);
+          } else if (forwardbackward === 1 && leftright === 2) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/forward1_right2");
+            console.log("API call to /down completed:", response);
+          } else if (forwardbackward === 0 && leftright === -2) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/forward0_left2");
+            console.log("API call to /down completed:", response);
+           } else if (forwardbackward === 0 && leftright === -1) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/forward0_left1");
+            console.log("API call to /down completed:", response);
+           } else if (forwardbackward === 0 && leftright === 0) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/forward0_left0");
+            console.log("API call to /down completed:", response);
+           } else if (forwardbackward === 0 && leftright === 1) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/forward0_right1");
+            console.log("API call to /down completed:", response);
+           } else if (forwardbackward === 0 && leftright === 2) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/forward0_right2");
+            console.log("API call to /down completed:", response);
+            } else if (forwardbackward === -1 && leftright === -2) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/backward1_left2");
+            console.log("API call to /down completed:", response);
+            } else if (forwardbackward === -1 && leftright === -1) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/backward1_left1");
+            console.log("API call to /down completed:", response);
+             } else if (forwardbackward === -1 && leftright === 0) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/backward1_left0");
+            console.log("API call to /down completed:", response);
+             } else if (forwardbackward === -1 && leftright === 1) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/backward1_right1");
+            console.log("API call to /down completed:", response);
+             } else if (forwardbackward === -1 && leftright === 2) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/backward1_right2");
+            console.log("API call to /down completed:", response);
+              } else if (forwardbackward === -2 && leftright === -2) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/backward2_left2");
+            console.log("API call to /down completed:", response);
+              } else if (forwardbackward === -2 && leftright === -1) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/backward2_left1");
+            console.log("API call to /down completed:", response);
+              } else if (forwardbackward === -2 && leftright === 0) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/backward2_left0");
+            console.log("API call to /down completed:", response);
+              } else if (forwardbackward === -2 && leftright === 1) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/backward2_right1");
+            console.log("API call to /down completed:", response);
+              } else if (forwardbackward === -2 && leftright === 2) {
+            // Call the /down API
+            const response = await makeAPICall("http://192.168.1.51:4001/backward2_right2");
             console.log("API call to /down completed:", response);
  
        } else {
@@ -356,7 +436,7 @@ async function makeApiCallBasedOnCounter() {
 // Add event listener for the "Up" button
 btnUp.addEventListener("click", function () {
     // Increment the counter
-    counter++;
+    forwardbackward++;
     // Make the API call based on the updated counter
     makeApiCallBasedOnCounter();
 });
@@ -364,17 +444,32 @@ btnUp.addEventListener("click", function () {
 // Add event listener for the "Down" button
 btnDown.addEventListener("click", function () {
     // Decrement the counter
-    counter--;
+    forwardbackward--;
     // Make the API call based on the updated counter
     makeApiCallBasedOnCounter();
 });
 // Add event listener for the "Down" button
 btnStop.addEventListener("click", function () {
     // Decrement the counter
-    counter = 0;
+    forwardbackward = 0;
+    leftright = 0;
     // Make the API call based on the updated counter
     makeApiCallBasedOnCounter();
 });
+btnLeft.addEventListener("click", function () {
+    // Decrement the counter
+    leftright--;
+    // Make the API call based on the updated counter
+    makeApiCallBasedOnCounter();
+});
+btnRight.addEventListener("click", function () {
+    // Decrement the counter
+    leftright++;
+    // Make the API call based on the updated counter
+    makeApiCallBasedOnCounter();
+});
+
+
 
 
 
