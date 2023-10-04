@@ -175,7 +175,6 @@ def down_response():
 def down1():
 
     print("Moving backward at speed 1")
-    print("Moving backward at speed 1")
     count = 0
     while count < 1:
         serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
@@ -201,59 +200,28 @@ def down1_response():
 
 def down2():
 
-    print("Moving backward at speed 2")
+    print("Moving forward at speed 2")
+    secondcount = 0 
+    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+    baud_rate = 9600  # Adjust this to match your device's baud rate
+    ser = None  # Initialize ser outside of the try block
+    ser = serial.Serial(serial_port, baud_rate)
+ 
+    while secondcount < 100:
+        user_input = "L1n"
+        ser.write(user_input.encode('utf-8'))
+        user_input = "R1n"
+        ser.write(user_input.encode('utf-8'))
+        secondcount = secondcount + 1
+    print("Timer finished, closing port")
+
+
 @app.route("/down2")
 def down2_response():
     return Response(down2(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def down3():
     print("Moving backward at speed 3")
-@app.route("/down3")
-def down3_response():
-    return Response(down3(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def down4():
-    print("Moving backward at speed 4")
-@app.route("/down4")
-def down4_response():
-    return Response(down4(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def down5():
-    print("Moving backward at speed 5")
-@app.route("/down5")
-def down5_response():
-    return Response(down5(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def down6():
-    print("Moving backward at speed 6")
-@app.route("/down6")
-def down6_response():
-    return Response(down6(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def down7():
-    print("Moving backward at speed 7")
-@app.route("/down7")
-def down7_response():
-    return Response(down7(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def down8():
-    print("Moving backward at speed 8")
-@app.route("/down8")
-def down8_response():
-    return Response(down8(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def down9():
-    print("Moving backward at speed 9")
-@app.route("/down9")
-def down9_response():
-    return Response(down9(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def down10():
-    print("Moving backward at speed 10")
-@app.route("/down10")
-def down10_response():
-    return Response(down10(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
 
 def left():
     

@@ -45,3 +45,10 @@
 ## Run Server
 
 gunicorn -c gunicorn_config.py app:app
+
+
+## Motor Speeds
+
+
+
+![alt text](https://github.com/Banbury-inc/BubbasBrains/blob/main/assets/Motor_Speeds.png)
