@@ -114,7 +114,6 @@ def forward2_left0():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
-    ser.close()
     print("Serial port closed")
 
 
@@ -644,7 +643,6 @@ def backward2_left0():
             secondcount = secondcount + 1
         print("Timer finished, closing port")
         count = count + 1
-    ser.close()
     print("Serial port closed")
 
 
