@@ -2,7 +2,7 @@ from flask import Flask, Response
 import cv2
 from waitress import serve
 import threading
-# from ultralytics import YOLO
+from ultralytics import YOLO
 import serial.tools.list_ports
 #import drivers
 import time
