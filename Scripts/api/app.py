@@ -110,9 +110,9 @@ def up1():
         print(f"Connected to {serial_port} at {baud_rate} baud")
         secondcount = 0 
         while secondcount < 100:
-            user_input = "L250n"
+            user_input = "L300n"
             ser.write(user_input.encode('utf-8'))
-            user_input = "R250n"
+            user_input = "R300n"
             ser.write(user_input.encode('utf-8'))
             secondcount = secondcount + 1
         print("Timer finished, closing port")
@@ -133,48 +133,6 @@ def up2():
     ser = serial.Serial(serial_port, baud_rate)
  
     while secondcount < 100:
-        user_input = "L300n"
-        ser.write(user_input.encode('utf-8'))
-        user_input = "R300n"
-        ser.write(user_input.encode('utf-8'))
-        secondcount = secondcount + 1
-    print("Timer finished, closing port")
-
-
-@app.route("/up2")
-def up2_response():
-    return Response(up2(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def up3():
-    print("Moving forward at speed 3")
-    secondcount = 0 
-    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
-    baud_rate = 9600  # Adjust this to match your device's baud rate
-    ser = None  # Initialize ser outside of the try block
-    ser = serial.Serial(serial_port, baud_rate)
- 
-    while secondcount < 100:
-        user_input = "L350n"
-        ser.write(user_input.encode('utf-8'))
-        user_input = "R350n"
-        ser.write(user_input.encode('utf-8'))
-        secondcount = secondcount + 1
-    print("Timer finished, closing port")
-
-
-@app.route("/up3")
-def up3_response():
-    return Response(up3(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def up4():
-    print("Moving forward at speed 4")
-    secondcount = 0 
-    serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
-    baud_rate = 9600  # Adjust this to match your device's baud rate
-    ser = None  # Initialize ser outside of the try block
-    ser = serial.Serial(serial_port, baud_rate)
- 
-    while secondcount < 100:
         user_input = "L400n"
         ser.write(user_input.encode('utf-8'))
         user_input = "R400n"
@@ -183,45 +141,9 @@ def up4():
     print("Timer finished, closing port")
 
 
-@app.route("/up4")
-def up4_response():
-    return Response(up4(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def up5():
-    pass
-@app.route("/up5")
-def up5_response():
-    return Response(up5(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def up6():
-    print("Moving forward at speed 6")
-@app.route("/up6")
-def up6_response():
-    return Response(up6(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def up7():
-    print("Moving forward at speed 7")
-@app.route("/up7")
-def up7_response():
-    return Response(up7(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def up8():
-    print("Moving forward at speed 8")
-@app.route("/up8")
-def up8_response():
-    return Response(up8(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def up9():
-    print("Moving forward at speed 9")
-@app.route("/up9")
-def up9_response():
-    return Response(up9(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-def up10():
-    print("Moving forward at speed 10")
-@app.route("/up10")
-def up10_response():
-    return Response(up10(), mimetype='multipart/x-mixed-replace; boundary=frame')
+@app.route("/up2")
+def up2_response():
+    return Response(up2(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 def down():
@@ -251,12 +173,34 @@ def down_response():
 
 
 def down1():
+
     print("Moving backward at speed 1")
+    print("Moving backward at speed 1")
+    count = 0
+    while count < 1:
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L100n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R100n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+
+
 @app.route("/down1")
 def down1_response():
     return Response(down1(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def down2():
+
     print("Moving backward at speed 2")
 @app.route("/down2")
 def down2_response():
