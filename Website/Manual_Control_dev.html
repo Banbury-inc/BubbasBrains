@@ -320,27 +320,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Initialize the counter
 let forwardbackward = 0;
-let leftright = 0;
+
 // Function to make API call based on the counter value
 async function makeApiCallBasedOnCounter() {
     try {
-        if (forwardbackward === 0 && leftright === 0) {
+        if (forwardbackward === 0) {
             // Call the /up API
             const response = await makeAPICall("http://192.168.1.51:4001/stop");
             console.log("API call to /up completed:", response);
-        } else if (forwardbackward === 1 && leftright === 0) {
+        } else if (forwardbackward === 1) {
             // Call the /down API
             const response = await makeAPICall("http://192.168.1.51:4001/up1");
             console.log("API call to /down completed:", response);
-        } else if (forwardbackward === 2 && leftright === 0) {
+        } else if (forwardbackward === 2) {
             // Call the /down API
             const response = await makeAPICall("http://192.168.1.51:4001/up2");
             console.log("API call to /down completed:", response);
-        } else if (forwardbackward === -1 && leftright === 0) {
+        } else if (forwardbackward === -1) {
             // Call the /down API
             const response = await makeAPICall("http://192.168.1.51:4001/down1");
             console.log("API call to /down completed:", response);
-         } else if (forwardbackward === -2 && leftright === ) {
+         } else if (forwardbackward === -2) {
             // Call the /down API
             const response = await makeAPICall("http://192.168.1.51:4001/down2");
             console.log("API call to /down completed:", response);

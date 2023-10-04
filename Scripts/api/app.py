@@ -90,6 +90,12 @@ def up():
             user_input = "R400n"
             ser.write(user_input.encode('utf-8'))
             secondcount = secondcount + 1
+            # Read and display data coming back from Arduino (if available)
+            if ser.in_waiting > 0:
+                received_data = ser.read(ser.in_waiting).decode('utf-8')
+                print(f"Received: {received_data}")
+
+
         print("Timer finished, closing port")
         count = count + 1
     print("Serial port closed")
