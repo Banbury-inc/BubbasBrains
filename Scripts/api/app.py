@@ -1,4 +1,4 @@
-from flask import Flask, Response
+from flask import Flask, Response, jsonify
 import cv2
 from waitress import serve
 import threading
@@ -8,10 +8,11 @@ import requests
 import numpy as np
 #import drivers
 import time
+import json
 import subprocess
 import signal
 import os
-
+import psutil
 app = Flask(__name__ )
 
 # Initialize the YOLO model
@@ -22,6 +23,21 @@ lock = threading.Lock()
 
 # Initialize the camera_run flag
 camera_run = False
+# API call to retrieve CPU usage, GPU usage, etc.
+
+@app.route("/")
+def hello_world():
+    data = {"message": "Hello, World!"}
+    return jsonify(data)
+@app.route("/getsysteminfo")
+def info_response():
+    print("Fetching Device Data")
+    completed_process = subprocess.run(['hostname'], stdout=subprocess.PIPE, text=True, check=True)
+    device_name = completed_process.stdout.strip()
+    data = {"message": "Hello, World!",
+           "device-name": device_name,  
+            }
+    return jsonify(data)
 
 def initialize_camera():
     global video_capture
@@ -84,7 +100,7 @@ def generate_frames_with_object_detection():
                     break
 
                 model = YOLO('yolov8n.pt')  # load an official detection model
-                results = model(frame)
+                results = model.track( source=frame,verbose=False, show=False, conf=0.85, tracker="bytetrack.yaml", save=False)
                 annotated_frame = results[0].plot()
 
                 _, buffer = cv2.imencode('.jpg', annotated_frame)
@@ -1063,4 +1079,4 @@ def right2_response():
                     
 
 if __name__ == "__main__":
-    serve(app, host="192.168.1.82", port=4000)  # Use the serve function to run your app
+    serve(app, host="localhost", port=4000)  # Use the serve function to run your app
