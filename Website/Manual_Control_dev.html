@@ -276,14 +276,14 @@
                         <div class="row">
                 <!-- Video Stream Placeholder -->
                         <div class="video-container">
-                            <img id="videoStream" src="http://192.168.1.79:4000/od-videostream" alt="Video Stream">
+                            <img id="videoStream" src="http://192.168.1.82:4000/od-videostream" alt="Video Stream">
                         </div>
                         </div>
 
                     <!-- JavaScript for changing the video URL -->
                     <script>
                         function changeVideo() {
-                            document.getElementById("videoStream").src = "http://192.168.1.79:4000/od-videostream";
+                            document.getElementById("videoStream").src = "http://192.168.1.82:4000/od-videostream";
                         }
                     </script>
 
@@ -299,8 +299,8 @@
                                 <!-- TV Remote Control Grid -->
                                 <div class="remotecontrol-buttons">
                                     <!-- Row 1 -->
-                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://192.168.1.79:4000/od-videostream')">Normal</button>
-                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://192.168.1.79:4000/od-videostream')">Object Detection</button>
+                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://192.168.1.82:4000/od-videostream')">Normal</button>
+                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://192.168.1.82:4000/od-videostream')">Object Detection</button>
                                     <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo('http://127.0.0.1:5000/od-videostream')">Depth Perception</button>
                                     <button id="btnDown1" class="remotebtn btn-secondary">Capture Image</button>
                                     <button id="btnDown1" class="remotebtn btn-secondary">Capture Video</button>
@@ -398,103 +398,103 @@ async function makeApiCallBasedOnCounter() {
     try {
         if (forwardbackward === 2 && leftright === -2) {
             // Call the /up API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward2_left2");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward2_left2");
             console.log("API call to /up completed:", response);
         } else if (forwardbackward === 2 && leftright === -1) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward2_left1");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward2_left1");
             console.log("API call to /down completed:", response);
         } else if (forwardbackward === 2 && leftright === 0) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward2_left0");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward2_left0");
             console.log("API call to /down completed:", response);
         } else if (forwardbackward === 2 && leftright === 1) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward2_right1");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward2_right1");
             console.log("API call to /down completed:", response);
          } else if (forwardbackward === 2 && leftright === 2) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward2_right2");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward2_right2");
             console.log("API call to /down completed:", response);
          } else if (forwardbackward === 1 && leftright === -2) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward1_left2");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward1_left2");
             console.log("API call to /down completed:", response);
           } else if (forwardbackward === 1 && leftright === -1) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward1_left1");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward1_left1");
             console.log("API call to /down completed:", response);
           } else if (forwardbackward === 1 && leftright === 0) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward1_left0");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward1_left0");
             console.log("API call to /down completed:", response);
           } else if (forwardbackward === 1 && leftright === 1) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward1_right1");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward1_right1");
             console.log("API call to /down completed:", response);
           } else if (forwardbackward === 1 && leftright === 2) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward1_right2");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward1_right2");
             console.log("API call to /down completed:", response);
           } else if (forwardbackward === 0 && leftright === -2) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward0_left2");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward0_left2");
             console.log("API call to /down completed:", response);
            } else if (forwardbackward === 0 && leftright === -1) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward0_left1");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward0_left1");
             console.log("API call to /down completed:", response);
            } else if (forwardbackward === 0 && leftright === 0) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward0_left0");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward0_left0");
             console.log("API call to /down completed:", response);
            } else if (forwardbackward === 0 && leftright === 1) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward0_right1");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward0_right1");
             console.log("API call to /down completed:", response);
            } else if (forwardbackward === 0 && leftright === 2) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/forward0_right2");
+            const response = await makeAPICall("http://192.168.1.82:4000/forward0_right2");
             console.log("API call to /down completed:", response);
             } else if (forwardbackward === -1 && leftright === -2) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/backward1_left2");
+            const response = await makeAPICall("http://192.168.1.82:4000/backward1_left2");
             console.log("API call to /down completed:", response);
             } else if (forwardbackward === -1 && leftright === -1) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/backward1_left1");
+            const response = await makeAPICall("http://192.168.1.82:4000/backward1_left1");
             console.log("API call to /down completed:", response);
              } else if (forwardbackward === -1 && leftright === 0) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/backward1_left0");
+            const response = await makeAPICall("http://192.168.1.82:4000/backward1_left0");
             console.log("API call to /down completed:", response);
              } else if (forwardbackward === -1 && leftright === 1) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/backward1_right1");
+            const response = await makeAPICall("http://192.168.1.82:4000/backward1_right1");
             console.log("API call to /down completed:", response);
              } else if (forwardbackward === -1 && leftright === 2) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/backward1_right2");
+            const response = await makeAPICall("http://192.168.1.82:4000/backward1_right2");
             console.log("API call to /down completed:", response);
               } else if (forwardbackward === -2 && leftright === -2) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/backward2_left2");
+            const response = await makeAPICall("http://192.168.1.82:4000/backward2_left2");
             console.log("API call to /down completed:", response);
               } else if (forwardbackward === -2 && leftright === -1) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/backward2_left1");
+            const response = await makeAPICall("http://192.168.1.82:4000/backward2_left1");
             console.log("API call to /down completed:", response);
               } else if (forwardbackward === -2 && leftright === 0) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/backward2_left0");
+            const response = await makeAPICall("http://192.168.1.82:4000/backward2_left0");
             console.log("API call to /down completed:", response);
               } else if (forwardbackward === -2 && leftright === 1) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/backward2_right1");
+            const response = await makeAPICall("http://192.168.1.82:4000/backward2_right1");
             console.log("API call to /down completed:", response);
               } else if (forwardbackward === -2 && leftright === 2) {
             // Call the /down API
-            const response = await makeAPICall("http://192.168.1.79:4000/backward2_right2");
+            const response = await makeAPICall("http://192.168.1.82:4000/backward2_right2");
             console.log("API call to /down completed:", response);
  
        } else {

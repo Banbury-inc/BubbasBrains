@@ -48,6 +48,7 @@ def generate_frames():
                 yield (b'--frame\r\n'
                        b'Content-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n')
 
+
         except Exception as e:
             print("Error:", str(e))
 @app.route("/videostream")
@@ -57,6 +58,7 @@ def video_stream():
     if not camera_run:
         video_capture = initialize_camera()
         camera_run = True
+
     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
@@ -80,11 +82,11 @@ def generate_frames_with_object_detection():
 
                 if not ret:
                     break
-                model = YOLO("yolov8n.pt")
 
+                model = YOLO('yolov8n.pt')  # load an official detection model
                 results = model(frame)
-                annotated_frame = results[0].plot
-                # Encode the frame as JPEG
+                annotated_frame = results[0].plot()
+
                 _, buffer = cv2.imencode('.jpg', annotated_frame)
 
                 # Yield the frame as bytes
@@ -93,9 +95,16 @@ def generate_frames_with_object_detection():
 
         except Exception as e:
             print("Error:", str(e))
+
+
+
 @app.route("/od-videostream")
 def od_videostream():
     global camera_run
+    global video_capture
+    if not camera_run:
+        video_capture = initialize_camera()
+        camera_run = True
     return Response(generate_frames_with_object_detection(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
@@ -1047,10 +1056,11 @@ def right2():
     print("Moving right with a speed of 2")
 @app.route("/right2")
 def right2_response():
+
+
     return Response(right2(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
                     
 
 if __name__ == "__main__":
-    serve(app, host="192.168.1.76", port=4000)  # Use the serve function to run your app
-
+    serve(app, host="192.168.1.82", port=4000)  # Use the serve function to run your app
