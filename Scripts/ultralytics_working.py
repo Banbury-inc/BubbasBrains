@@ -11,4 +11,4 @@ model = YOLO('yolov8n.pt')  # load an official detection model
 # results = model(source="https://youtu.be/Zgi9g1ksQHc", show=True, conf=0.4, save=True)
 
 
-results = model(source=0, show=True, conf=0.8, save=True)
+results = model(source=0, show=True, conf=0.8, save=False)
