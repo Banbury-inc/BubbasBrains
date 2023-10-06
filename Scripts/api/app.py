@@ -12,6 +12,7 @@ import json
 import subprocess
 import signal
 import os
+from flask_cors import CORS
 import psutil
 app = Flask(__name__ )
 
@@ -37,6 +38,7 @@ def info_response():
     data = {"message": "Hello, World!",
            "device-name": device_name,  
             }
+    print("Returning Data")
     return jsonify(data)
 
 def initialize_camera():
@@ -1080,3 +1082,4 @@ def right2_response():
 
 if __name__ == "__main__":
     serve(app, host="localhost", port=4000)  # Use the serve function to run your app
+    CORS(app)
