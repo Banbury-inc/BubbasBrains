@@ -46,6 +46,9 @@
 
 gunicorn -c gunicorn_config.py app:app
 
+## List Available I2C Devices
+
+i2cdetect -l
 
 ## Motor Speeds
 
