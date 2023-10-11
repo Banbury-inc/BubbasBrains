@@ -8,7 +8,6 @@ def armInit():
     for i in range(16):
 
         kit.servo[i].angle = 90
-        time.sleep(1)
         kit.servo[i].angle = 90
         time.sleep(1)
 
