@@ -1,19 +1,11 @@
-import pigpio
-
-# Create a PWM object for the servo motor.
-pwm = pigpio.PWM()
-
-# Set the frequency of the PWM signal.
-pwm.set_frequency(50)
-
-# Set the duty cycle of the PWM signal.
-pwm.set_duty_cycle(50)
-
-# Start the PWM signal.
-pwm.start(0)
-
-# Wait for 1 second.
-time.sleep(1)
-
-# Stop the PWM signal.
-pwm.stop(0)
+if __name__=='__main__':
+    controller = I2C_Controller(0x40, debug=False)
+    controller.setPWMFreq(50)
+    while True:
+        for i in range(500,2500,10):
+            controller.Set_Pulse(15,i)   #setting 15th pin of the servo header(forward direction)
+            sleep(0.05)
+   
+        for i in range(2500,500,-10):
+            controller.Set_Pulse(15,i)   #setting 15th pin of the servo header(backward direction)
+            sleep(0.05)
