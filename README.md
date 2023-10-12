@@ -50,7 +50,12 @@ gunicorn -c gunicorn_config.py app:app
 
 i2cdetect -l
 
+## Scan a specific i2c device
+
+i2cdetect -y <bus_number>
+
 ## Motor Speeds
+
 
 
 
