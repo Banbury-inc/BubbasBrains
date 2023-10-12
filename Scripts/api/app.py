@@ -2,7 +2,7 @@ from flask import Flask, Response, jsonify
 import cv2
 from waitress import serve
 import threading
-from ultralytics import YOLO
+#from ultralytics import YOLO
 import serial.tools.list_ports
 import requests
 import numpy as np
@@ -1081,5 +1081,5 @@ def right2_response():
                     
 
 if __name__ == "__main__":
-    serve(app, host="localhost", port=4000)  # Use the serve function to run your app
+    serve(app, host="localhost", port=4001)  # Use the serve function to run your app
     CORS(app)
