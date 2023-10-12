@@ -10,6 +10,7 @@ import numpy as np
 import time
 import json
 import subprocess
+from adafruit_servokit import ServoKit
 import signal
 import os
 #from flask_cors import CORS
@@ -30,6 +31,7 @@ camera_run = False
 def hello_world():
     data = {"message": "Hello, World!"}
     return jsonify(data)
+
 @app.route("/getsysteminfo")
 def info_response():
     print("Fetching Device Data")
@@ -148,6 +150,34 @@ def close():
     if ser is not None and ser.is_open:
         ser.close()
         print("Serial port closed")
+
+@app.route("/initiatearm")
+def move_shoulder_up():
+    kit = ServoKit(channels=16)
+    shoulderangle = 40
+    kit.servo[4].angle = shoulderangle
+    return Response(move_shoulder_up(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+@app.route("/moveshoulderup")
+def move_shoulder_up():
+    kit = ServoKit(channels=16)
+    while shoulderangle < 180:
+        shoulderangle += 1
+        kit.servo[4].angle = shoulderangle
+        time.sleep(0.01)
+    return Response(move_shoulder_up(), mimetype='multipart/x-mixed-replace; boundary=frame')
+@app.route("/moveshoulderdown")
+def move_shoulder_up():
+    kit = ServoKit(channels=16)
+    while shoulderangle < 180:
+        shoulderangle += 1
+        kit.servo[4].angle = shoulderangle
+        time.sleep(0.01)
+    return Response(move_shoulder_up(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+
 
 def forward2_left2():
     print("2,-2")
