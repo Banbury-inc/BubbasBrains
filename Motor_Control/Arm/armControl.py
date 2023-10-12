@@ -38,9 +38,9 @@ def main():
     kit = ServoKit(channels=16)
 
 
-    elbowangle = 80
-    wristangle = 80
-    shoulderangle = 80
+    elbowangle = 30
+    wristangle = 30
+    shoulderangle = 30
 
     # Elbow
     # 0 - 180
