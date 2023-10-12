@@ -24,3 +24,10 @@ kit.servo[3].angle = wristangle
 # Shoulder Movement
 # 30 - 180 
 kit.servo[5].angle = shoulderangle
+
+
+
+while elbowangle < 180:
+    elbowangle += 1
+    kit.servo[2].angle = elbowangle
+
