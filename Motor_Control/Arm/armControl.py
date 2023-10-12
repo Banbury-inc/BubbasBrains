@@ -4,37 +4,37 @@ def moveshoulderup(kit, shoulderangle):
 
     print("Moving shoulder up")
     while shoulderangle < 180:
-        shoulderangle += .1
+        shoulderangle += 1
         kit.servo[4].angle = shoulderangle
         time.sleep(0.01)
 def moveshoulderdown(kit, shoulderangle):
     print("Moving shoulder down")
     while shoulderangle > 30:
-        shoulderangle -= .1
+        shoulderangle -= 1
         kit.servo[4].angle = shoulderangle
         time.sleep(0.01)
 def moveelbowup(kit, elbowangle):
     print("Moving elbow up")
     while elbowangle < 180:
-        elbowangle += .1
+        elbowangle += 1
         kit.servo[2].angle = elbowangle
         time.sleep(0.01)
 def moveelbowdown(kit, elbowangle):
     print("Moving elbow down")
     while elbowangle > 30:
-        elbowangle -= .1
+        elbowangle -= 1
         kit.servo[2].angle = elbowangle
         time.sleep(0.01)
 def movewristup(kit, wristangle):
     print("Moving wrist up")
     while wristangle < 180:
-        wristangle += .1
+        wristangle += 1
         kit.servo[3].angle = wristangle
         time.sleep(0.01)
 def movewristdown(kit, wristangle):
     print("Moving wrist down")
     while wristangle > 30:
-        wristangle -= .1
+        wristangle -= 1
         kit.servo[3].angle = wristangle
         time.sleep(0.01)
 
