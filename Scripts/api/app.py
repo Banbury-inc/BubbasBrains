@@ -12,7 +12,7 @@ import json
 import subprocess
 import signal
 import os
-from flask_cors import CORS
+#from flask_cors import CORS
 import psutil
 app = Flask(__name__ )
 
