@@ -49,12 +49,13 @@ def main():
     kit.servo[4].angle = shoulderangle
     kit.servo[2].angle = elbowangle
     kit.servo[3].angle = wristangle
-    moveshoulderup(kit, shoulderangle)
-    moveshoulderdown(kit, shoulderangle)
-    moveelbowup(kit, elbowangle)
-    moveelbowdown(kit, elbowangle)
-    movewristup(kit, wristangle)
-    movewristdown(kit, wristangle)
+    while 1 == 1:
+        moveshoulderup(kit, shoulderangle)
+        moveshoulderdown(kit, shoulderangle)
+        moveelbowup(kit, elbowangle)
+        moveelbowdown(kit, elbowangle)
+        movewristup(kit, wristangle)
+        movewristdown(kit, wristangle)
 
 
 if __name__ == '__main__':
