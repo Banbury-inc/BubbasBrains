@@ -1,7 +1,19 @@
 import time
 from adafruit_servokit import ServoKit
-def moveshoulderup(kit, shoulderangle):
 
+
+def initialize():
+    print("Initializing Arm")
+    kit = ServoKit(channels=16)
+    elbowangle = 90
+    wristangle = 90
+    shoulderangle = 90
+    kit.servo[4].angle = shoulderangle
+    kit.servo[2].angle = elbowangle
+    kit.servo[3].angle = wristangle
+ 
+
+def moveshoulderup(kit, shoulderangle):
     print("Moving shoulder up")
     while shoulderangle < 180:
         shoulderangle += 1

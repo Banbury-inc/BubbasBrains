@@ -6,6 +6,8 @@ import sys
 from django.shortcuts import render
 sys.path.append('/home/mmills/Documents/Repositories/BubbasBrains/Scripts')
 import get_system_info
+sys.path.append('/home/mmills/Documents/Repositories/BubbasBrains/Motor_Control/Arm')
+import armControl
 class ItemListCreateView(generics.ListCreateAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
@@ -20,4 +22,7 @@ def test(request):
     return JsonResponse({'result' : response})
 def system_info(request):
     response = get_system_info.SystemInfo.get_device_name() 
+    return JsonResponse({'result' : response})
+def initialize(request):
+    response = armControl.initialize() 
     return JsonResponse({'result' : response})
