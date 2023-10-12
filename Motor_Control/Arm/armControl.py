@@ -1,4 +1,4 @@
-
+import time
 from adafruit_servokit import ServoKit
 
 
@@ -24,3 +24,45 @@ kit.servo[3].angle = wristangle
 # Shoulder Movement
 # 30 - 180 
 kit.servo[5].angle = shoulderangle
+def moveshoulderup():
+    while shoulderangle < 30:
+        shoulderangle += 1
+        kit.servo[5].angle = shoulderangle
+        time.sleep(0.01)
+def moveshoulderdown():
+    while shoulderangle > 180:
+        shoulderangle -= 1
+        kit.servo[5].angle = shoulderangle
+        time.sleep(0.01)
+def moveelbowup():
+    while elbowangle < 30:
+        elbowangle += 1
+        kit.servo[2].angle = elbowangle
+        time.sleep(0.01)
+def moveelbowdown():
+    while elbowangle > 180:
+        elbowangle -= 1
+        kit.servo[2].angle = elbowangle
+        time.sleep(0.01)
+def movewristup():
+    while wristangle < 30:
+        wristangle += 1
+        kit.servo[3].angle = wristangle
+        time.sleep(0.01)
+def movewristdown():
+    while wristangle > 180:
+        wristangle -= 1
+        kit.servo[3].angle = wristangle
+        time.sleep(0.01)
+
+def main():
+    moveshoulderup()
+    moveshoulderdown()
+    moveelbowup()
+    moveelbowdown()
+    movewristup()
+    movewristdown()
+
+
+if __name__ == '__main__':
+    main()
