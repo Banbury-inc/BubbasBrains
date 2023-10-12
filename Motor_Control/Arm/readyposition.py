@@ -23,7 +23,7 @@ kit.servo[3].angle = wristangle
 
 # Shoulder Movement
 # 30 - 180 
-kit.servo[5].angle = shoulderangle
+kit.servo[4].angle = shoulderangle
 
 
 
