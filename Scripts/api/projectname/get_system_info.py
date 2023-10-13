@@ -1,4 +1,3 @@
-import psutil
 import time
 import subprocess
 class SystemInfo:
@@ -13,17 +12,6 @@ class SystemInfo:
             for i, cpu_percentage in enumerate(cpu_percentages):
                 print(f"CPU Core {i}: {cpu_percentage}%")
             time.sleep(1)
-
-    @staticmethod
-    def get_memory_usage():
-        memory_info = psutil.virtual_memory()
-        return {
-            "total": memory_info.total,
-            "available": memory_info.available,
-            "used": memory_info.used,
-            "free": memory_info.free,
-            "percent": memory_info.percent,
-        }
 
     @staticmethod
     def catch_memory_usage():
