@@ -1,9 +1,6 @@
 import time
 import subprocess
 class SystemInfo:
-    @staticmethod
-    def get_cpu_usage():
-        return psutil.cpu_percent(interval=1, percpu=True)
 
     @staticmethod
     def catch_cpu_usage():
