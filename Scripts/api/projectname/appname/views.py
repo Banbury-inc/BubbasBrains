@@ -31,6 +31,8 @@ def initialize(request):
     kit.servo[4].angle = shoulderangle
     kit.servo[2].angle = elbowangle
     kit.servo[3].angle = wristangle
+    reponse = "Hello World"
+    return JsonResponse({'result' : response})
 def moveShoulderUp(request):
     print("Initializing Arm")
     kit = ServoKit(channels=16)
