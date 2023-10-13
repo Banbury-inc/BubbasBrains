@@ -7,6 +7,7 @@ import sys
 import os
 from django.shortcuts import render
 import get_system_info
+import cv2
 from adafruit_servokit import ServoKit
 class ItemListCreateView(generics.ListCreateAPIView):
     queryset = Item.objects.all()
@@ -62,10 +63,33 @@ def moveWristDown(request):
     kit = ServoKit(channels=16)
     wristangle = 180
     kit.servo[3].angle = wristangle
+from django.http import StreamingHttpResponse
+import cv2
 
+# A generator function that yields video frames
+def generate_video_frames():
+    video_capture = cv2.VideoCapture(0)
+    while True:
+        try:
+            if video_capture is None or not video_capture.isOpened():
+                raise Exception("Could not open camera.")
 
+            ret, frame = video_capture.read()
 
+            if not ret:
+                break
 
+            _, buffer = cv2.imencode('.jpg', frame)
 
+            # Yield the frame as bytes with the appropriate MIME headers
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n')
+        except Exception as e:
+            print("Error:", str(e))
+
+# A Django view that returns the video stream
 def videostream(request):
-    print("Streeaming VIdeo")
+    # Set the content type to multipart/x-mixed-replace
+    response = StreamingHttpResponse(generate_video_frames(), content_type='multipart/x-mixed-replace; boundary=frame')
+    
+    return response
