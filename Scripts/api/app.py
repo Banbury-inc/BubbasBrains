@@ -153,31 +153,6 @@ def close():
         ser.close()
         print("Serial port closed")
 
-@app.route("/initiatearm")
-def move_shoulder_up():
-    kit = ServoKit(channels=16)
-    shoulderangle = 40
-    kit.servo[4].angle = shoulderangle
-    return Response(move_shoulder_up(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-
-@app.route("/moveshoulderup")
-def move_shoulder_up():
-    kit = ServoKit(channels=16)
-    while shoulderangle < 180:
-        shoulderangle += 1
-        kit.servo[4].angle = shoulderangle
-        time.sleep(0.01)
-    return Response(move_shoulder_up(), mimetype='multipart/x-mixed-replace; boundary=frame')
-@app.route("/moveshoulderdown")
-def move_shoulder_up():
-    kit = ServoKit(channels=16)
-    while shoulderangle < 180:
-        shoulderangle += 1
-        kit.servo[4].angle = shoulderangle
-        time.sleep(0.01)
-    return Response(move_shoulder_up(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
 
 
 
