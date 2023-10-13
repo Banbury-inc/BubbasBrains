@@ -385,11 +385,91 @@ function handleshoulderdown() {
             console.error('API call failed:', error);
         });
 }
+function handleelbowup() {
+    // Replace 'http://different_ip:port/run_robot_script/' with the actual URL
+    const apiUrl = 'http://192.168.1.51:4001/moveelbowup/';
+    // Send an HTTP GET request to the remote URL
+    fetch(apiUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`API call failed with status ${response.status}`);
+            }
+            return response.text();
+        })
+        .then((data) => {
+            console.log(data); // Log the response from the remote URL
+        })
+        .catch((error) => {
+            console.error('API call failed:', error);
+        });
+}
+function handleelbowdown() {
+    // Replace 'http://different_ip:port/run_robot_script/' with the actual URL
+    const apiUrl = 'http://192.168.1.51:4001/moveelbowdown/';
+    // Send an HTTP GET request to the remote URL
+    fetch(apiUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`API call failed with status ${response.status}`);
+            }
+            return response.text();
+        })
+        .then((data) => {
+            console.log(data); // Log the response from the remote URL
+        })
+        .catch((error) => {
+            console.error('API call failed:', error);
+        });
+}
+function handlewristup() {
+    // Replace 'http://different_ip:port/run_robot_script/' with the actual URL
+    const apiUrl = 'http://192.168.1.51:4001/movewristup/';
+    // Send an HTTP GET request to the remote URL
+    fetch(apiUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`API call failed with status ${response.status}`);
+            }
+            return response.text();
+        })
+        .then((data) => {
+            console.log(data); // Log the response from the remote URL
+        })
+        .catch((error) => {
+            console.error('API call failed:', error);
+        });
+}
+function handlewristdown() {
+    // Replace 'http://different_ip:port/run_robot_script/' with the actual URL
+    const apiUrl = 'http://192.168.1.51:4001/movewristdown/';
+    // Send an HTTP GET request to the remote URL
+    fetch(apiUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`API call failed with status ${response.status}`);
+            }
+            return response.text();
+        })
+        .then((data) => {
+            console.log(data); // Log the response from the remote URL
+        })
+        .catch((error) => {
+            console.error('API call failed:', error);
+        });
+}
 
 const apiButton = document.getElementById('shoulderup');
 const shoulderdown = document.getElementById('shoulderdown');
+const elbowup = document.getElementById('elbowup');
+const elbowdown = document.getElementById('elbowdown');
+const wristup = document.getElementById('wristup');
+const wristdown = document.getElementById('wristdown');
 apiButton.addEventListener('click', handleButtonClick);
 shoulderdown.addEventListener('click', handleshoulderdown);
+elbowup.addEventListener('click', handleelbowup);
+elbowdown.addEventListener('click', handleelbowdown);
+wristup.addEventListener('click', handlewristup);
+wristdown.addEventListener('click', handlewristdown);
     </script>
                         </div>
                 </div>

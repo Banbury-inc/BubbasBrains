@@ -35,20 +35,61 @@ def initialize(request):
 def moveShoulderUp(request):
     print("Initializing Arm")
     kit = ServoKit(channels=16)
-    elbowangle = 30
-    wristangle = 30
-    shoulderangle = 30
+    elbowangle = 90
+    wristangle = 90
+    shoulderangle = 0
     kit.servo[4].angle = shoulderangle
     kit.servo[2].angle = elbowangle
     kit.servo[3].angle = wristangle
 def moveShoulderDown(request):
     print("Initializing Arm")
     kit = ServoKit(channels=16)
-    elbowangle = 180 
-    wristangle = 180
+    elbowangle = 90
+    wristangle = 90
     shoulderangle = 180
     kit.servo[4].angle = shoulderangle
     kit.servo[2].angle = elbowangle
     kit.servo[3].angle = wristangle
+def moveElbowUp(request):
+    print("Initializing Arm")
+    kit = ServoKit(channels=16)
+    elbowangle = 0
+    wristangle = 90
+    shoulderangle = 90
+    kit.servo[4].angle = shoulderangle
+    kit.servo[2].angle = elbowangle
+    kit.servo[3].angle = wristangle
+def moveElbowDown(request):
+    print("Initializing Arm")
+    kit = ServoKit(channels=16)
+    elbowangle = 180 
+    wristangle = 90
+    shoulderangle = 90
+    kit.servo[4].angle = shoulderangle
+    kit.servo[2].angle = elbowangle
+    kit.servo[3].angle = wristangle
+def moveWristUp(request):
+    print("Initializing Arm")
+    kit = ServoKit(channels=16)
+    elbowangle = 90
+    wristangle = 0
+    shoulderangle = 0
+    kit.servo[4].angle = shoulderangle
+    kit.servo[2].angle = elbowangle
+    kit.servo[3].angle = wristangle
+def moveWristDown(request):
+    print("Initializing Arm")
+    kit = ServoKit(channels=16)
+    elbowangle = 90
+    wristangle = 180
+    shoulderangle =  90
+    kit.servo[4].angle = shoulderangle
+    kit.servo[2].angle = elbowangle
+    kit.servo[3].angle = wristangle
+
+
+
+
+
 def videostream(request):
     print("Streeaming VIdeo")

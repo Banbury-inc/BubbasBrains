@@ -25,6 +25,10 @@ urlpatterns = [
     path('initialize/', views.initialize, name='initialize'),
     path('moveshoulderup/', views.moveShoulderUp, name='moveshoulderup'),
     path('moveshoulderdown/', views.moveShoulderDown, name='moveshoulderDown'),
+    path('moveelbowup/', views.moveElbowUp, name='moveshoulderDown'),
+    path('moveelbowdown/', views.moveElbowDown, name='moveshoulderDown'),
+    path('movewristup/', views.moveWristUp, name='moveshoulderDown'),
+    path('movewristdown/', views.moveWristDown, name='moveshoulderDown'),
     path('videostream/', views.videostream, name='moveshoulderup'),
 ]
 
