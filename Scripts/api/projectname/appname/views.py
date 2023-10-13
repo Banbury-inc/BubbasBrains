@@ -116,7 +116,6 @@ def forward1_left0():
         count = count + 1
     ser.close()
     print("Serial port closed")
-    return HttpResponse("Response from forward1_left0 view")
 def forward1_left0_respnse():
 
     response = StreamingHttpResponse(forward1_left0(), content_type='multipart/x-mixed-replace; boundary=frame')
