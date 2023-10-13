@@ -26,9 +26,9 @@ def getSystemInfo(request):
 def initialize(request):
     print("Initializing Arm")
     kit = ServoKit(channels=16)
-    elbowangle = 90
-    wristangle = 90
-    shoulderangle = 90
+    elbowangle = 50
+    wristangle = 0
+    shoulderangle = 50
     kit.servo[4].angle = shoulderangle
     kit.servo[2].angle = elbowangle
     kit.servo[3].angle = wristangle
