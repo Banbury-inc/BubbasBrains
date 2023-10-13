@@ -10,7 +10,6 @@ import numpy as np
 import time
 import json
 import subprocess
-from adafruit_servokit import ServoKit
 import signal
 import os
 #from flask_cors import CORS
