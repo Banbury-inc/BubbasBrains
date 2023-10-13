@@ -294,14 +294,14 @@ window.onload = getSystemInfo;
                         <div class="row">
                 <!-- Video Stream Placeholder -->
                         <div class="video-container">
-                            <img id="videoStream" src="http://192.168.1.51:4001/initialize" alt="Video Stream">
+                            <img id="videoStream" src="http://192.168.1.51:4001/videostream" alt="Video Stream">
                         </div>
                         </div>
 
                     <!-- JavaScript for changing the video URL -->
                     <script>
                         function changeVideo() {
-                            document.getElementById("videoStream").src = "http://192.168.1.51:4001/od-videostream";
+                            document.getElementById("videoStream").src = "http://192.168.1.51:4001/initialize";
                         }
                     </script>
 
@@ -332,13 +332,65 @@ window.onload = getSystemInfo;
                                 <!-- TV Remote Control Grid -->
                                 <div class="remotecontrol-buttons">
                                     <!-- Row 1 -->
-                                    <button id="shoulderup " class="remotebtn btn-secondary">Shoulder Up</button>
-                                    <button id="elbowup" class="remotebtn btn-secondary">Elbow Up</button>
-                                    <button id="wristup" class="remotebtn btn-secondary">Wrist Up</button>
-                                    <button id="shoulderdown " class="remotebtn btn-secondary">Shoulder Down</button>
-                                    <button id="elbowdown" class="remotebtn btn-secondary">Elbow Down</button>
-                                    <button id="wristodown" class="remotebtn btn-secondary">Wrist Down</button>
+                                    <button id="shoulderup" class="remotebtn btn-secondary">Shoulder Up</button>
+                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="initialize()">Initialize</button>
+                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo()">Shoulder Down</button>
+                                    <button id="shoulderdown" class="remotebtn btn-secondary">Shoulder Down</button>
+                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="initialize()">Initialize</button>
+                                    <button id="btnOk1" class="remotebtn btn-secondary" onclick="changeVideo()">Shoulder Down</button>
+ 
                                 </div>
+                                <script>
+                            function initialize() {
+                            document.getElementById("videoStream").src = "http://192.168.1.51:4001/moveshoulderup";
+                        }
+ 
+
+                        apiButton.addEventListener('click', handleButtonClick);
+                                </script>
+<script>
+function handleButtonClick() {
+    // Replace 'http://different_ip:port/run_robot_script/' with the actual URL
+    const apiUrl = 'http://192.168.1.51:4001/moveshoulderup/';
+    // Send an HTTP GET request to the remote URL
+    fetch(apiUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`API call failed with status ${response.status}`);
+            }
+            return response.text();
+        })
+        .then((data) => {
+            console.log(data); // Log the response from the remote URL
+        })
+        .catch((error) => {
+            console.error('API call failed:', error);
+        });
+}
+function handleshoulderdown() {
+    // Replace 'http://different_ip:port/run_robot_script/' with the actual URL
+    const apiUrl = 'http://192.168.1.51:4001/moveshoulderdown/';
+    // Send an HTTP GET request to the remote URL
+    fetch(apiUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`API call failed with status ${response.status}`);
+            }
+            return response.text();
+        })
+        .then((data) => {
+            console.log(data); // Log the response from the remote URL
+        })
+        .catch((error) => {
+            console.error('API call failed:', error);
+        });
+}
+
+const apiButton = document.getElementById('shoulderup');
+const shoulderdown = document.getElementById('shoulderdown');
+apiButton.addEventListener('click', handleButtonClick);
+shoulderdown.addEventListener('click', handleshoulderdown);
+    </script>
                         </div>
                 </div>
  
@@ -550,18 +602,6 @@ async function makeApiCallBasedOnCounter() {
         console.error("API call failed:", error);
     }
 }
-async function makeApiCallForArm() {
-            const response = await makeAPICall("http://192.168.1.51:4001/initialize/");
-            console.log("API call to /up completed:", response);
-}
-
-// Add event listener for the "Up" button
-shoulderup.addEventListener("click", function () {
-    makeApiCallForArm();
-});
-// Add event listener for the "Up" button
-shoulderdown.addEventListener("click", function () {
-});
 
 
 

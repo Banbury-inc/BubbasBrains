@@ -2,6 +2,7 @@ from rest_framework import generics
 from .models import Item
 from .serializers import ItemSerializer
 from django.http import JsonResponse
+from django.http import HttpResponse
 import sys
 import os
 from django.shortcuts import render
@@ -37,6 +38,15 @@ def moveShoulderUp(request):
     elbowangle = 30
     wristangle = 30
     shoulderangle = 30
+    kit.servo[4].angle = shoulderangle
+    kit.servo[2].angle = elbowangle
+    kit.servo[3].angle = wristangle
+def moveShoulderDown(request):
+    print("Initializing Arm")
+    kit = ServoKit(channels=16)
+    elbowangle = 180 
+    wristangle = 180
+    shoulderangle = 180
     kit.servo[4].angle = shoulderangle
     kit.servo[2].angle = elbowangle
     kit.servo[3].angle = wristangle
