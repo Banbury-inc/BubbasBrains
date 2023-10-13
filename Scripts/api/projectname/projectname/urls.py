@@ -30,5 +30,6 @@ urlpatterns = [
     path('movewristup/', views.moveWristUp, name='moveshoulderDown'),
     path('movewristdown/', views.moveWristDown, name='moveshoulderDown'),
     path('videostream/', views.videostream, name='moveshoulderup'),
+    path('forward1_left0/', views.forward1_left0, name='moveshoulderup'),
 ]
 
