@@ -5,8 +5,7 @@ from django.http import JsonResponse
 import sys
 import os
 from django.shortcuts import render
-from get_system_info import SystemInfo
-
+import get_system_info
 class ItemListCreateView(generics.ListCreateAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
@@ -20,5 +19,5 @@ def test(request):
     response = "Hello World"
     return JsonResponse({'result' : response})
 def getSystemInfo(request):
-    response = SystemInfo.get_device_name()
+    response = get_system_info.get_device_name()
     return JsonResponse({'result' : response})
