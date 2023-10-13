@@ -40,4 +40,5 @@ def moveShoulderUp(request):
     kit.servo[4].angle = shoulderangle
     kit.servo[2].angle = elbowangle
     kit.servo[3].angle = wristangle
- 
+def videostream(request):
+    print("Streeaming VIdeo")

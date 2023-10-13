@@ -47,6 +47,7 @@ def initialize_camera():
     global video_capture
     video_capture = cv2.VideoCapture(0)
     return  video_capture
+
 def generate_frames():
     while True:
         try:
@@ -71,6 +72,8 @@ def generate_frames():
 
         except Exception as e:
             print("Error:", str(e))
+
+
 @app.route("/videostream")
 def video_stream():
     global camera_run
