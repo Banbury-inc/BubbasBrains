@@ -1,5 +1,6 @@
 from rest_framework import generics
 from .models import Item
+import serial.tools.list_ports
 from .serializers import ItemSerializer
 from django.http import JsonResponse
 from django.http import HttpResponse
@@ -93,3 +94,27 @@ def videostream(request):
     response = StreamingHttpResponse(generate_video_frames(), content_type='multipart/x-mixed-replace; boundary=frame')
     
     return response
+
+
+def forward1_left0():
+    print("1,0")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L300n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R300n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    ser.close()
+    print("Serial port closed")
+
+
