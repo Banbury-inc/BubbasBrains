@@ -96,7 +96,7 @@ def videostream(request):
     return response
 
 
-def forward1_left0():
+def forward1_left0(request):
     print("1,0")
     count = 0
     while count < 1:
@@ -116,8 +116,3 @@ def forward1_left0():
         count = count + 1
     ser.close()
     print("Serial port closed")
-def forward1_left0_respnse():
-
-    response = StreamingHttpResponse(forward1_left0(), content_type='multipart/x-mixed-replace; boundary=frame')
-    return response
-
