@@ -553,8 +553,13 @@ async function makeApiCallBasedOnCounter() {
 
 // Add event listener for the "Up" button
 shoulderup.addEventListener("click", function () {
+    const response = makeAPICall("http://192.168.1.51:4001/initialize");
+});
+// Add event listener for the "Up" button
+shoulderdown.addEventListener("click", function () {
     const response = makeAPICall("http://192.168.1.51:4001/moveshoulderup");
 });
+
 
 
 

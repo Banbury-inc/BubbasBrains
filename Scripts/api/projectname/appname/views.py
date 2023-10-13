@@ -31,4 +31,13 @@ def initialize(request):
     kit.servo[4].angle = shoulderangle
     kit.servo[2].angle = elbowangle
     kit.servo[3].angle = wristangle
+def moveShoulderUp(request):
+    print("Initializing Arm")
+    kit = ServoKit(channels=16)
+    elbowangle = 30
+    wristangle = 30
+    shoulderangle = 30
+    kit.servo[4].angle = shoulderangle
+    kit.servo[2].angle = elbowangle
+    kit.servo[3].angle = wristangle
  

@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('test/', views.test, name='test'),
     path('initialize/', views.initialize, name='initialize'),
+    path('moveshoulderup/', views.moveShoulderUp, name='moveshoulderup'),
 
 ]
 
