@@ -95,7 +95,147 @@ def videostream(request):
     
     return response
 
-
+def forward2_left2(request):
+    print("2,-2")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L300n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R400n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def forward2_left1(request):
+    print("2,-1")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L350n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R400n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def forward2_left0(request):
+    print("2,0")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L400n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R400n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    ser.close()
+    print("Serial port closed")
+def forward2_right1(request):
+    print("2,1")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L400n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R350n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def forward2_right2(request):
+    print("2,2")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L400n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R300n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def forward1_left2(request):
+    print("1,-2")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L200n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R300n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def forward1_left1(request):
+    print("1,-1")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L240n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R300n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
 def forward1_left0(request):
     print("1,0")
     count = 0
@@ -116,3 +256,362 @@ def forward1_left0(request):
         count = count + 1
     ser.close()
     print("Serial port closed")
+def forward1_right1(request):
+    print("1,1")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L300n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R240n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def forward1_right2(request):
+    print("1,2")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L300n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R200n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def forward0_left2(request):
+    print("0,-2")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L1n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R400n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def forward0_left1(request):
+    print("0,-1")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L100n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R300"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def forward0_left0(request):
+    print("0,0")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L200n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R200n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    ser.close()
+    print("Serial port closed")
+def forward0_right1(request):
+    print("0,1")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L300n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R100n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def forward0_right2(request):
+    print("0,2")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L400n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R1n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def backward1_left2(request):
+    print("-1 ,-2") 
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L200n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R100n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def backward1_left1(request):
+    print("-1,-1")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L150n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R100n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def backward1_left0(request):
+    print("-1,0")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L100n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R100n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    ser.close()
+    print("Serial port closed")
+def backward1_right1(request):
+    print("-1,1")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L100n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R150n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    ser.close()
+    print("Serial port closed")
+def backward1_right2(request):
+    print("-1,2")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L100n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R200n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def backward2_left2(request):
+    print("-2 ,-2")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L100n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R1n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def backward2_left1(request):
+    print("-2,-1")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L50n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R1n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def backward2_left0(request):
+    print("-2,0")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L1n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R1n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    ser.close()
+    print("Serial port closed")
+def backward2_right1(request):
+    print("-2,1")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L1n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R50n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+def backward2_right2(request):
+    print("-2,2")
+    count = 0
+    while count < 1:
+        global ser
+        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
+        baud_rate = 9600  # Adjust this to match your device's baud rate
+        ser = None  # Initialize ser outside of the try block
+        ser = serial.Serial(serial_port, baud_rate)
+        print(f"Connected to {serial_port} at {baud_rate} baud")
+        secondcount = 0 
+        while secondcount < 100:
+            user_input = "L1n"
+            ser.write(user_input.encode('utf-8'))
+            user_input = "R100n"
+            ser.write(user_input.encode('utf-8'))
+            secondcount = secondcount + 1
+        print("Timer finished, closing port")
+        count = count + 1
+    print("Serial port closed")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
