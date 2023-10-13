@@ -22,7 +22,6 @@ urlpatterns = [
     path('', include('appname.urls')), 
     path('admin/', admin.site.urls),
     path('test/', views.test, name='test'),
-    path('systeminfo/', views.system_info, name='test'),
 
 ]
 
