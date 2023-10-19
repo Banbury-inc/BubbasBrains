@@ -339,6 +339,7 @@ window.onload = getSystemInfo;
                                     <button id="elbowdown" class="remotebtn btn-secondary">Elbow Down</button>
                                     <button id="wristdown" class="remotebtn btn-secondary">Wrist Down</button>
                                     <button id="initialize" class="remotebtn btn-secondary">Initialize</button>
+                                    <button id="initialize" class="remotebtn btn-secondary">Follow Mode</button>
                                 </div>
                                 <script>
  
@@ -368,6 +369,25 @@ function handleButtonClick() {
             console.error('API call failed:', error);
         });
 }
+function handleFollowMode() {
+    // Replace 'http://different_ip:port/run_robot_script/' with the actual URL
+    const apiUrl = 'http://192.168.1.51:4001/followmode/';
+    // Send an HTTP GET request to the remote URL
+    fetch(apiUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`API call failed with status ${response.status}`);
+            }
+            return response.text();
+        })
+        .then((data) => {
+            console.log(data); // Log the response from the remote URL
+        })
+        .catch((error) => {
+            console.error('API call failed:', error);
+        });
+}
+
 function handleinitialize() {
     // Replace 'http://different_ip:port/run_robot_script/' with the actual URL
     const apiUrl = 'http://192.168.1.51:4001/initialize/';
@@ -480,18 +500,23 @@ function handlewristdown() {
 
 const apiButton = document.getElementById('shoulderup');
 const shoulderdown = document.getElementById('shoulderdown');
+const followmode = document.getElementById('followmode');
 const elbowup = document.getElementById('elbowup');
 const elbowdown = document.getElementById('elbowdown');
 const wristup = document.getElementById('wristup');
 const wristdown = document.getElementById('wristdown');
 const initialize = document.getElementById('initialize');
 initialize.addEventListener('click', handleinitialize);
+followmode.addEventListener('click', handleinitialize);
 apiButton.addEventListener('click', handleButtonClick);
 shoulderdown.addEventListener('click', handleshoulderdown);
 elbowup.addEventListener('click', handleelbowup);
 elbowdown.addEventListener('click', handleelbowdown);
 wristup.addEventListener('click', handlewristup);
 wristdown.addEventListener('click', handlewristdown);
+
+
+
     </script>
                         </div>
                 </div>

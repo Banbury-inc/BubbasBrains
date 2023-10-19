@@ -25,6 +25,9 @@ def test(request):
 def getSystemInfo(request):
     response = get_system_info.get_device_name()
     return JsonResponse({'result' : response})
+def followMode(request):
+    response = followMode()
+    return JsonResponse({'result' : response})
 def initialize(request):
     print("Initializing Arm")
     kit = ServoKit(channels=16)
