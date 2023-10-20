@@ -26,7 +26,8 @@ class ObjectDetection:
 
     def load_model(self):
        
-        model = YOLO("yolov8n.pt")  # load a pretrained YOLOv8n model
+#        model = YOLO("yolov8n.pt")  # load a pretrained YOLOv8n model
+        model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
         model.fuse()
     
         return model
