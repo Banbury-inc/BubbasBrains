@@ -73,6 +73,8 @@ while True:
     print("detected {:d} objects in image".format(len(detections)))
     xyxys = []
     for detection in detections:
+        confidence = detections[detection].Confidence
+        print(confidence)
         print(detection)
         
 #######################################################
