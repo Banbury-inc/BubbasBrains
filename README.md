@@ -21,6 +21,15 @@
 
 ![alt text](https://github.com/Banbury-inc/BubbasBrains/blob/main/assets/Architecture.png)
 
+## Logic
+
+This robot will have a selection of modes and tasks that it can complete autonomously, however we are expecting for the robot to have a lot of downtime as well. In other words, we are expecting for the robot to have a lot of time where it doesn't have a specific task to complete. In order to maximize this amount of time, we are going to incorporate certain logic that will help Bubba determine what would be the best action to follow through with. The loop will look like something of the following.
+1. Check weather, time, sunrise, sunset, make prediction on how much work it can do before it needs to charge
+2. If it needs to charge, charge
+3. if it doesnt need to charge, check to see if there are any pending tasks that need to be completed
+4. if there is a pending task that needs to be completed, complete it
+5. if there are no pending tasks that need to be completed, initiate exploration mode. This is basically a free roam mode that uses a curiosity-driven exploration algorithm. This algorithm involves the robot exploring its environment in a way that maximizes its information gain. The robot can do this by moving towards areas that are new or that have unexpected features.
+
 
 ## Pipeline
 
