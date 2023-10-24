@@ -72,22 +72,37 @@ while True:
     # print the detections
     print("detected {:d} objects in image".format(len(detections)))
     xyxys = []
+    
     for detection in detections:
         # the options that we have to extract from detections are
         # ClassID, Confidence, Left, Right, Width, Height, Bottom, Area and Center.
-
-        CLassID = detections[detection].ClassID
-        Confidence = detections[detection].Confidence
-        Left = detections[detection].Left
-        Right = detections[detection].Right
-        Width = detections[detection].Width
-        Height = detections[detection].Height
-        Bottom = detections[detection].Bottom
-        Area = detections[detection].Area
-        Center = detections[detection].Center
+        print(detection.ClassID)
+        CLassID = detection.ClassID
+        Confidence = detection.Confidence
+        Left = detection.Left
+        Right = detection.Right
+        Width = detection.Width
+        Height = detection.Height
+        Bottom = detection.Bottom
+        Area = detection.Area
+        Center = detection.Center
         
         print(detection)
-        
+        framecenterX = 640
+        ramecenterY = 360 
+        centerX = 0
+        centerY = 0
+        centerX, centerY = Center
+        print(centerX)
+        print(centerY)
+
+        if centerY < 240:
+            print("The camera is too low")
+        if centerY > 240:
+            if centerY < 480:
+                print("The camera is juuuuuuuuust right")
+        if centerY > 480:
+            print("The camera is too high")
 #######################################################
 
     top_left_height = 0
@@ -111,24 +126,11 @@ while True:
         # Dead center horizontally is 360. We can take the average of the two points and it will either be 
         # above or below the horizontal average of 640. If that is the case, we can call a function to move
         # the motor.         
-    framecenterX = 640
-    framecenterY = 360 
-    centerX, centerY = Center
-    print(centerX)
-    print(centerY)
+
     horizontal_average = (bottom_right_height + top_left_height) / 2
     print("Horizontal Average", horizontal_average)
-    if horizontal_average > 360:
-        print("The camera is too high")
-    if horizontal_average == 0:
-        print("There is no horizontal average")
-    if horizontal_average < 240:
-        print("The camera is too low")
-    if horizontal_average > 240:
-        if horizontal_average < 480:
-            print("The camera is juuuuuuuuust right")
-    if horizontal_average > 480:
-        print("The camera is too high")
+
+
  ######################################################       
 
     # render the image
