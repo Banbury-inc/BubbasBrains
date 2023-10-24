@@ -73,8 +73,19 @@ while True:
     print("detected {:d} objects in image".format(len(detections)))
     xyxys = []
     for detection in detections:
-        confidence = detections[detection].Confidence
-        print(confidence)
+        # the options that we have to extract from detections are
+        # ClassID, Confidence, Left, Right, Width, Height, Bottom, Area and Center.
+
+        CLassID = detections[detection].ClassID
+        Confidence = detections[detection].Confidence
+        Left = detections[detection].Left
+        Right = detections[detection].Right
+        Width = detections[detection].Width
+        Height = detections[detection].Height
+        Bottom = detections[detection].Bottom
+        Area = detections[detection].Area
+        Center = detections[detection].Center
+        
         print(detection)
         
 #######################################################
@@ -100,7 +111,11 @@ while True:
         # Dead center horizontally is 360. We can take the average of the two points and it will either be 
         # above or below the horizontal average of 640. If that is the case, we can call a function to move
         # the motor.         
-
+    framecenterX = 640
+    framecenterY = 360 
+    centerX, centerY = Center
+    print(centerX)
+    print(centerY)
     horizontal_average = (bottom_right_height + top_left_height) / 2
     print("Horizontal Average", horizontal_average)
     if horizontal_average > 360:
