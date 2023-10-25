@@ -1,3 +1,6 @@
+![Lines of code](https://img.shields.io/tokei/lines/%20/:user/https%3A%2F%2Fgithub.com%2FBanbury-inc%2FBubbasBrains)
+
+
 # Bubbas Brains
 
 "Bubba's Brains" is an advanced AI system powered by an Nvidia Jetson Nano. This versatile system offers a wide range of capabilities, including Object Detection, Live 3D Reconstruction, precise GPS mapping with inch-level accuracy, an extensive API library, and a Software Development Kit (SDK) for future enhancements. Designed for deployment on various robots, its primary focus in its prototype phase is agricultural tasks like planting, seeding, and harvesting, with the potential to expand its functionality to accomplish diverse tasks in the future.
