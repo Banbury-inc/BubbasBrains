@@ -1,7 +1,10 @@
-https://img.shields.io/github/stars/Banbury-inc/BubbasBrains
+![GitHub](https://img.shields.io/github/license/Banbury-inc/BubbasBrains)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Banbury-inc/BubbasBrains)
 ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/y/Banbury-inc/BubbasBrains)
-https://img.shields.io/github/issues/Banbury-inc/BubbasBrains
+![GitHub issues](https://img.shields.io/github/issues-raw/Banbury-inc/BubbasBrains)
+![GitHub Org's stars](https://img.shields.io/github/stars/Banbury-inc)
+
+
 
 
 
