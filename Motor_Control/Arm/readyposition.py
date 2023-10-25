@@ -6,9 +6,9 @@ from adafruit_servokit import ServoKit
 kit = ServoKit(channels=16)
 
 
-elbowangle = 30
-wristangle = 30
-shoulderangle = 30
+elbowangle = 90
+wristangle = 90
+shoulderangle = 45
 
 
 # Elbow
