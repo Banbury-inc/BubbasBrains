@@ -1,4 +1,8 @@
-![Lines of code](https://img.shields.io/tokei/lines/%20/:user/https%3A%2F%2Fgithub.com%2FBanbury-inc%2FBubbasBrains)
+https://img.shields.io/github/stars/Banbury-inc/BubbasBrains
+![GitHub repo size](https://img.shields.io/github/repo-size/Banbury-inc/BubbasBrains)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/y/Banbury-inc/BubbasBrains)
+https://img.shields.io/github/issues/Banbury-inc/BubbasBrains
+
 
 
 # Bubbas Brains
