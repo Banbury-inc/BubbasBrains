@@ -21,11 +21,24 @@
 # DEALINGS IN THE SOFTWARE.
 #
 
+
+
 import sys
 import argparse
 
 from jetson_inference import detectNet
 from jetson_utils import videoSource, videoOutput, Log
+
+
+
+
+class VisionAgent:
+    def __init__(self):
+        pass
+    def run(self):
+        while True:
+            pass
+
 
 # parse the command line
 parser = argparse.ArgumentParser(description="Locate objects in a live camera stream using an object detection DNN.", 
