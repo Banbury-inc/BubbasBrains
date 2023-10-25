@@ -1,14 +1,14 @@
-![GitHub](https://img.shields.io/github/license/Banbury-inc/BubbasBrains)
-![GitHub repo size](https://img.shields.io/github/repo-size/Banbury-inc/BubbasBrains)
-![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/y/Banbury-inc/BubbasBrains)
-![GitHub issues](https://img.shields.io/github/issues-raw/Banbury-inc/BubbasBrains)
-![GitHub Org's stars](https://img.shields.io/github/stars/Banbury-inc)
 
 
 
 
 
 # Bubbas Brains
+![GitHub](https://img.shields.io/github/license/Banbury-inc/BubbasBrains)
+![GitHub repo size](https://img.shields.io/github/repo-size/Banbury-inc/BubbasBrains)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/y/Banbury-inc/BubbasBrains)
+![GitHub issues](https://img.shields.io/github/issues-raw/Banbury-inc/BubbasBrains)
+![GitHub Org's stars](https://img.shields.io/github/stars/Banbury-inc)
 
 "Bubba's Brains" is an advanced AI system powered by an Nvidia Jetson Nano. This versatile system offers a wide range of capabilities, including Object Detection, Live 3D Reconstruction, precise GPS mapping with inch-level accuracy, an extensive API library, and a Software Development Kit (SDK) for future enhancements. Designed for deployment on various robots, its primary focus in its prototype phase is agricultural tasks like planting, seeding, and harvesting, with the potential to expand its functionality to accomplish diverse tasks in the future.
 
