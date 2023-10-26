@@ -1,20 +1,29 @@
 import threading
 from navigation_agent.navigation_agent import NavigationAgent
+from task_management_agent.task_management_agent import TaskManagementAgent
+from vision_agent.vision_agent import VisionAgent
+from communication_agent.communication_agent import CommunicationAgent
 
 def main():
     # Initialize agents
 #    task_agent = TaskManagementAgent()
 #    vision_agent = VisionAgent()
+    print("Initializing Communication Agent")
+    communication_agent = CommunicationAgent()
+    print("Initializing Task Management Agent")
+    task_management_agent = TaskManagementAgent()
     print("Initializing Navigation Agent")
     navigation_agent = NavigationAgent()
-
-    # Assuming each agent has a 'run' method which starts its main loop/process.
+    print("Initializing Vision Agent")
+    vision_agent = VisionAgent()
+   # Assuming each agent has a 'run' method which starts its main loop/process.
     # We'll use Python threads to run each agent in parallel for simplicity.
     # Depending on the application, you might opt for processes or even distributed setups.
     
     agent_threads = [
-#        threading.Thread(target=task_agent.run, name="TaskManagementAgent"),
-#        threading.Thread(target=task_agent.run, name="VisionAgent"),
+        threading.Thread(target=communication_agent.run, name="CommunicationAgent"),
+        threading.Thread(target=task_management_agent.run, name="TaskManagementAgent"),
+        threading.Thread(target=vision_agent.run, name="VisionAgent"),
         threading.Thread(target=navigation_agent.run, name="NavigationAgent"),
 
     ]

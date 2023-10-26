@@ -1,5 +1,7 @@
 import queue
-
+from navigation_agent.navigation_agent import NavigationAgent
+from vision_agent.vision_agent import VisionAgent
+from communication_agent.communication_agent import CommunicationAgent
 class TaskManagementAgent:
     def __init__(self, maxsize=0):
         # Using Python's built-in queue module.
@@ -29,7 +31,17 @@ class TaskManagementAgent:
     def size(self):
         """Returns the number of tasks in the queue."""
         return self._tasks.qsize()
+    def log_message():
+        role = "Task Management Agent"
+        message = "Task Management Agent Initialized"
+        CommunicationAgent.log_message(role, message)
+    def run(self):
+        print("Task Management Agent Initialized")
+        role = "Task Management Agent"
+        message = "Task Management Agent Initialized"
+        CommunicationAgent.log_message(role, message)
 
+   
 # Example usage
 if __name__ == "__main__":
     tq = TaskManagementAgent()
