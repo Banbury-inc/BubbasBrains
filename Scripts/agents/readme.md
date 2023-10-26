@@ -59,3 +59,14 @@ service_robot/
 │   └── ... (configuration files for agents and interfaces)
 │
 └── main.py (or robot_startup.py or service_robot.py)
+
+
+
+
+
+
+# Object Detection Stream
+http://192.168.1.51:8554/
+
+# Command to start stream on Jetson 
+python3.8 detectnet.py /dev/video0 webrtc://@:8554/my_output

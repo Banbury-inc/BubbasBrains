@@ -3,7 +3,7 @@ from navigation_agent.navigation_agent import NavigationAgent
 from task_management_agent.task_management_agent import TaskManagementAgent
 from vision_agent.vision_agent import VisionAgent
 from communication_agent.communication_agent import CommunicationAgent
-
+from motor_control_agent.motor_control_agent import MotorControlAgent
 def main():
     # Initialize agents
 #    task_agent = TaskManagementAgent()
@@ -12,6 +12,8 @@ def main():
     communication_agent = CommunicationAgent()
     print("Initializing Task Management Agent")
     task_management_agent = TaskManagementAgent()
+    print("Initializing Motor Control Agent")
+    motor_control_agent = MotorControlAgent()
     print("Initializing Navigation Agent")
     navigation_agent = NavigationAgent()
     print("Initializing Vision Agent")
@@ -23,6 +25,7 @@ def main():
     agent_threads = [
         threading.Thread(target=communication_agent.run, name="CommunicationAgent"),
         threading.Thread(target=task_management_agent.run, name="TaskManagementAgent"),
+        threading.Thread(target=motor_control_agent.run, name="MotorControlAgent"),
         threading.Thread(target=vision_agent.run, name="VisionAgent"),
         threading.Thread(target=navigation_agent.run, name="NavigationAgent"),
 

@@ -1,33 +1,8 @@
-#!/usr/bin/env python3
-#
-# Copyright (c) 2020, NVIDIA CORPORATION. All rights reserved.
-#
-# Permission is hereby granted, free of charge, to any person obtaining a
-# copy of this software and associated documentation files (the "Software"),
-# to deal in the Software without restriction, including without limitation
-# the rights to use, copy, modify, merge, publish, distribute, sublicense,
-# and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
-# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-# DEALINGS IN THE SOFTWARE.
-#
-
-
-
 import sys
 import argparse
 from communication_agent.communication_agent import CommunicationAgent
 from vision_agent.camera import Camera
-
+import logging
 
 
 
@@ -35,14 +10,18 @@ from vision_agent.camera import Camera
 class VisionAgent:
     def __init__(self):
         pass
-    def log_message():
-        role = "Task Management Agent"
-        message = "Task Management Agent Initialized"
-        CommunicationAgent.log_message(role, message)
- 
-    def run(self):
+    def log_message(message):
         role = "Vision Agent"
-        message = "Vision Agent Initialized"
         CommunicationAgent.log_message(role, message)
+    def run(self):
+        message = "Vision Agent Initialized"
+        VisionAgent.log_message(message)
         print("Vision Agent initialized")
-        Camera.run(self) 
+        try:
+            Camera.run(self) 
+            VisionAgent.log_message("Camera sucessfully streaming at 192.168.1.51:8554")
+            print("Camera sucessfully streaming at 192.168.1.51:8554")
+        except Exception as e:
+            message = ("An error occured: " +  str(e))
+            VisionAgent.log_message(message)
+

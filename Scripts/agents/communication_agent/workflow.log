@@ -1,12 +1,24 @@
-2023-10-26 13:46:56,168:INFO: Communication Agent
+2023-10-26 16:17:32,016:INFO: Communication Agent
 
 Message: Communication Agent has been initiated
 
-2023-10-26 13:46:56,168:INFO: Task Management Agent
+2023-10-26 16:17:32,017:INFO: Task Management Agent
 
 Message: Task Management Agent Initialized
 
-2023-10-26 13:46:56,168:INFO: Vision Agent
+2023-10-26 16:17:32,018:INFO: Motor Control Agent
+
+Message: Motor Control Agent Initialized
+
+2023-10-26 16:17:32,018:INFO: Vision Agent
 
 Message: Vision Agent Initialized
+
+2023-10-26 16:17:32,074:INFO: Vision Agent
+
+Message: An error occured: [Errno 2] No such file or directory: 'video-viewer /dev/video0 webrtc://@:8554/my_output'
+
+2023-10-26 16:17:32,608:INFO: Motor Control Agent
+
+Message: Arm has been moved to Elbow Angle: 90 Wrist Angle: 90 Shoulder Angle: 45
 
