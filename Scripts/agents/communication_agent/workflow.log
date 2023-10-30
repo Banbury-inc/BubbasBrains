@@ -1,24 +1,20 @@
-2023-10-26 16:17:32,016:INFO: Communication Agent
+2023-10-30 16:04:53,027:INFO: Communication Agent
 
 Message: Communication Agent has been initiated
 
-2023-10-26 16:17:32,017:INFO: Task Management Agent
+2023-10-30 16:04:53,027:INFO: Task Management Agent
 
 Message: Task Management Agent Initialized
 
-2023-10-26 16:17:32,018:INFO: Motor Control Agent
-
-Message: Motor Control Agent Initialized
-
-2023-10-26 16:17:32,018:INFO: Vision Agent
+2023-10-30 16:04:53,027:INFO: Vision Agent
 
 Message: Vision Agent Initialized
 
-2023-10-26 16:17:32,074:INFO: Vision Agent
+2023-10-30 16:04:53,037:INFO: Health Agent
 
-Message: An error occured: [Errno 2] No such file or directory: 'video-viewer /dev/video0 webrtc://@:8554/my_output'
+Message: Health Agent Initialized
 
-2023-10-26 16:17:32,608:INFO: Motor Control Agent
+2023-10-30 16:04:53,592:INFO: Communication Agent
 
-Message: Arm has been moved to Elbow Angle: 90 Wrist Angle: 90 Shoulder Angle: 45
+Message: Backend server is running under 192.168.1.51:4001
 

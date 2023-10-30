@@ -1,12 +1,7 @@
-
-
 import sys
 import argparse
 import logging
 import os
-
-
-
 class CommunicationAgent:
     def __init__(self):
         self.setup_logger()
@@ -14,28 +9,29 @@ class CommunicationAgent:
     def setup_logger(self):
         # Get the directory where the script is located
         script_dir = os.path.dirname(os.path.abspath(__file__))
-
         # Build the full path to the log file within that directory
         log_filename = os.path.join(script_dir, 'workflow.log')
-
         # Check if the file already exists
         if os.path.exists(log_filename):
             os.remove(log_filename)
-
         # Configure logging settings
         logging.basicConfig(filename=log_filename,
                             level=logging.INFO,
                             format='%(asctime)s:%(levelname)s:%(message)s')
-
+    def run_server():
+        from task_management_agent.task_management_agent import TaskManagementAgent
+        TaskManagementAgent.start_program("backend server", "high", True) 
+        os.chdir("Scripts/api/projectname")
+        os.system("python3 manage.py runserver 192.168.1.51:4001")
+        print("Backend server is running under 192.168.1.51:4001")
     def run(self):
         role = "Communication Agent"
         print("Communication Agent initialized")
-
         message = "Communication Agent has been initiated"
-
-        # Write a sample message to the log file
         self.log_message(role, message)
-
+        CommunicationAgent.run_server() 
+        message = "Backend server is running under 192.168.1.51:4001"
+        self.log_message(role, message)
     @staticmethod
     def log_message(role, message):
         logging.info(' ' + role + '\n' + '\n' + 'Message: ' + message + '\n')
