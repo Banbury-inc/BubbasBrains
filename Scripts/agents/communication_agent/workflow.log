@@ -1,20 +1,20 @@
-2023-10-30 16:04:53,027:INFO: Communication Agent
+2023-11-06 09:56:22,495:INFO: Communication Agent
 
 Message: Communication Agent has been initiated
 
-2023-10-30 16:04:53,027:INFO: Task Management Agent
+2023-11-06 09:56:22,496:INFO: Task Management Agent
 
 Message: Task Management Agent Initialized
 
-2023-10-30 16:04:53,027:INFO: Vision Agent
+2023-11-06 09:56:22,496:INFO: Vision Agent
 
 Message: Vision Agent Initialized
 
-2023-10-30 16:04:53,037:INFO: Health Agent
+2023-11-06 09:56:22,501:INFO: Health Agent
 
 Message: Health Agent Initialized
 
-2023-10-30 16:04:53,592:INFO: Communication Agent
+2023-11-06 09:56:23,075:INFO: Communication Agent
 
 Message: Backend server is running under 192.168.1.51:4001
 
