@@ -4,8 +4,7 @@ import argparse
 from jetson_inference import detectNet
 from jetson_utils import videoSource, videoOutput, Log
 from adafruit_servokit import ServoKit
-import serial.tools.list_ports
-from .serializers import ItemSerializer
+
 
 '''
 To run:
@@ -121,143 +120,20 @@ while True:
             # vertical zones will be 0-426, 427-853, 854-1280
                 if centerX < 800:
                     print("moving to the left")
-                    print("2,0")
-                    count = 0
-                    while count < 1:
-                        global ser
-                        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
-                        baud_rate = 9600  # Adjust this to match your device's baud rate
-                        ser = None
-                        ser = serial.Serial(serial_port, baud_rate)
-                        print(f"Connected to {serial_port} at {baud_rate} baud")
-                        secondcount = 0 
-                        while secondcount < 100:
-                            user_input = "L100n"
-                            ser.write(user_input.encode('utf-8'))
-                            user_input = "R300n"
-                            ser.write(user_input.encode('utf-8'))
-                            secondcount = secondcount + 1
-                        print("Timer finished, closing port")
-                        count = count + 1
-                    ser.close()
-                    print("Serial port closed")
-
                     time.sleep(0.01)
                 if centerX > 800:
                     if centerX < 853:
                         print("Bubbabot does not need to be moved")
-                        count = 0
-                        while count < 1:
-                            serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
-                            baud_rate = 9600  # Adjust this to match your device's baud rate
-                            ser = None
-                            ser = serial.Serial(serial_port, baud_rate)
-                            print(f"Connected to {serial_port} at {baud_rate} baud")
-                            secondcount = 0 
-                            while secondcount < 100:
-                                user_input = "L200n"
-                                ser.write(user_input.encode('utf-8'))
-                                user_input = "R200n"
-                                ser.write(user_input.encode('utf-8'))
-                                secondcount = secondcount + 1
-                            print("Timer finished, closing port")
-                            count = count + 1
-                        ser.close()
-                        print("Serial port closed")
-
-    
-
                 if centerX >= 854:
                     print("moving to the right")
-                    count = 0
-                    while count < 1:
-                        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
-                        baud_rate = 9600  # Adjust this to match your device's baud rate
-                        ser = None
-                        ser = serial.Serial(serial_port, baud_rate)
-                        print(f"Connected to {serial_port} at {baud_rate} baud")
-                        secondcount = 0 
-                        while secondcount < 100:
-                            user_input = "L300n"
-                            ser.write(user_input.encode('utf-8'))
-                            user_input = "R100n"
-                            ser.write(user_input.encode('utf-8'))
-                            secondcount = secondcount + 1
-                        print("Timer finished, closing port")
-                        count = count + 1
-                    ser.close()
-                    print("Serial port closed")
-
-
                     time.sleep(0.01)
                 if Area < 10000:
                     print("Bubbabot needs to move closer") 
-                    print("2,0")
-                    count = 0
-                    while count < 1:
-                        serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
-                        baud_rate = 9600  # Adjust this to match your device's baud rate
-                        ser = None
-                        ser = serial.Serial(serial_port, baud_rate)
-                        print(f"Connected to {serial_port} at {baud_rate} baud")
-                        secondcount = 0 
-                        while secondcount < 100:
-                            user_input = "L300n"
-                            ser.write(user_input.encode('utf-8'))
-                            user_input = "R300n"
-                            ser.write(user_input.encode('utf-8'))
-                            secondcount = secondcount + 1
-                        print("Timer finished, closing port")
-                        count = count + 1
-                    ser.close()
-                    print("Serial port closed")
-
                 if Area > 30000:
                     if Area < 20000:
                         print("Bubbabot is a good distance")
-                        print("2,0")
-                        count = 0
-                        while count < 1:
-                            serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
-                            baud_rate = 9600  # Adjust this to match your device's baud rate
-                            ser = None
-                            ser = serial.Serial(serial_port, baud_rate)
-                            print(f"Connected to {serial_port} at {baud_rate} baud")
-                            secondcount = 0 
-                            while secondcount < 100:
-                                user_input = "L200n"
-                                ser.write(user_input.encode('utf-8'))
-                                user_input = "R200n"
-                                ser.write(user_input.encode('utf-8'))
-                                secondcount = secondcount + 1
-                            print("Timer finished, closing port")
-                            count = count + 1
-                        ser.close()
-                        print("Serial port closed")
-
                     else:
                         print("Bubbabot is too close")
-                        print("2,0")
-                        count = 0
-                        while count < 1:
-                            serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
-                            baud_rate = 9600  # Adjust this to match your device's baud rate
-                            ser = None
-                            ser = serial.Serial(serial_port, baud_rate)
-                            print(f"Connected to {serial_port} at {baud_rate} baud")
-                            secondcount = 0 
-                            while secondcount < 100:
-                                user_input = "L100n"
-                                ser.write(user_input.encode('utf-8'))
-                                user_input = "R100n"
-                                ser.write(user_input.encode('utf-8'))
-                                secondcount = secondcount + 1
-                            print("Timer finished, closing port")
-                            count = count + 1
-                        ser.close()
-                        print("Serial port closed")
-
- 
 #        if detectedperson == False:
 #                wristangle = 90
  #               kit.servo[3].angle = wristangle
