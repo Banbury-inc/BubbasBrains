@@ -85,6 +85,6 @@ i2cdetect -y <bus_number>
 
 ## Intel Realsense Camera
 
-1 /dev/video0 - Depth sensor (Z16)
-2 /dev/video1 - IR sensor (Y8/Y16)
-3 /dev/video2 - RGB sensor (YUYV/BYR2)
+1. /dev/video0 - Depth sensor (Z16)
+2. /dev/video1 - IR sensor (Y8/Y16)
+3. /dev/video2 - RGB sensor (YUYV/BYR2)
