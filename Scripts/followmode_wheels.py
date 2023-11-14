@@ -112,8 +112,8 @@ while True:
             # vertical zones will be 0-426, 533-746, 854-1280
 
                 if centerX < 533:
+
                             print("moving to the left")
-                            print("2,0")
                             user_input = "L100n"
                             ser.write(user_input.encode('utf-8'))
                             user_input = "R300n"
@@ -126,14 +126,14 @@ while True:
                                 ser.write(user_input.encode('utf-8'))
                                 user_input = "R200n"
                                 ser.write(user_input.encode('utf-8'))
-                                print("Timer finished, closing port")                
                 if centerX >= 746:
-                            print("moving to the right")
-                            user_input = "L300n"
-                            ser.write(user_input.encode('utf-8'))
-                            user_input = "R100n"
-                            ser.write(user_input.encode('utf-8'))
-                            print("Timer finished, closing port")
+
+                        print("moving to the right")
+                        user_input = "L300n"
+                        ser.write(user_input.encode('utf-8'))
+                        user_input = "R100n"
+                        ser.write(user_input.encode('utf-8'))
+
 
                 '''
                 if Area < 10000:
