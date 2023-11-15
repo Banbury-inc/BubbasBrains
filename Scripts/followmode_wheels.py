@@ -179,41 +179,6 @@ while True:
 
 
 
-
- 
-
-   
-
-#######################################################
-
-    top_left_height = 0
-    top_left_width = 0
-    bottom_right_height = 0
-    bottom_right_width = 0 
-
-    if len(xyxys) > 0 and xyxys[0].shape ==(1,4):
-        numbers = xyxys[0][0]
-        top_left_width, top_left_height, bottom_right_width, bottom_right_height = numbers
-
-    # The array prints out top left corner, bottom right corner, 
-        print("Top Left Width:", top_left_width)
-        print("Top Left Height:", top_left_height)
-        print("Bottom Right Width:", bottom_right_width)
-        print("Bottom Right Height:", bottom_right_height)
-        print("")
-#        print(xyxys) 
-        # The dimensions of the frame is 1280 x 720, so we need to figure out a way to write an if statement 
-        # saying that if most of the frame is above or below the dead center, move the motor upwards or downwards.
-        # Dead center horizontally is 360. We can take the average of the two points and it will either be 
-        # above or below the horizontal average of 640. If that is the case, we can call a function to move
-        # the motor.         
-
-    horizontal_average = (bottom_right_height + top_left_height) / 2
-    print("Horizontal Average", horizontal_average)
-
-
- ######################################################       
-
     # render the image
     output.Render(img)
 
