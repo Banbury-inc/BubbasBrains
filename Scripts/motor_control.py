@@ -7,64 +7,34 @@ baud_rate = 115200  # Adjust this to match your device's baud rate
 ser = serial.Serial(serial_port, baud_rate)
 print(f"Connected to {serial_port} at {baud_rate} baud")
 
-
-
-
-user_input = "L200n"
+user_input = "L5"
 ser.write(user_input.encode('utf-8'))
-user_input = "R200n"
-ser.write(user_input.encode('utf-8'))
-time.sleep(5)
-
-user_input = "L300n"
-ser.write(user_input.encode('utf-8'))
-user_input = "R300n"
-ser.write(user_input.encode('utf-8'))
-time.sleep(5)
-
-user_input = "L200n"
-ser.write(user_input.encode('utf-8'))
-user_input = "R200n"
-ser.write(user_input.encode('utf-8'))
-time.sleep(5)
-
-user_input = "L300n"
-ser.write(user_input.encode('utf-8'))
-user_input = "R300n"
+user_input = "R5"
 ser.write(user_input.encode('utf-8'))
 time.sleep(3)
 
-user_input = "L100n"
+user_input = "L1"
 ser.write(user_input.encode('utf-8'))
-user_input = "R100n"
+user_input = "R1"
+ser.write(user_input.encode('utf-8'))
+time.sleep(3)
+
+user_input = "L9"
+ser.write(user_input.encode('utf-8'))
+user_input = "R9"
+ser.write(user_input.encode('utf-8'))
+time.sleep(5)
+
+user_input = "L1"
+ser.write(user_input.encode('utf-8'))
+user_input = "R1"
 ser.write(user_input.encode('utf-8'))
 time.sleep(3)
 
 
-user_input = "L200n"
+user_input = "L5"
 ser.write(user_input.encode('utf-8'))
-user_input = "R200n"
+user_input = "R5"
 ser.write(user_input.encode('utf-8'))
-
-
-time.sleep(5)
-user_input = "L300n"
-ser.write(user_input.encode('utf-8'))
-user_input = "R300n"
-ser.write(user_input.encode('utf-8'))
-
-time.sleep(5)
-user_input = "L300n"
-ser.write(user_input.encode('utf-8'))
-user_input = "R300n"
-ser.write(user_input.encode('utf-8'))
-
-
-user_input = "L200n"
-ser.write(user_input.encode('utf-8'))
-user_input = "R200n"
-ser.write(user_input.encode('utf-8'))
-
-
-
+time.sleep(3)
 

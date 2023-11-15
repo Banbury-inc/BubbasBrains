@@ -111,61 +111,75 @@ while True:
             # vertical zones will be 0-426, 427-853, 854-1280
             # vertical zones will be 0-426, 533-746, 854-1280
 
-                if centerX < 533:
-
-                            print("moving to the left")
-                            user_input = "L100n"
-                            ser.write(user_input.encode('utf-8'))
-                            user_input = "R300n"
-                            ser.write(user_input.encode('utf-8'))
-
-                if centerX >= 533:
-                    if centerX < 746:
-                                print("Bubbabot does not need to be moved")
-                                user_input = "L200n"
+                        if Area < 50000:
+                            print("Bubbabot needs to move closer") 
+                            if centerX < 533:
+                                print("moving to the left")
+                                user_input = "L6"
                                 ser.write(user_input.encode('utf-8'))
-                                user_input = "R200n"
+                                user_input = "R7"
                                 ser.write(user_input.encode('utf-8'))
-                if centerX >= 746:
+                            if centerX >= 533:
+                                if centerX < 746:
+                                    print("Bubbabot does not need to rotate")
+                                    user_input = "L7"
+                                    ser.write(user_input.encode('utf-8'))
+                                    user_input = "R7"
+                                    ser.write(user_input.encode('utf-8'))
+                                if centerX >= 746:
+                                            print("moving to the right")
+                                            user_input = "L7"
+                                            ser.write(user_input.encode('utf-8'))
+                                            user_input = "R6"
+                                            ser.write(user_input.encode('utf-8'))
+                        if Area > 50000:
+                            if Area < 80000:
+                                print("Bubbabot is a good distance")
+                                if centerX < 533:
+                                            print("moving to the left")
+                                            user_input = "L2"
+                                            ser.write(user_input.encode('utf-8'))
+                                            user_input = "R6"
+                                            ser.write(user_input.encode('utf-8'))
+                                if centerX >= 533:
+                                    if centerX < 746:
+                                        print("Bubbabot does not need to rotate")
+                                        user_input = "L5"
+                                        ser.write(user_input.encode('utf-8'))
+                                        user_input = "R5"
+                                        ser.write(user_input.encode('utf-8'))
+                                    if centerX >= 746:
+                                        print("moving to the right")
+                                        user_input = "L6"
+                                        ser.write(user_input.encode('utf-8'))
+                                        user_input = "R2"
+                                        ser.write(user_input.encode('utf-8'))
+                            if Area > 80000:
+                                print("Bubbabot is too close")
+                                if centerX < 533:
+                                    print("moving to the left")
+                                    user_input = "L1"
+                                    ser.write(user_input.encode('utf-8'))
+                                    user_input = "R3"
+                                    ser.write(user_input.encode('utf-8'))
+                                if centerX >= 533:
+                                    if centerX < 746:
+                                        print("Bubbabot does not need to rotate")
+                                        user_input = "L1"
+                                        ser.write(user_input.encode('utf-8'))
+                                        user_input = "R1"
+                                        ser.write(user_input.encode('utf-8'))
+                                    if centerX >= 746:
+                                        print("moving to the right")
+                                        user_input = "L3"
+                                        ser.write(user_input.encode('utf-8'))
+                                        user_input = "R1"
+                                        ser.write(user_input.encode('utf-8'))
 
-                        print("moving to the right")
-                        user_input = "L300n"
-                        ser.write(user_input.encode('utf-8'))
-                        user_input = "R100n"
-                        ser.write(user_input.encode('utf-8'))
 
 
-                '''
-                if Area < 10000:
-                    print("Bubbabot needs to move closer") 
-                    user_input = "L300n"
-                    ser.write(user_input.encode('utf-8'))
-                    user_input = "R300n"
-                    ser.write(user_input.encode('utf-8'))
-                    print("Timer finished, closing port")
 
-                if Area > 30000:
-                    if Area < 20000:
-                        print("Bubbabot is a good distance")
-                        user_input = "L200n"
-                        ser.write(user_input.encode('utf-8'))
-                        user_input = "R200n"
-                        ser.write(user_input.encode('utf-8'))
-                        print("Timer finished, closing port")
 
-                    else:
-                        print("Bubbabot is too close")
-                        user_input = "L100n"
-                        ser.write(user_input.encode('utf-8'))
-                        user_input = "R100n"
-                        ser.write(user_input.encode('utf-8'))
-                        print("Timer finished, closing port")
-                '''
- #
- #       if detectedperson == False:
- #               wristangle = 90
- #               kit.servo[3].angle = wristangle
- #               time.sleep(0.01)
  
 
    
