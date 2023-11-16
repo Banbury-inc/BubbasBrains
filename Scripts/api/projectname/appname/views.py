@@ -4,6 +4,7 @@ import serial.tools.list_ports
 from .serializers import ItemSerializer
 from django.http import JsonResponse
 from django.http import HttpResponse
+from Scripts.agents.communication_agent.communication_agent import CommunicationAgent
 import sys
 import os
 from django.shortcuts import render
@@ -22,6 +23,10 @@ def index(request):
 def test(request):
     response = "Hello World"
     return JsonResponse({'result' : response})
+def startFollowMode():
+    CommunicationAgent.startFollowMode()
+def stopFollowMode():
+    pass
 def getSystemInfo(request):
     response = get_system_info.get_device_name()
     return JsonResponse({'result' : response})
@@ -95,7 +100,6 @@ def generate_video_frames():
 def videostream(request):
     # Set the content type to multipart/x-mixed-replace
     response = StreamingHttpResponse(generate_video_frames(), content_type='multipart/x-mixed-replace; boundary=frame')
-    
     return response
 
 def forward2_left2(request):

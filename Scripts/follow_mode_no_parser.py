@@ -9,53 +9,25 @@ from adafruit_servokit import ServoKit
 import serial.tools.list_ports
 
 
-'''
-To run:
-
-python3 followmode_wheels.py /dev/video2
-
-or to stream to a website
-
-python3 followmode_wheels.py /dev/video2 webrtc://@:8554/output
-
-'''
-
 # create video sources and outputs
 input = videoSource("/dev/video2")
 output = videoOutput("webrtc://@:8554/output")
-	
-# load the object detection network
 net = detectNet("ssd-mobilenet-v2", sys.argv, 0.5)
-# note: to hard-code the paths to load a model, the following API can be used:
-#
-# net = detectNet(model="model/ssd-mobilenet.onnx", labels="model/labels.txt", 
-#                 input_blob="input_0", output_cvg="scores", output_bbox="boxes", 
-#                 threshold=args.threshold)
 
-# process frames until EOS or the user exits
+
 serial_port = '/dev/ttyUSB0'  # Adjust this to match your serial port
 baud_rate = 115200  # Adjust this to match your device's baud rate
 ser = serial.Serial(serial_port, baud_rate)
 print(f"Connected to {serial_port} at {baud_rate} baud")
 
-
-
 while True:
-    # capture the next image
-  #  img = input.Capture()
     img = input.Capture()
-
     if img is None: # timeout
         continue  
-        
-    # detect objects in the image (with overlay)
     detections = net.Detect(img)
-
     # print the detections
     print("detected {:d} objects in image".format(len(detections)))
     xyxys = []
-
-
     detectedperson = False
     for detection in detections:
         # the options that we have to extract from detections are
@@ -81,10 +53,6 @@ while True:
         print(centerX)
         print(centerY)
         print(Area)
-
-
-
-
         # If the object detected is a person
         if ClassName == "person":
             detectedperson = True
@@ -156,17 +124,10 @@ while True:
                                         ser.write(user_input.encode('utf-8'))
                                         user_input = "R1"
                                         ser.write(user_input.encode('utf-8'))
-
-
-
-
     # render the image
     output.Render(img)
-
-
     # print out performance info
     net.PrintProfilerTimes()
-
     # exit on input/output EOS
     if not input.IsStreaming() or not output.IsStreaming():
         break

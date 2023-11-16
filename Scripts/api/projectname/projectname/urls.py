@@ -22,6 +22,8 @@ urlpatterns = [
     path('', include('appname.urls')), 
     path('admin/', admin.site.urls),
     path('test/', views.test, name='test'),
+    path('startfollowmode/', views.startFollowMode, name='startfollowmode'),
+    path('stopfollowmode/', views.stopFollowMode, name='stopfollowmode'),
     path('initialize/', views.initialize, name='initialize'),
     path('moveshoulderup/', views.moveShoulderUp, name='moveshoulderup'),
     path('moveshoulderdown/', views.moveShoulderDown, name='moveshoulderDown'),
@@ -55,6 +57,5 @@ urlpatterns = [
     path('backward2_left0/', views.backward2_left0, name='moveshoulderup'),
     path('backward2_right1/', views.backward2_right1, name='moveshoulderup'),
     path('backward2_right2/', views.backward2_right2, name='moveshoulderup'),
-
 ]
 
