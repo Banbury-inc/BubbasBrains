@@ -1,26 +1,43 @@
 
 import bluetooth
 
-server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+# Create a Bluetooth server socket
+server_socket = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+port = 1  # Bluetooth port (RFCOMM)
 
-port = 1
-server_sock.bind(("", port))
-server_sock.listen(1)
+# Bind the server socket to a specific Bluetooth port
+server_socket.bind(("", port))
 
-print("Waiting for a connection...")
-client_sock, address = server_sock.accept()
-print("Accepted connection from ", address)
+# Listen for incoming connections (1 is the maximum number of queued connections)
+server_socket.listen(1)
 
-try:
-    while True:
-        data = client_sock.recv(1024)
-        print("Received [%s]" % data)
-        # Here you can add code to process the received data and perform actions
+print("Waiting for a Bluetooth connection...")
+client_socket, client_info = server_socket.accept()
+print(f"Accepted connection from {client_info}")
 
-except IOError:
-    pass
+while True:
+    try:
+        # Receive data from the client
+        data = client_socket.recv(1024).decode("utf-8")
 
-print("Disconnected.")
-client_sock.close()
-server_sock.close()
+        if not data:
+            break
 
+        # Process the received command (replace with your own logic)
+        if data == "led_on":
+            # Execute a command when "led_on" is received
+            print("Turning LED on")
+            # Add your code to control hardware here
+
+        elif data == "led_off":
+            # Execute a command when "led_off" is received
+            print("Turning LED off")
+            # Add your code to control hardware here
+
+    except Exception as e:
+        print(f"Error: {e}")
+        break
+
+# Close the client and server sockets
+client_socket.close()
+server_socket.close()
