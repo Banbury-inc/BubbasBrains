@@ -9,14 +9,14 @@ class VirtualJoystick:
     def __init__(self, root, raspberry_pi_address):
         self.root = root
         self.root.title("Virtual Joystick")
-
+        self.root.attributes('-fullscreen', True)
         # Bluetooth setup
         self.sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
         self.sock.connect((raspberry_pi_address, 1))
         self.stop_event = threading.Event()
 
 
-        self.canvas = tk.Canvas(root, width=300, height=300)
+        self.canvas = tk.Canvas(root, width=700, height=700)
         self.canvas.pack()
 
         # Draw outer circle (base of joystick)
@@ -73,7 +73,7 @@ class VirtualJoystick:
             except bluetooth.btcommon.BluetoothError as e:
                 print(f"Bluetooth Error: {e}")
                 break
-            time.sleep(1)
+            time.sleep(.1)
 
     def close(self):
         self.stop_event.set()
