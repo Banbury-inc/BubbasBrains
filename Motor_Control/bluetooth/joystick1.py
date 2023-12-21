@@ -1,8 +1,6 @@
 import tkinter as tk
 import time
 import threading
-import bluetooth
-
 
 class VirtualJoystick:
     def __init__(self, root):
@@ -21,8 +19,10 @@ class VirtualJoystick:
         # Bind mouse events
         self.canvas.tag_bind(self.inner_circle, "<ButtonPress-1>", self.on_click)
         self.canvas.tag_bind(self.inner_circle, "<B1-Motion>", self.on_drag)
+        self.canvas.tag_bind(self.inner_circle, "<ButtonRelease-1>", self.on_release)
 
         self.joystick_position = (0, 0)
+        self.inner_circle_center = (150, 150)  # Initial position at the center
         self.update_thread = threading.Thread(target=self.print_position)
         self.update_thread.daemon = True
         self.update_thread.start()
@@ -36,6 +36,13 @@ class VirtualJoystick:
         dy = event.y - self.inner_circle_center[1]
         self.canvas.move(self.inner_circle, dx, dy)
         self.inner_circle_center = (event.x, event.y)
+        self.update_position()
+
+    def on_release(self, event):
+        # Set the inner circle directly to the center position
+        self.canvas.coords(self.inner_circle, 120, 120, 180, 180)
+        self.inner_circle_center = (150, 150)
+        self.joystick_position = (0, 0)
         self.update_position()
 
     def update_position(self):
@@ -55,3 +62,4 @@ class VirtualJoystick:
 root = tk.Tk()
 joystick = VirtualJoystick(root)
 root.mainloop()
+
