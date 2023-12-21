@@ -15,23 +15,38 @@ class VirtualJoystick:
         self.sock.connect((raspberry_pi_address, 1))
         self.stop_event = threading.Event()
 
-
-        self.canvas = tk.Canvas(root, width=300, height=300)
+        # Adjust the canvas size to fill the entire screen
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+        self.canvas = tk.Canvas(root, width=screen_width, height=screen_height)
         self.canvas.pack()
 
-        # Draw outer circle (base of joystick)
-        self.outer_circle = self.canvas.create_oval(50, 50, 250, 250, fill="gray")
+        # Dimensions and positions for the joystick
+        self.radius = 100  # Radius for outer circle
+        self.inner_radius = 30  # Radius for inner circle
+        margin = 50  # Margin from the bottom and left edges of the screen
+
+        # Draw outer circle (base of joystick) at the bottom-left corner
+        self.outer_circle = self.canvas.create_oval(
+            margin, screen_height - margin - 2*self.radius,
+            margin + 2*self.radius, screen_height - margin, fill="gray")
 
         # Draw inner circle (movable joystick)
-        self.inner_circle = self.canvas.create_oval(120, 120, 180, 180, fill="black")
+        self.inner_circle = self.canvas.create_oval(
+            margin + self.radius - self.inner_radius, screen_height - margin - self.radius - self.inner_radius,
+            margin + self.radius + self.inner_radius, screen_height - margin - self.radius + self.inner_radius, fill="black")
+
+        # Initial position of the inner circle (center of the outer circle)
+        self.inner_circle_center = (margin + self.radius, screen_height - margin - self.radius)
+        self.initial_x, self.initial_y = self.inner_circle_center
+
 
         # Bind mouse events
         self.canvas.tag_bind(self.inner_circle, "<ButtonPress-1>", self.on_click)
         self.canvas.tag_bind(self.inner_circle, "<B1-Motion>", self.on_drag)
         self.canvas.tag_bind(self.inner_circle, "<ButtonRelease-1>", self.on_release)
 
-        self.joystick_position = (0, 0)
-        self.inner_circle_center = (150, 150)  # Initial position at the center
+        self.joystick_position = (0,0)
         self.update_thread = threading.Thread(target=self.send_position)
         self.update_thread.daemon = True
         self.update_thread.start()
@@ -48,20 +63,27 @@ class VirtualJoystick:
         self.update_position()
 
     def on_release(self, event):
-        # Set the inner circle directly to the center position
-        self.canvas.coords(self.inner_circle, 120, 120, 180, 180)
-        self.inner_circle_center = (150, 150)
-        self.joystick_position = (0, 0)
-        self.update_position()
+
+        # Snap back the inner circle to the initial center position
+        self.canvas.coords(self.inner_circle,
+                           self.initial_x - self.inner_radius, self.initial_y - self.inner_radius,
+                           self.initial_x + self.inner_radius, self.initial_y + self.inner_radius)
+
 
     def update_position(self):
+
         # Get the current position of the inner circle
         x1, y1, x2, y2 = self.canvas.coords(self.inner_circle)
         center_x = (x1 + x2) / 2
         center_y = (y1 + y2) / 2
 
-        # Normalize the position based on the size of the outer circle
-        self.joystick_position = ((center_x - 150), (150 - center_y))
+        # Normalize the position based on the size of the outer circle and screen dimensions
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+        normalized_x = (center_x - 150) / (screen_width - 100)
+        normalized_y = (screen_height - center_y - 50) / (screen_height - 100)
+        self.joystick_position = (normalized_x * 100, normalized_y * 100)
+
 
 
     def send_position(self):
