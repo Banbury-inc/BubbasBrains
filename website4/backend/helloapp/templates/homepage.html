@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Congratulations | Cloud Run</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="preload" as="font">
+<link href="{% static 'cloud-run-32-color.png' %}" rel="icon" type="image/png" />
+<link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <h1>Welcome to Our Application!</h1>
+    <p>Explore our application by logging in or registering a new account.</p>
+    <div class="menu">
+        <a href="/login/">Log In</a>
+        <a href="/register/">Register</a>
+    </div>
+</body>
+</html>

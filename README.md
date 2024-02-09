@@ -88,3 +88,8 @@ i2cdetect -y <bus_number>
 1. /dev/video0 - Depth sensor (Z16)
 2. /dev/video1 - IR sensor (Y8/Y16)
 3. /dev/video2 - RGB sensor (YUYV/BYR2)
+
+
+# How to run ROS files on Ubuntu 22.04
+
+1. https://robostack.github.io/GettingStarted.html
