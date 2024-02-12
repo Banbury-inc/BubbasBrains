@@ -18,8 +18,6 @@ python3 followmode_wheels.py /dev/video2 webrtc://@:8554/output
 '''
 
 
-
-
 # parse the command line
 parser = argparse.ArgumentParser(description="Locate objects in a live camera stream using an object detection DNN.", 
                                  formatter_class=argparse.RawTextHelpFormatter, 
