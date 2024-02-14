@@ -61,18 +61,37 @@ def decode(nn_data: dai.NNData) -> Detections:
 
             center_of_object = (det.xmax + det.xmin) / 2
             print(center_of_object)
+            if center_of_object < 0.1:
+                    print("L5")
+            if center_of_object > 0.1: 
+                if center_of_object < 0.2:
+                    print("L4")
+            if center_of_object > 0.2: 
+                if center_of_object < 0.3:
+                    print("L3")
             if center_of_object > 0.3: 
+                if center_of_object < 0.4:
+                    print("L2")
+            if center_of_object > 0.4: 
+                if center_of_object < 0.45:
+                    print("L1")
+            if center_of_object > 0.45: 
+                if center_of_object < 0.55:
+                    print("Center")
+            if center_of_object > 0.55: 
+                if center_of_object < 0.6:
+                    print("R1")
+            if center_of_object > 0.6: 
                 if center_of_object < 0.7:
-                    print("Object is in the center of the screen")
-            if center_of_object < 0.3:
-                    print("Object is on left side of screen")
-            if center_of_object > 0.7:
-                    print("Object is on right side of screen")
-
-
-
-
-
+                    print("R2")
+            if center_of_object > 0.7: 
+                if center_of_object < 0.8:
+                    print("R3")
+            if center_of_object > 0.8: 
+                if center_of_object < 0.9:
+                    print("R4")
+            if center_of_object > 0.9: 
+                    print("R5")
 
 
 
