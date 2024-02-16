@@ -4,6 +4,10 @@ import cv2
 import depthai as dai
 import numpy as np
 import math
+from depthai_sdk.classes import Detections
+from depthai_sdk import OakCamera
+
+
 
 
 nnBlobPath = blobconverter.from_zoo(name='mobilenet-ssd', shaves=4)
@@ -81,6 +85,14 @@ for i in range(10):
 
 spatialLocationCalculator.out.link(xoutSpatialData.input)
 
+
+
+# MobilenetSSD label texts
+labelMap = ["background", "aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow",
+            "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train", "tvmonitor"]
+
+
+
 # Connect to device and start pipeline
 with dai.Device(pipeline) as device:
 
@@ -94,6 +106,7 @@ with dai.Device(pipeline) as device:
     spatialDataQueue = device.getOutputQueue(name="spatialData", maxSize=4, blocking=False)
     color = (0,200,40)
     fontType = cv2.FONT_HERSHEY_TRIPLEX
+
     while True:
         inPreview = previewQueue.get()
         inDet = detectionNNQueue.get()
@@ -106,6 +119,60 @@ with dai.Device(pipeline) as device:
         depthFrameColor = cv2.normalize(depthFrame, None, 0, 255, cv2.NORM_MINMAX)
         depthFrameColor = np.ascontiguousarray(depthFrameColor, dtype=np.uint8)
         depthFrameColor = cv2.applyColorMap(depthFrameColor, cv2.COLORMAP_HOT)
+
+        detections = inDet.detections
+        height = frame.shape[0]
+        width  = frame.shape[1]
+        label = "null"
+        for detection in detections:
+            confidence = detection.confidence*100
+            if confidence > 80:
+                roiData = detection.boundingBoxMapping
+                roi = roiData.roi
+                roi = roi.denormalize(depthFrameColor.shape[1], depthFrameColor.shape[0])
+                topLeft = roi.topLeft()
+                bottomRight = roi.bottomRight()
+                xmin = int(topLeft.x)
+                ymin = int(topLeft.y)
+                xmax = int(bottomRight.x)
+                ymax = int(bottomRight.y)
+                cv2.rectangle(depthFrameColor, (xmin, ymin), (xmax, ymax), color, 1)
+
+                # Denormalize bounding box
+                x1 = int(detection.xmin * width)
+                x2 = int(detection.xmax * width)
+                y1 = int(detection.ymin * height)
+                y2 = int(detection.ymax * height)
+                try:
+                    label = labelMap[detection.label]
+                except:
+                    label = detection.label
+                cv2.putText(frame, str(label), (x1 + 10, y1 + 20), cv2.FONT_HERSHEY_TRIPLEX, 0.5, 255)
+                cv2.putText(frame, "{:.2f}".format(detection.confidence*100), (x1 + 10, y1 + 35), cv2.FONT_HERSHEY_TRIPLEX, 0.5, 255)
+                cv2.putText(frame, f"X: {int(detection.spatialCoordinates.x)} mm", (x1 + 10, y1 + 50), cv2.FONT_HERSHEY_TRIPLEX, 0.5, 255)
+                cv2.putText(frame, f"Y: {int(detection.spatialCoordinates.y)} mm", (x1 + 10, y1 + 65), cv2.FONT_HERSHEY_TRIPLEX, 0.5, 255)
+                cv2.putText(frame, f"Z: {int(detection.spatialCoordinates.z)} mm", (x1 + 10, y1 + 80), cv2.FONT_HERSHEY_TRIPLEX, 0.5, 255)
+                cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), cv2.FONT_HERSHEY_SIMPLEX)
+
+
+                '''
+
+                x1 = top left x
+                y1 = top left y
+                x2 = bottom right x
+                y2 = bottom right y
+
+                (0, 0) = top left corner
+                (300, 300) = bottom right corner
+
+                '''
+
+                print(f"Object: {label}. Confidence: {confidence:.2f}% Coordinates: {x1, y1, x2, y2}")
+
+
+
+
+
 
         # Draw ROI grid
         spatialData = inSpatialData.getSpatialLocations()
@@ -150,4 +217,9 @@ with dai.Device(pipeline) as device:
 
         if cv2.waitKey(1) == ord('q'):
             break
+
+
+
+
+
 
