@@ -99,9 +99,6 @@ while True:
         print(centerY)
         print(Area)
 
-
-
-
         # If the object detected is a person
         if ClassName == "person":
             detectedperson = True
